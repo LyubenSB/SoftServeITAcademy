@@ -35,6 +35,9 @@
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="PowerCollections, Version=1.0.2141.24679, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\XAct.Wintellect.PowerCollections.0.0.1\lib\net20\PowerCollections.dll</HintPath>
     </Reference>
@@ -48,7 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Providers\ConsoleWriter.cs" />
+    <Compile Include="Core\Providers\Contracts\IEngine.cs" />
+    <Compile Include="Core\Providers\Contracts\IWriter.cs" />
+    <Compile Include="Core\Providers\Engine.cs" />
     <Compile Include="DataService\IOFileService\Input\JsonInputController.cs" />
+    <Compile Include="IoCNinject\MovieCatalogModule.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,9 +73,7 @@
     <Folder Include="Commands\SearchCommand\" />
     <Folder Include="Commands\SortCommand\" />
     <Folder Include="Core\Factories\Contracts\" />
-    <Folder Include="Core\Providers\" />
     <Folder Include="DataService\IOFileService\Output\" />
-    <Folder Include="IoCNinject\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
