@@ -1,5 +1,8 @@
 ﻿using MovieCatalogApp.Core.Providers;
 using MovieCatalogApp.Core.Providers.Contracts;
+using MovieCatalogApp.DataService.Contracts;
+using MovieCatalogApp.DataService.InMemoryDataService;
+using MovieCatalogApp.DataService.IOFileService;
 using MovieCatalogApp.DataService.IOFileService.Input;
 using MovieCatalogApp.IoCNinject;
 using MovieCatalogApp.Models;
@@ -14,19 +17,16 @@ namespace MovieCatalogApp
 {
     public class StartUp
     {
-        //@"..\..\..\SourceData\JsonMovieData.json";
         public static void Main(string[] args)
         {
-            //string filePath = @"..\..\..\SourceData\JsonMovieData.json";
-            //ICollection<Movie> movies = JsonInputController.ParseJsonToMovieObj(filePath);
-
-            //foreach (var movie in movies)
-            //{
-            //    Console.WriteLine(movie.ToString());
-            //}
-
-
+            string filePath = @"..\..\..\SourceData\JsonMovieData.json";
+            
             IKernel kernel = new StandardKernel(new MovieCatalogModule());
+
+            IDataService dataService = kernel.Get<MovieDataService>();
+            IDataController dataController = kernel.Get<JsonInputController>();
+            dataController.LoadObjects(filePath, dataService);
+
             IEngine engine = kernel.Get<Engine>();
             engine.Start();
         }

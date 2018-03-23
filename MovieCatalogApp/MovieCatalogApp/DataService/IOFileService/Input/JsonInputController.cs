@@ -5,22 +5,29 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Linq;
 using Wintellect.PowerCollections;
+using MovieCatalogApp.DataService.Contracts;
 
 namespace MovieCatalogApp.DataService.IOFileService.Input
 {
-    public class JsonInputController
+    public class JsonInputController : IDataController
     {
-        public static ICollection<Movie> ParseJsonToMovieObj(string jsonFilePath)
+        private IDataService dataService;
+
+        public JsonInputController(IDataService dataService)
         {
-            using (StreamReader readJson = new StreamReader(jsonFilePath))
+            this.dataService = dataService;
+        }
+
+        public void LoadObjects(string filePath, IDataService dataService)
+        {
+            using (StreamReader readJson = new StreamReader(filePath))
             {
                 string jsonInfo = readJson.ReadToEnd();
                 var jsonObject = JObject.Parse(jsonInfo);
-                ICollection<Movie> movies = new OrderedSet<Movie>();
 
                 foreach (var jsonMovie in jsonObject["movies"])
                 {
-                    movies.Add(new Movie()
+                    dataService.Add(new Movie()
                     {
                         Title = jsonMovie.Value<string>("Title"),
                         Genre = jsonMovie.Value<string>("Genre").Split(','),
@@ -30,8 +37,7 @@ namespace MovieCatalogApp.DataService.IOFileService.Input
                         Year = jsonMovie.Value<int>("Year"),
                     });
                 }
-                RemoveEmptySpaces(movies);
-                return movies;
+                RemoveEmptySpaces(dataService.MovieList);
             }
         }
 
