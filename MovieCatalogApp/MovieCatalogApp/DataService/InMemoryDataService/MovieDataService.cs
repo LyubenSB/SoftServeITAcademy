@@ -14,7 +14,7 @@ namespace MovieCatalogApp.DataService.InMemoryDataService
     {
         public MovieDataService()
         {
-            this.MovieList = new List<Movie>();
+            this.MovieList = new HashSet<Movie>();
         }
 
         public ICollection<Movie> MovieList { get; set; }

@@ -11,11 +11,9 @@ namespace MovieCatalogApp.DataService.IOFileService.Input
 {
     public class JsonInputController : IDataController
     {
-        private IDataService dataService;
-
-        public JsonInputController(IDataService dataService)
+        public JsonInputController()
         {
-            this.dataService = dataService;
+
         }
 
         public void LoadObjects(string filePath, IDataService dataService)
