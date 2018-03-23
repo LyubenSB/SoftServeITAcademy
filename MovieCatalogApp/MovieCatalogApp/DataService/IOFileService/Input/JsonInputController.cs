@@ -11,12 +11,14 @@ namespace MovieCatalogApp.DataService.IOFileService.Input
 {
     public class JsonInputController : IDataController
     {
-        public JsonInputController()
-        {
+        private IDataService dataService;
 
+        public JsonInputController(IDataService dataService)
+        {
+            this.dataService = dataService;
         }
 
-        public void LoadObjects(string filePath, IDataService dataService)
+        public void LoadObjects(string filePath)
         {
             using (StreamReader readJson = new StreamReader(filePath))
             {

@@ -9,6 +9,6 @@ namespace MovieCatalogApp.DataService.IOFileService
 {
     public interface IDataController
     {
-        void LoadObjects(string filePath, IDataService dataService);
+        void LoadObjects(string filePath);
     }
 }
