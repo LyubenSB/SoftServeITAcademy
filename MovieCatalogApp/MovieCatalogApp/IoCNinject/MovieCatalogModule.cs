@@ -26,12 +26,11 @@ namespace MovieCatalogApp.IoCNinject
             this.Bind<IReader>().To<ConsoleReader>();
             this.Bind<IParser>().To<CommandParser>().InSingletonScope();
             this.Bind<IDataService>().To<MovieDataService>().InSingletonScope();
-            this.Bind<IDataController>().To<JsonInputController>().InSingletonScope();
             this.Bind<IEngine>().To<Engine>().InSingletonScope();
 
             this.Bind<ICommandFactory>().To<CommandFactory>().InSingletonScope();
-            this.Bind<ICommand>().To<ListByCommand>().InSingletonScope().Named("List Movies By");
-
+            this.Bind<ICommand>().To<ListByCommand>().Named("list movies by");
+            this.Bind<ICommand>().To<RegisterMovieCommand>().Named("register movie");
             this.Bind<ICommand>().To<HelpCommand>().Named("/help");
 
         }

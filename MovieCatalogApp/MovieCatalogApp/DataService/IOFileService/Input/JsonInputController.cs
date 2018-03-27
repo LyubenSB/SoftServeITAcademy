@@ -9,8 +9,9 @@ using MovieCatalogApp.DataService.Contracts;
 
 namespace MovieCatalogApp.DataService.IOFileService.Input
 {
-    public class JsonInputController : IDataController
+    public class JsonInputController 
     {
+        private string FILEPATH = @"..\..\..\SourceData\JsonMovieData.json";
         private IDataService dataService;
 
         public JsonInputController(IDataService dataService)
@@ -18,14 +19,14 @@ namespace MovieCatalogApp.DataService.IOFileService.Input
             this.dataService = dataService;
         }
 
-        public void LoadObjects(string filePath)
+        public void LoadObjects()
         {
-            using (StreamReader readJson = new StreamReader(filePath))
+            using (StreamReader readJson = new StreamReader(FILEPATH))
             {
                 string jsonInfo = readJson.ReadToEnd();
-                var jsonObject = JObject.Parse(jsonInfo);
+                var jsonObject = JArray.Parse(jsonInfo);
 
-                foreach (var jsonMovie in jsonObject["movies"])
+                foreach (var jsonMovie in jsonObject)
                 {
                     dataService.Add(new Movie()
                     {

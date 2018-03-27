@@ -18,12 +18,12 @@ namespace MovieCatalogApp.Commands
 
         public string Execute()
         {
-            commands.AppendLine("'Create Movie' - creates a movie");
-            commands.AppendLine("'Remove Movie' - removes a specific movie from the list");
-            commands.AppendLine("'List Movies By' - lists movies by given parameter");
-            commands.AppendLine("'Search Movie' - Searches movies by title");
-            commands.AppendLine("'Sort Movies' - Sorts movies by a parameter");
-            commands.AppendLine("'Exit' - exit the program");
+            commands.AppendLine("'register movie' - creates a movie");
+            commands.AppendLine("'remove movie' - removes a specific movie from the list");
+            commands.AppendLine("'list movies by' - lists movies by given parameter");
+            commands.AppendLine("'search movie' - Searches movies by title");
+            commands.AppendLine("'sort movies' - Sorts movies by a parameter");
+            commands.AppendLine("'exit' - exit the program");
 
             return commands.ToString();
         }

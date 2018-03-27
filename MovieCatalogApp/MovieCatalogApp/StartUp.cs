@@ -23,9 +23,8 @@ namespace MovieCatalogApp
             
             IKernel kernel = new StandardKernel(new MovieCatalogModule());
 
-            
-            IDataController dataController = kernel.Get<JsonInputController>(); 
-            dataController.LoadObjects(filePath); 
+            JsonInputController dataController = kernel.Get<JsonInputController>(); 
+            dataController.LoadObjects(); 
 
             IEngine engine = kernel.Get<Engine>();
             engine.Start();
