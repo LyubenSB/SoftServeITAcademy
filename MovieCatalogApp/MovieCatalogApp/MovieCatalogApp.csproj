@@ -55,6 +55,7 @@
     <Compile Include="Commands\HelpCommand.cs" />
     <Compile Include="Commands\ListByCommand.cs" />
     <Compile Include="Commands\RegisterMovieCommand.cs" />
+    <Compile Include="Commands\SearchCommand.cs" />
     <Compile Include="Core\Factories\CommandFactory.cs" />
     <Compile Include="Core\Factories\Contracts\ICommandFactory.cs" />
     <Compile Include="Core\Providers\CommandParser.cs" />
