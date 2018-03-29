@@ -30,14 +30,36 @@ namespace MovieCatalogApp.Commands
             collectedData.Add(reader.ReadLine());
         }
 
-        private void BinarySearch()
+        private void BinarySearch(string searchTitle)
         {
+            var movieTitles = this.dataService.MovieList.Select(x => x.Title).ToArray();
+            int left = 0;
+            int right = movieTitles.Length - 1;
+            int position = -1;
+            bool found = false;
 
+            while (found != true && left <= right)
+            {
+                int middle = (left + right) / 2;
+                if (string.Compare(movieTitles[middle], searchTitle, true) == 0)
+                {
+                    found = true;
+                    position = middle;
+                }
+                else if (string.Compare(movieTitles[middle], searchTitle, true) > 0)
+                {
+                    right = middle;
+                }
+                else
+                {
+                    left = middle;
+                }
+            }
         }
 
         public string Execute()
         {
-            BinarySearch();
+            //BinarySearch();
 
             return (@"=================
 New Movie Is Registered!

@@ -14,7 +14,7 @@ namespace MovieCatalogApp.DataService.IOFileService.Output
     public class JsonOutputController
     {
         private IDataService dataService;
-        private const string FILEPATH = @"..\..\..\SourceData\TEST.json";
+        private const string FILEPATH = @"..\..\..\SourceData\JsonMovieData.json";
 
         public JsonOutputController(IDataService dataService)
         {
@@ -36,7 +36,7 @@ namespace MovieCatalogApp.DataService.IOFileService.Output
         {
             var movieList = ReadJson();
 
-            using (StreamWriter writeJson = new StreamWriter(FILEPATH, true))
+            using (StreamWriter writeJson = new StreamWriter(FILEPATH))
             {
                 var movieToAdd = new JObject();
 

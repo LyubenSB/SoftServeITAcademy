@@ -35,7 +35,7 @@ namespace MovieCatalogApp.DataService.IOFileService.Input
                         Description = jsonMovie.Value<string>("Description"),
                         Director = jsonMovie.Value<string>("Director"),
                         Actors = jsonMovie.Value<string>("Actors").Split(','),
-                        Year = jsonMovie.Value<int>("Year"),
+                        Year = jsonMovie.Value<int>("Year")
                     });
                 }
                 RemoveEmptySpaces(dataService.MovieList);
