@@ -14,9 +14,9 @@ namespace MovieCatalogApp.Commands
     public class RegisterMovieCommand : ICommand
     {
         private IDataService dataService;
-        private JsonOutputController outputController;
-        private IReader reader;
-        private IWriter writer;
+        private readonly JsonOutputController outputController;
+        private readonly IReader reader;
+        private readonly IWriter writer;
         private List<string> collectedData;
 
         public RegisterMovieCommand(IDataService dataService, JsonOutputController outputController, IReader reader, IWriter writer)
@@ -54,10 +54,10 @@ namespace MovieCatalogApp.Commands
             CollectData();
 
             string movieTitle = collectedData[0];
-            ICollection<string> movieGenres = collectedData[1].Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+            ICollection<string> movieGenres = collectedData[1].Split(new[] {", " }, StringSplitOptions.RemoveEmptyEntries);
             string movieDescription = collectedData[2];
             string movieDirector = collectedData[3];
-            ICollection<string> movieActors = collectedData[4].Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+            ICollection<string> movieActors = collectedData[4].Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
             int movieYear = int.Parse(collectedData[5]);
 
 
@@ -74,9 +74,11 @@ namespace MovieCatalogApp.Commands
 
             dataService.Add(newMovie);
             outputController.SaveMovieToFile(newMovie);
-            return (@"=================
+            return (@"
+
+======================================================================================================================================
 New Movie Is Registered!
-=================");
+======================================================================================================================================");
 
         }
     }

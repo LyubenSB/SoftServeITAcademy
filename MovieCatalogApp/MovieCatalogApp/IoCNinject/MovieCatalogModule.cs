@@ -31,6 +31,7 @@ namespace MovieCatalogApp.IoCNinject
             this.Bind<ICommandFactory>().To<CommandFactory>().InSingletonScope();
             this.Bind<ICommand>().To<ListByCommand>().Named("list movies by");
             this.Bind<ICommand>().To<RegisterMovieCommand>().Named("register movie");
+            this.Bind<ICommand>().To<RemoveMovieCommand>().Named("remove movie");
             this.Bind<ICommand>().To<SearchCommand>().Named("search movie");
             this.Bind<ICommand>().To<SortCommand>().Named("sort movies");
             this.Bind<ICommand>().To<HelpCommand>().Named("/help");

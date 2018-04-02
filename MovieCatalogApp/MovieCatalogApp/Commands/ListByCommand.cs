@@ -29,10 +29,10 @@ namespace MovieCatalogApp.Commands.ListByCommand
 
         public void CollectData()
         {
-            writer.WriteLine("=================");
+            writer.WriteLine("======================================================================================================================================");
             writer.WriteLine("List Movies by:");
             writer.WriteLine("genre | actor | director | year | all movies");
-            writer.WriteLine("=================");
+            writer.WriteLine("======================================================================================================================================");
             collectedData.Add(reader.ReadLine());
         }
 
@@ -80,9 +80,11 @@ namespace MovieCatalogApp.Commands.ListByCommand
                     writer.WriteLine("Genre | Actor | Director | Year | All Movies");
                     break;
             }
-            return @"=================
+            return @"
+
+======================================================================================================================================
 Movies Listed!
-=================";
+======================================================================================================================================";
         }
     }
 }

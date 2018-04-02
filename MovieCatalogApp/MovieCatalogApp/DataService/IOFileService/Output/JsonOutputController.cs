@@ -32,7 +32,7 @@ namespace MovieCatalogApp.DataService.IOFileService.Output
         }
 
         //TODO:QUESTIONABLE QUALITY 
-        public void SaveMovieToFile(Movie movieToSave)
+        public void SaveMovieToFile(Movie movie)
         {
             var movieList = ReadJson();
 
@@ -40,16 +40,38 @@ namespace MovieCatalogApp.DataService.IOFileService.Output
             {
                 var movieToAdd = new JObject();
 
-                movieToAdd["Title"] = movieToSave.Title;
-                movieToAdd["Genre"] = string.Join(", ", movieToSave.Genre);
-                movieToAdd["Description"] = movieToSave.Description;
-                movieToAdd["Director"] = movieToSave.Director;
-                movieToAdd["Actors"] = string.Join(", ", movieToSave.Actors);
-                movieToAdd["Year"] = movieToSave.Year;
+                movieToAdd["Title"] = movie.Title;
+                movieToAdd["Genre"] = string.Join(", ", movie.Genre);
+                movieToAdd["Description"] = movie.Description;
+                movieToAdd["Director"] = movie.Director;
+                movieToAdd["Actors"] = string.Join(", ", movie.Actors);
+                movieToAdd["Year"] = movie.Year;
                 movieList.Add(movieToAdd);
 
                 string outputJson = JsonConvert.SerializeObject(movieList, Formatting.Indented);
                 writeJson.WriteLine(outputJson);
+            }
+        }
+
+        public void RemoveMovieFromFile(Movie movie)
+        {
+            var movieList = ReadJson();
+
+            using (StreamWriter wrtieJson = new StreamWriter(FILEPATH))
+            {
+                var movieToRemove = new JObject();
+
+                movieToRemove["Title"] = movie.Title;
+                movieToRemove["Genre"] = string.Join(", ", movie.Genre);
+                movieToRemove["Description"] = movie.Description;
+                movieToRemove["Director"] = movie.Director;
+                movieToRemove["Actors"] = string.Join(", ", movie.Actors);
+                movieToRemove["Year"] = movie.Year;
+
+                movieList.Remove(movieToRemove.Parent);
+
+                string outputJson = JsonConvert.SerializeObject(movieList, Formatting.Indented);
+                wrtieJson.WriteLine(outputJson);
             }
         }
 
