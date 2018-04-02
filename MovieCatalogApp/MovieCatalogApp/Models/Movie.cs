@@ -13,6 +13,7 @@ namespace MovieCatalogApp.Models
             this.Actors = new HashSet<string>();
         }
 
+        public int MovieID { get; set; }
         public string Title { get; set; }
         public ICollection<string> Genre { get; set; }
         public string Description { get; set; }

@@ -34,7 +34,6 @@ namespace MovieCatalogApp.Commands.ListByCommand
             writer.WriteLine("genre | actor | director | year | all movies");
             writer.WriteLine("=================");
             collectedData.Add(reader.ReadLine());
-
         }
 
         public string Execute()
@@ -51,29 +50,29 @@ namespace MovieCatalogApp.Commands.ListByCommand
                 case "genre":
                     writer.WriteLine("Enter Genre:");
                     string genre = reader.ReadLine();
-                    var moviesByGenre = dataService.MovieList.Where(x => x.Genre.Contains(genre)).ToList();
-                    writer.WriteLine(string.Join("\n", moviesByGenre));
+                    this.dataService.EditedMovieList = dataService.EditedMovieList.Where(x => x.Genre.Contains(genre)).ToList();
+                    writer.WriteLine(string.Join("\n", this.dataService.EditedMovieList));
                     break;
 
                 case "actor":
                     writer.WriteLine("Enter Actor:");
                     string actor = reader.ReadLine();
-                    var moviesByActor = dataService.MovieList.Where(x => x.Actors.Contains(actor)).ToList();
-                    writer.WriteLine(string.Join("\n", moviesByActor));
+                    this.dataService.EditedMovieList = dataService.EditedMovieList.Where(x => x.Actors.Contains(actor)).ToList();
+                    writer.WriteLine(string.Join("\n", this.dataService.EditedMovieList));
                     break;
 
                 case "director":
                     writer.WriteLine("Enter Director:");
                     string director = reader.ReadLine();
-                    var moviesByDirector = dataService.MovieList.Where(x => x.Director.Contains(director)).ToList();
-                    writer.WriteLine(string.Join("\n", moviesByDirector));
+                    this.dataService.EditedMovieList = dataService.EditedMovieList.Where(x => x.Director.Contains(director)).ToList();
+                    writer.WriteLine(string.Join("\n", this.dataService.EditedMovieList));
                     break;
 
                 case "year":
                     writer.WriteLine("Enter Year:");
                     int year = int.Parse(reader.ReadLine());
-                    var moviesByYear = dataService.MovieList.Where(x => x.Year == year).ToList();
-                    writer.WriteLine(string.Join("\n", moviesByYear));
+                    this.dataService.EditedMovieList = dataService.EditedMovieList.Where(x => x.Year == year).ToList();
+                    writer.WriteLine(string.Join("\n", this.dataService.EditedMovieList));
                     break;
 
                 default:
@@ -81,9 +80,9 @@ namespace MovieCatalogApp.Commands.ListByCommand
                     writer.WriteLine("Genre | Actor | Director | Year | All Movies");
                     break;
             }
-            return (@"=================
+            return @"=================
 Movies Listed!
-=================");
+=================";
         }
     }
 }

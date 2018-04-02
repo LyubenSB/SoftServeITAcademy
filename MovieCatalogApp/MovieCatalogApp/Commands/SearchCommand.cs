@@ -12,9 +12,9 @@ namespace MovieCatalogApp.Commands
     public class SearchCommand : ICommand
     {
         private IDataService dataService;
-        private IReader reader;
-        private IWriter writer;
-        private List<string> collectedData;
+        private readonly IReader reader;
+        private readonly IWriter writer;
+        private readonly List<string> collectedData;
 
         public SearchCommand(IDataService dataService, IReader reader, IWriter writer)
         {
@@ -30,40 +30,53 @@ namespace MovieCatalogApp.Commands
             collectedData.Add(reader.ReadLine());
         }
 
-        private void BinarySearch(string searchTitle)
-        {
-            var movieTitles = this.dataService.MovieList.Select(x => x.Title).ToArray();
-            int left = 0;
-            int right = movieTitles.Length - 1;
-            int position = -1;
-            bool found = false;
+        //private void BinarySearch(string searchTitle)
+        //{
+        //    var movieTitles = this.dataService.MovieList.Select(x => x.Title).ToArray();
+        //    int left = 0;
+        //    int right = movieTitles.Length - 1;
+        //    int position = -1;
+        //    bool found = false;
 
-            while (found != true && left <= right)
-            {
-                int middle = (left + right) / 2;
-                if (string.Compare(movieTitles[middle], searchTitle, true) == 0)
-                {
-                    found = true;
-                    position = middle;
-                }
-                else if (string.Compare(movieTitles[middle], searchTitle, true) > 0)
-                {
-                    right = middle;
-                }
-                else
-                {
-                    left = middle;
-                }
-            }
-        }
+        //    while (found != true && left <= right)
+        //    {
+        //        int middle = (left + right) / 2;
+        //        if (string.Compare(movieTitles[middle], searchTitle, true) == 0)
+        //        {
+        //            found = true;
+        //            position = middle;
+        //        }
+        //        else if (string.Compare(movieTitles[middle], searchTitle, true) > 0)
+        //        {
+        //            right = middle;
+        //        }
+        //        else
+        //        {
+        //            left = middle;
+        //        }
+        //    }
+
+        //}
 
         public string Execute()
         {
-            //BinarySearch();
+            CollectData();
+            string movieTitle = collectedData[0];
+            this.dataService.EditedMovieList = this.dataService.EditedMovieList
+                .Where(x => x.Title.IndexOf(movieTitle, StringComparison.OrdinalIgnoreCase) >= 0)
+                .ToList();
 
-            return (@"=================
-New Movie Is Registered!
-=================");
+            writer.WriteLine(string.Join("\n", this.dataService.EditedMovieList));
+
+            string movieFound = @"=================
+Movie(s) Found!
+=================";
+
+            string movieNotFound = @"=================
+Movie Not Found!
+=================";
+
+            return this.dataService.EditedMovieList.Count == 0 ? movieNotFound: movieFound;
         }
     }
 }

@@ -15,9 +15,12 @@ namespace MovieCatalogApp.DataService.InMemoryDataService
         public MovieDataService()
         {
             this.MovieList = new SortedSet<Movie>();
+            this.EditedMovieList = new SortedSet<Movie>();
         }
 
         public ICollection<Movie> MovieList { get; set; }
+        public ICollection<Movie> EditedMovieList { get; set; }
+
 
         public void Add(Movie movieToAdd)
         {
@@ -29,9 +32,9 @@ namespace MovieCatalogApp.DataService.InMemoryDataService
             throw new NotImplementedException();
         }
 
-        public void Save()
+        public void ResetData()
         {
-            throw new NotImplementedException();
+            this.EditedMovieList = this.MovieList;
         }
     }
 }

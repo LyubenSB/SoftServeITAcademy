@@ -9,7 +9,7 @@ using MovieCatalogApp.DataService.Contracts;
 
 namespace MovieCatalogApp.DataService.IOFileService.Input
 {
-    public class JsonInputController 
+    public class JsonInputController
     {
         private string FILEPATH = @"..\..\..\SourceData\JsonMovieData.json";
         private IDataService dataService;
@@ -39,6 +39,7 @@ namespace MovieCatalogApp.DataService.IOFileService.Input
                     });
                 }
                 RemoveEmptySpaces(dataService.MovieList);
+                this.dataService.ResetData();
             }
         }
 

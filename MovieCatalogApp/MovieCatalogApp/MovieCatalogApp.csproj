@@ -54,8 +54,11 @@
     <Compile Include="Commands\Contracts\ICommand.cs" />
     <Compile Include="Commands\HelpCommand.cs" />
     <Compile Include="Commands\ListByCommand.cs" />
+    <Compile Include="Commands\Movies.cs" />
     <Compile Include="Commands\RegisterMovieCommand.cs" />
+    <Compile Include="Commands\ResetDataCommand.cs" />
     <Compile Include="Commands\SearchCommand.cs" />
+    <Compile Include="Commands\SortCommand.cs" />
     <Compile Include="Core\Factories\CommandFactory.cs" />
     <Compile Include="Core\Factories\Contracts\ICommandFactory.cs" />
     <Compile Include="Core\Providers\CommandParser.cs" />
