@@ -26,7 +26,8 @@ namespace MovieCatalogApp
             JsonInputController dataController = kernel.Get<JsonInputController>();
             dataController.LoadObjects();
 
-            IEngine engine = kernel.Get<Engine>();
+            var engine = kernel.Get<Engine>();
+            engine.DisplayStartScreen();
             engine.Start();
         }
     }

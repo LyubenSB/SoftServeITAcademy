@@ -39,7 +39,7 @@ namespace MovieCatalogApp.Commands.ListByCommand
         public string Execute()
         {
             CollectData();
-            string listedObjectsBy = collectedData[0];
+            string listedObjectsBy = collectedData.Last();
 
             switch (listedObjectsBy)
             {
@@ -76,15 +76,24 @@ namespace MovieCatalogApp.Commands.ListByCommand
                     break;
 
                 default:
-                    writer.WriteLine("Invalid Input!Enter either one of these parameters to list movies");
-                    writer.WriteLine("Genre | Actor | Director | Year | All Movies");
+                    writer.WriteLine("");
+                    writer.WriteLine("Invalid Input! Type either one of these parameters to list movies!");
+                    writer.WriteLine("");
+
+                    this.Execute();
                     break;
             }
-            return @"
-
+            string moviesListed = @"
 ======================================================================================================================================
-Movies Listed!
+Movie(s) Listed!
 ======================================================================================================================================";
+
+            string movieNotFound = @"
+======================================================================================================================================
+Movie(s) with that parameter are Not Found!
+======================================================================================================================================";
+
+            return this.dataService.MovieList.Count == 0 ? movieNotFound : moviesListed;
         }
     }
 }

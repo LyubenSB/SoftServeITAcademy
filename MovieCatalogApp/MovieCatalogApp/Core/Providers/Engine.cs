@@ -1,4 +1,6 @@
-﻿using MovieCatalogApp.Core.Providers.Contracts;
+﻿using Bytes2you.Validation;
+using MovieCatalogApp.Core.Providers.Contracts;
+using MovieCatalogApp.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +25,7 @@ namespace MovieCatalogApp.Core.Providers
             this.parser = parser;
         }
 
-        private void displayStartScreen()
+        public void DisplayStartScreen()
         {
             string startScreen = @"███╗   ███╗ ██████╗ ██╗   ██╗██╗███████╗     ██████╗ █████╗ ████████╗ █████╗ ██╗      ██████╗  ██████╗ 
 ████╗ ████║██╔═══██╗██║   ██║██║██╔════╝    ██╔════╝██╔══██╗╚══██╔══╝██╔══██╗██║     ██╔═══██╗██╔════╝ 
@@ -41,8 +43,6 @@ namespace MovieCatalogApp.Core.Providers
 
         public void Start()
         {
-            displayStartScreen();
-
             while (true)
             {
                 string command = this.reader.ReadLine();
@@ -50,6 +50,11 @@ namespace MovieCatalogApp.Core.Providers
                 if (command.ToLower() == TerminationCommand.ToLower())
                 {
                     break;
+                }
+                else if (string.IsNullOrEmpty(command) || string.IsNullOrWhiteSpace(command))
+                {
+                    writer.WriteLine("Invalid Command.Type /help for details.");
+                    continue;
                 }
                 else
                 {
@@ -60,14 +65,17 @@ namespace MovieCatalogApp.Core.Providers
 
         private void ProcessCommand(string command)
         {
-            if (string.IsNullOrWhiteSpace(command))
-            {
-                throw new ArgumentNullException("Command cannot be null or empty");
-            }
-
             var commandToExectue = this.parser.ParseCommand(command);
-            var exectutionResult = commandToExectue.Execute();
-            writer.WriteLine(exectutionResult);
+            try
+            {
+                var exectutionResult = commandToExectue.Execute();
+                writer.WriteLine(exectutionResult);
+            }
+            catch (NullReferenceException)
+            {
+                writer.WriteLine("Invalid Command.Type /help for details.");
+                this.Start();
+            }
         }
     }
 }
