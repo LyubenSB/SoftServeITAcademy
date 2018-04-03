@@ -62,11 +62,11 @@ namespace MovieCatalogApp.Commands
         {
             CollectData();
             string movieTitle = collectedData[0];
-            this.dataService.EditedMovieList = this.dataService.EditedMovieList
+            this.dataService.MovieList = this.dataService.MovieList
                 .Where(x => x.Title.IndexOf(movieTitle, StringComparison.OrdinalIgnoreCase) >= 0)
                 .ToList();
 
-            writer.WriteLine(string.Join("\n", this.dataService.EditedMovieList));
+            writer.WriteLine(string.Join("\n", this.dataService.MovieList));
 
             string movieFound = @"
 
@@ -80,7 +80,7 @@ Movie(s) Found!
 Movie Not Found!
 ======================================================================================================================================";
 
-            return this.dataService.EditedMovieList.Count == 0 ? movieNotFound: movieFound;
+            return this.dataService.MovieList.Count == 0 ? movieNotFound: movieFound;
         }
     }
 }

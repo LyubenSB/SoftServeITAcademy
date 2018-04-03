@@ -33,7 +33,7 @@ namespace MovieCatalogApp.Commands
         {
             this.searchCommand.Execute();
 
-            if (this.dataService.EditedMovieList.Count > 1)
+            if (this.dataService.MovieList.Count > 1)
             {
                 writer.WriteLine("More than one movies with that title found.You must enter the exact title!");
                 this.searchCommand.Execute();
@@ -41,7 +41,7 @@ namespace MovieCatalogApp.Commands
                 writer.WriteLine("(yes/no)");
                 collectedData.Add(reader.ReadLine());
             }
-            else if (this.dataService.EditedMovieList.Count == 1)
+            else if (this.dataService.MovieList.Count == 1)
             {
                 writer.WriteLine("Are you sure you want to remove this movie?");
                 writer.WriteLine("(yes/no)");
@@ -53,7 +53,8 @@ namespace MovieCatalogApp.Commands
         public string Execute()
         {
             CollectData();
-            this.outputController.RemoveMovieFromFile(this.dataService.EditedMovieList.FirstOrDefault());
+            this.outputController.RemoveMovieFromFile(this.dataService.MovieList.FirstOrDefault());
+            this.dataService.Remove(this.dataService.MovieList.FirstOrDefault());
 
             return @"
 

@@ -10,10 +10,10 @@ namespace MovieCatalogApp.DataService.Contracts
     public interface IDataService
     {
         void Add(Movie movieToAdd);
-        void Remove();
+        void Remove(Movie movieToRemove);
         void ResetData();
+        ICollection<Movie> InitialMovieList { get; set; }
         ICollection<Movie> MovieList { get; set; }
-        ICollection<Movie> EditedMovieList { get; set; }
 
 
     }

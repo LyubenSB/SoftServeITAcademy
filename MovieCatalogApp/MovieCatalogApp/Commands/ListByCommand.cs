@@ -44,35 +44,35 @@ namespace MovieCatalogApp.Commands.ListByCommand
             switch (listedObjectsBy)
             {
                 case "all movies":
-                    writer.WriteLine(string.Join("\n", this.dataService.MovieList));
+                    writer.WriteLine(string.Join("\n", this.dataService.InitialMovieList));
                     break;
 
                 case "genre":
                     writer.WriteLine("Enter Genre:");
                     string genre = reader.ReadLine();
-                    this.dataService.EditedMovieList = dataService.EditedMovieList.Where(x => x.Genre.Contains(genre)).ToList();
-                    writer.WriteLine(string.Join("\n", this.dataService.EditedMovieList));
+                    this.dataService.MovieList = dataService.MovieList.Where(x => x.Genre.Contains(genre)).ToList();
+                    writer.WriteLine(string.Join("\n", this.dataService.MovieList));
                     break;
 
                 case "actor":
                     writer.WriteLine("Enter Actor:");
                     string actor = reader.ReadLine();
-                    this.dataService.EditedMovieList = dataService.EditedMovieList.Where(x => x.Actors.Contains(actor)).ToList();
-                    writer.WriteLine(string.Join("\n", this.dataService.EditedMovieList));
+                    this.dataService.MovieList = dataService.MovieList.Where(x => x.Actors.Contains(actor)).ToList();
+                    writer.WriteLine(string.Join("\n", this.dataService.MovieList));
                     break;
 
                 case "director":
                     writer.WriteLine("Enter Director:");
                     string director = reader.ReadLine();
-                    this.dataService.EditedMovieList = dataService.EditedMovieList.Where(x => x.Director.Contains(director)).ToList();
-                    writer.WriteLine(string.Join("\n", this.dataService.EditedMovieList));
+                    this.dataService.MovieList = dataService.MovieList.Where(x => x.Director.Contains(director)).ToList();
+                    writer.WriteLine(string.Join("\n", this.dataService.MovieList));
                     break;
 
                 case "year":
                     writer.WriteLine("Enter Year:");
                     int year = int.Parse(reader.ReadLine());
-                    this.dataService.EditedMovieList = dataService.EditedMovieList.Where(x => x.Year == year).ToList();
-                    writer.WriteLine(string.Join("\n", this.dataService.EditedMovieList));
+                    this.dataService.MovieList = dataService.MovieList.Where(x => x.Year == year).ToList();
+                    writer.WriteLine(string.Join("\n", this.dataService.MovieList));
                     break;
 
                 default:

@@ -38,7 +38,7 @@ namespace MovieCatalogApp.DataService.IOFileService.Input
                         Year = jsonMovie.Value<int>("Year")
                     });
                 }
-                RemoveEmptySpaces(dataService.MovieList);
+                RemoveEmptySpaces(dataService.InitialMovieList);
                 this.dataService.ResetData();
             }
         }

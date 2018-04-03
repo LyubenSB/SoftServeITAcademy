@@ -42,10 +42,10 @@ namespace MovieCatalogApp.Commands
 
         public void QuickSortByYear(Movie[] elements, int left, int right)
         {
-            
+
             int i = left;
             int j = right;
-            
+
             var pivot = elements[(left + right) / 2];
 
             while (i <= j)
@@ -84,7 +84,7 @@ namespace MovieCatalogApp.Commands
             }
             else
             {
-                this.dataService.EditedMovieList = elements;
+                this.dataService.MovieList = elements;
             }
 
         }
@@ -132,34 +132,50 @@ namespace MovieCatalogApp.Commands
             }
             else
             {
-                this.dataService.EditedMovieList = elements;
+                this.dataService.MovieList = elements;
             }
 
         }
 
+        public void PrintInOrder(string order, ICollection<Movie> movieList)
+        {
+            switch (order)
+            {
+                case "ascending":
+                    writer.WriteLine(string.Join("\n", movieList));
+                    break;
+                case "descending":
+                    writer.WriteLine(string.Join("\n", movieList.Reverse()));
+                    break;
+                default:
+                    break;
+            }
+        }
+        
 
         public string Execute()
         {
             CollectData();
             string sortBy = collectedData[0];
+            string sortingOrder = collectedData[1];
 
             switch (sortBy)
             {
                 case "title":
-                    var moviesByTitle = this.dataService.EditedMovieList.ToArray();
-                    QuickSortByTitle(moviesByTitle, 0, this.dataService.EditedMovieList.Count - 1);
-                    writer.WriteLine(string.Join("\n", this.dataService.EditedMovieList));
+                    var moviesByTitle = this.dataService.MovieList.ToArray();
+                    QuickSortByTitle(moviesByTitle, 0, this.dataService.MovieList.Count - 1);
+                    PrintInOrder(sortingOrder, moviesByTitle);
                     break;
                 case "year":
-                    var moviesByYear = this.dataService.EditedMovieList.ToArray();
-                    QuickSortByYear(moviesByYear, 0, this.dataService.EditedMovieList.Count - 1);
-                    writer.WriteLine(string.Join("\n", this.dataService.EditedMovieList));
+                    var moviesByYear = this.dataService.MovieList.ToArray();
+                    QuickSortByYear(moviesByYear, 0, this.dataService.MovieList.Count - 1);
+                    PrintInOrder(sortingOrder, moviesByYear);
                     break;
                 default:
                     break;
             }
 
-           return @"
+            return @"
 
 =================
 Movies Listed!

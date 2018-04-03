@@ -7930,4 +7930,73 @@
   {
     "Title": "Taare Zameen Par",
     "Genre": "Drama,Family,Music",
-    "Description": "An eight-year-old bo
+    "Description": "An eight-year-old boy is thought to be a lazy trouble-maker, until the new art teacher has the patience and compassion to discover the real problem behind his struggles in school.",
+    "Director": "Aamir Khan",
+    "Actors": "Darsheel Safary, Aamir Khan, Tanay Chheda, Sachet Engineer",
+    "Year": 2007
+  },
+  {
+    "Title": "Take Me Home Tonight",
+    "Genre": "Comedy,Drama,Romance",
+    "Description": "Four years after graduation, an awkward high school genius uses his sister's boyfriend's Labor Day party as the perfect opportunity to make his move on his high school crush.",
+    "Director": "Michael Dowse",
+    "Actors": "Topher Grace, Anna Faris, Dan Fogler, Teresa Palmer",
+    "Year": 2011
+  },
+  {
+    "Title": "Resident Evil: Afterlife",
+    "Genre": "Action,Adventure,Horror",
+    "Description": "While still out to destroy the evil Umbrella Corporation, Alice joins a group of survivors living in a prison surrounded by the infected who also want to relocate to the mysterious but supposedly unharmed safe haven known only as Arcadia.",
+    "Director": "Paul W.S. Anderson",
+    "Actors": "Milla Jovovich, Ali Larter, Wentworth Miller,Kim Coates",
+    "Year": 2010
+  },
+  {
+    "Title": "Project X",
+    "Genre": "Comedy",
+    "Description": "3 high school seniors throw a birthday party to make a name for themselves. As the night progresses, things spiral out of control as word of the party spreads.",
+    "Director": "Nima Nourizadeh",
+    "Actors": "Thomas Mann, Oliver Cooper, Jonathan Daniel Brown, Dax Flame",
+    "Year": 2012
+  },
+  {
+    "Title": "Secret in Their Eyes",
+    "Genre": "Crime,Drama,Mystery",
+    "Description": "A tight-knit team of rising investigators, along with their supervisor, is suddenly torn apart when they discover that one of their own teenage daughters has been brutally murdered.",
+    "Director": "Billy Ray",
+    "Actors": "Chiwetel Ejiofor, Nicole Kidman, Julia Roberts, Dean Norris",
+    "Year": 2015
+  },
+  {
+    "Title": "Hostel: Part II",
+    "Genre": "Horror",
+    "Description": "Three American college students studying abroad are lured to a Slovakian hostel, and discover the grim reality behind it.",
+    "Director": "Eli Roth",
+    "Actors": "Lauren German, Heather Matarazzo, Bijou Phillips, Roger Bart",
+    "Year": 2007
+  },
+  {
+    "Title": "Step Up 2: The Streets",
+    "Genre": "Drama,Music,Romance",
+    "Description": "Romantic sparks occur between two dance students from different backgrounds at the Maryland School of the Arts.",
+    "Director": "Jon M. Chu",
+    "Actors": "Robert Hoffman, Briana Evigan, Cassie Ventura, Adam G. Sevani",
+    "Year": 2008
+  },
+  {
+    "Title": "Search Party",
+    "Genre": "Adventure,Comedy",
+    "Description": "A pair of friends embark on a mission to reunite their pal with the woman he was going to marry.",
+    "Director": "Scot Armstrong",
+    "Actors": "Adam Pally, T.J. Miller, Thomas Middleditch,Shannon Woodward",
+    "Year": 2014
+  },
+  {
+    "Title": "Nine Lives",
+    "Genre": "Comedy,Family,Fantasy",
+    "Description": "A stuffy businessman finds himself trapped inside the body of his family's cat.",
+    "Director": "Barry Sonnenfeld",
+    "Actors": "Kevin Spacey, Jennifer Garner, Robbie Amell,Cheryl Hines",
+    "Year": 2016
+  }
+]

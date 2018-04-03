@@ -59,21 +59,12 @@ namespace MovieCatalogApp.DataService.IOFileService.Output
 
             using (StreamWriter wrtieJson = new StreamWriter(FILEPATH))
             {
-                var movieToRemove = new JObject();
-
-                movieToRemove["Title"] = movie.Title;
-                movieToRemove["Genre"] = string.Join(", ", movie.Genre);
-                movieToRemove["Description"] = movie.Description;
-                movieToRemove["Director"] = movie.Director;
-                movieToRemove["Actors"] = string.Join(", ", movie.Actors);
-                movieToRemove["Year"] = movie.Year;
-
-                movieList.Remove(movieToRemove.Parent);
+                var movieToRemove = movieList.Where(t => t.First.First.ToString() == movie.Title).FirstOrDefault();
+                movieList.Remove(movieToRemove);
 
                 string outputJson = JsonConvert.SerializeObject(movieList, Formatting.Indented);
                 wrtieJson.WriteLine(outputJson);
             }
         }
-
     }
 }

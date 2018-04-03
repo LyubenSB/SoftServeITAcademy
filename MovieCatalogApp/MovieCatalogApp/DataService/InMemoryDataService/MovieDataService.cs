@@ -14,27 +14,28 @@ namespace MovieCatalogApp.DataService.InMemoryDataService
     {
         public MovieDataService()
         {
+            this.InitialMovieList = new SortedSet<Movie>();
             this.MovieList = new SortedSet<Movie>();
-            this.EditedMovieList = new SortedSet<Movie>();
         }
 
+        public ICollection<Movie> InitialMovieList { get; set; }
         public ICollection<Movie> MovieList { get; set; }
-        public ICollection<Movie> EditedMovieList { get; set; }
 
 
         public void Add(Movie movieToAdd)
         {
-            this.MovieList.Add(movieToAdd);
+            this.InitialMovieList.Add(movieToAdd);
         }
 
-        public void Remove()
+        public void Remove(Movie movieToRemove)
         {
-            throw new NotImplementedException();
+            this.InitialMovieList.Remove(movieToRemove);
+            this.MovieList.Remove(movieToRemove);
         }
 
         public void ResetData()
         {
-            this.EditedMovieList = this.MovieList;
+            this.MovieList = this.InitialMovieList;
         }
     }
 }
