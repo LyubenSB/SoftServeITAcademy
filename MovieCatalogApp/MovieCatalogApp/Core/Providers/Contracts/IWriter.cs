@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace MovieCatalogApp.Core.Providers.Contracts
 {
+    /// <summary>
+    /// Interface responsible for classes that implement writing of the program's execution results.
+    /// </summary>
     public interface IWriter
     {
         void Write(string text);

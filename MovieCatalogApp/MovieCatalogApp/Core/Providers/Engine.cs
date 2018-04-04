@@ -1,6 +1,5 @@
 ﻿using Bytes2you.Validation;
 using MovieCatalogApp.Core.Providers.Contracts;
-using MovieCatalogApp.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace MovieCatalogApp.Core.Providers
 {
+    /// <summary>
+    /// Class responsible for application initialization and execution.
+    /// </summary>
     public class Engine : IEngine
     {
         private const string TerminationCommand = "Exit";
@@ -25,6 +27,9 @@ namespace MovieCatalogApp.Core.Providers
             this.parser = parser;
         }
 
+        /// <summary>
+        /// Method responsible for displaying the application's start screen.
+        /// </summary>
         public void DisplayStartScreen()
         {
             string startScreen = @"███╗   ███╗ ██████╗ ██╗   ██╗██╗███████╗     ██████╗ █████╗ ████████╗ █████╗ ██╗      ██████╗  ██████╗ 
@@ -41,6 +46,9 @@ namespace MovieCatalogApp.Core.Providers
             writer.WriteLine("(For help type '/help')");
         }
 
+        /// <summary>
+        /// Method responsible for application initialization. 
+        /// </summary>
         public void Start()
         {
             while (true)
@@ -63,8 +71,13 @@ namespace MovieCatalogApp.Core.Providers
             }
         }
 
+        /// <summary>
+        /// Method responsible for command processing
+        /// </summary>
+        /// <param name="command">user's command input represented as a string</param>
         private void ProcessCommand(string command)
         {
+            //passing the command to the command parser.
             var commandToExectue = this.parser.ParseCommand(command);
             try
             {

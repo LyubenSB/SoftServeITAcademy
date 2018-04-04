@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace MovieCatalogApp.Commands
 {
+    /// <summary>
+    /// Class representing the implementation of removing movie objects from the memory and external data file.
+    /// </summary>
     public class RemoveMovieCommand : ICommand
     {
         private IDataService dataService;
@@ -47,20 +50,38 @@ namespace MovieCatalogApp.Commands
                 writer.WriteLine("(yes/no)");
                 collectedData.Add(reader.ReadLine());
             }
-            
+
         }
 
         public string Execute()
         {
-            CollectData();
-            this.outputController.RemoveMovieFromFile(this.dataService.MovieList.FirstOrDefault());
-            this.dataService.Remove(this.dataService.MovieList.FirstOrDefault());
-
-            return @"
-
+            string movieRemoved = @"
 ======================================================================================================================================
 Movie Removed!
 ======================================================================================================================================";
+
+            CollectData();
+            string userChoice = collectedData[0];
+            switch (userChoice)
+            {
+                case "yes":
+                    this.outputController.RemoveMovieFromFile(this.dataService.MovieList.FirstOrDefault());
+                    this.dataService.Remove(this.dataService.MovieList.FirstOrDefault());
+                    this.writer.WriteLine(movieRemoved);
+                    break;
+
+                case "no":
+                    break;
+                default:
+                    writer.WriteLine("Invalid Input. Type 'yes' or 'no'");
+                    this.collectedData.Clear();
+                    this.Execute();
+                    break;
+            }
+
+
+            return @"Enter Command:...
+(For help type '/help')";
         }
     }
 }

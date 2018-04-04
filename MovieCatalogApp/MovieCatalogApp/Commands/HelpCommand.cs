@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace MovieCatalogApp.Commands
 {
+    /// <summary>
+    /// Class responsible for displaying available application commands.
+    /// </summary>
     public class HelpCommand : ICommand
     {
         private StringBuilder commands = new StringBuilder();

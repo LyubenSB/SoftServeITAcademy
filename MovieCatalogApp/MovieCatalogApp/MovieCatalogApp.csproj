@@ -80,7 +80,6 @@
     <Compile Include="Models\Movie.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\ExceptionHandling.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

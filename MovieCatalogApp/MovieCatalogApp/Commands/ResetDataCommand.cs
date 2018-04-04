@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace MovieCatalogApp.Commands
 {
+    /// <summary>
+    /// Class representing the implementation of reseting the in-memory collection of objects to its initial state.
+    /// </summary>
     public class ResetDataCommand : ICommand
     {
         private IDataService dataService;
@@ -45,11 +48,15 @@ namespace MovieCatalogApp.Commands
                 case "no":
                     break;
                 default:
-                    writer.WriteLine("Type 'yes' or 'no'");
+                    writer.WriteLine("Invalid Input. Type 'yes' or 'no'");
+                    this.collectedData.Clear();
+                    this.Execute();
                     break;
             }
+            
+            return @"Enter Command:...
+(For help type '/help')";
 
-            return "Enter Command:...";
         }
     }
 }

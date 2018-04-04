@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace MovieCatalogApp.Core.Providers
 {
+    /// <summary>
+    /// Class responsible for writing of the program's execution results on the console.
+    /// </summary>
     public class ConsoleWriter : IWriter
     {
         public void Write(string text)

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace MovieCatalogApp.DataService.Contracts
 {
+    /// <summary>
+    /// Interface for classes responsible for operations with data collections. 
+    /// </summary>
     public interface IDataService
     {
         void Add(Movie movieToAdd);

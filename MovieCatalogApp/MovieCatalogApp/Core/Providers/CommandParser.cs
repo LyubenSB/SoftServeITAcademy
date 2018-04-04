@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace MovieCatalogApp.Core.Providers
 {
+    /// <summary>
+    /// Class responsible for parsing commands represented as a string from the user's input.
+    /// </summary>
     public class CommandParser : IParser
     {
         private readonly ICommandFactory factory;

@@ -11,6 +11,10 @@ using System.Threading.Tasks;
 
 namespace MovieCatalogApp.Commands
 {
+    /// <summary>
+    /// Class representing the implementation of creating movie objects by a set of given user input parameters.
+    /// The new object is automatically saved to memory and an external data file.
+    /// </summary>
     public class RegisterMovieCommand : ICommand
     {
         private IDataService dataService;
@@ -60,7 +64,7 @@ namespace MovieCatalogApp.Commands
             ICollection<string> movieActors = collectedData[4].Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
             int movieYear = int.Parse(collectedData[5]);
 
-
+            //creating Movie object from the user's input parameters.
             Movie newMovie = new Movie()
             {
                 Title = movieTitle,
@@ -72,7 +76,10 @@ namespace MovieCatalogApp.Commands
                 IsNew = true
             };
 
+            //adding movie to in-memory collection.
             dataService.Add(newMovie);
+
+            //saving movie to external data file.
             outputController.SaveMovieToFile(newMovie);
             return (@"
 

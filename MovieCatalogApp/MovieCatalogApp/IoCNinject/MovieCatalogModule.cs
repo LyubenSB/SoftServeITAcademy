@@ -18,16 +18,22 @@ using System.Threading.Tasks;
 
 namespace MovieCatalogApp.IoCNinject
 {
+    /// <summary>
+    /// Inversion of control container implemented with Ninject.
+    /// Class responsible for dependency binding.
+    /// </summary>
     public class MovieCatalogModule : NinjectModule
     {
         public override void Load()
         {
+            //service bindings
             this.Bind<IWriter>().To<ConsoleWriter>();
             this.Bind<IReader>().To<ConsoleReader>();
             this.Bind<IParser>().To<CommandParser>().InSingletonScope();
             this.Bind<IDataService>().To<MovieDataService>().InSingletonScope();
             this.Bind<IEngine>().To<Engine>().InSingletonScope();
 
+            //command bindings
             this.Bind<ICommandFactory>().To<CommandFactory>().InSingletonScope();
             this.Bind<ICommand>().To<ListByCommand>().Named("list movies by");
             this.Bind<ICommand>().To<RegisterMovieCommand>().Named("register movie");

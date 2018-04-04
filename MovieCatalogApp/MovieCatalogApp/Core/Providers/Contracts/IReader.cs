@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace MovieCatalogApp.Core.Providers.Contracts
 {
+    /// <summary>
+    /// Interface responsible for classes that implement reading of commands from the user's input.
+    /// </summary>
     public interface IReader
     {
         string ReadLine();

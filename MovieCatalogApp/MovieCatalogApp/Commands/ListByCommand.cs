@@ -12,12 +12,16 @@ using System.Threading.Tasks;
 
 namespace MovieCatalogApp.Commands.ListByCommand
 {
+    /// <summary>
+    /// Class representing the implementation of listing data by a given parameter.
+    /// </summary>
     public class ListByCommand : ICommand
     {
         private IDataService dataService;
         private readonly IWriter writer;
         private readonly IReader reader;
         private readonly List<string> collectedData;
+        private readonly List<Movie> validCollection;
 
         public ListByCommand(IDataService dataService, IReader reader, IWriter writer)
         {
@@ -25,8 +29,9 @@ namespace MovieCatalogApp.Commands.ListByCommand
             this.reader = reader;
             this.writer = writer;
             this.collectedData = new List<string>();
+            this.validCollection = new List<Movie>();
         }
-
+        
         public void CollectData()
         {
             writer.WriteLine("======================================================================================================================================");
@@ -79,7 +84,6 @@ namespace MovieCatalogApp.Commands.ListByCommand
                     writer.WriteLine("");
                     writer.WriteLine("Invalid Input! Type either one of these parameters to list movies!");
                     writer.WriteLine("");
-
                     this.Execute();
                     break;
             }
@@ -92,7 +96,6 @@ Movie(s) Listed!
 ======================================================================================================================================
 Movie(s) with that parameter are Not Found!
 ======================================================================================================================================";
-
             return this.dataService.MovieList.Count == 0 ? movieNotFound : moviesListed;
         }
     }

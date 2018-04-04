@@ -3,12 +3,16 @@ using MovieCatalogApp.Core.Providers.Contracts;
 using MovieCatalogApp.DataService.Contracts;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MovieCatalogApp.Commands
 {
+    /// <summary>
+    /// Class representing the implementation of searching movie objects in the in-memory collection by a set of given user input parameters.
+    /// </summary>
     public class SearchCommand : ICommand
     {
         private IDataService dataService;
@@ -30,38 +34,14 @@ namespace MovieCatalogApp.Commands
             collectedData.Add(reader.ReadLine());
         }
 
-        //private void BinarySearch(string searchTitle)
-        //{
-        //    var movieTitles = this.dataService.MovieList.Select(x => x.Title).ToArray();
-        //    int left = 0;
-        //    int right = movieTitles.Length - 1;
-        //    int position = -1;
-        //    bool found = false;
-
-        //    while (found != true && left <= right)
-        //    {
-        //        int middle = (left + right) / 2;
-        //        if (string.Compare(movieTitles[middle], searchTitle, true) == 0)
-        //        {
-        //            found = true;
-        //            position = middle;
-        //        }
-        //        else if (string.Compare(movieTitles[middle], searchTitle, true) > 0)
-        //        {
-        //            right = middle;
-        //        }
-        //        else
-        //        {
-        //            left = middle;
-        //        }
-        //    }
-
-        //}
-
         public string Execute()
         {
             CollectData();
             string movieTitle = collectedData[0];
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            //searching for a movie with specific title.
             this.dataService.MovieList = this.dataService.MovieList
                 .Where(x => x.Title.IndexOf(movieTitle, StringComparison.OrdinalIgnoreCase) >= 0)
                 .ToList();
@@ -80,7 +60,11 @@ Movie(s) Found!
 Movie Not Found!
 ======================================================================================================================================";
 
-            return this.dataService.MovieList.Count == 0 ? movieNotFound: movieFound;
+            stopwatch.Stop();
+            Console.WriteLine(@"
+Searching done! Time Elapsed : {0} milisecond(s)", stopwatch.ElapsedMilliseconds.ToString());
+
+            return this.dataService.MovieList.Count == 0 ? movieNotFound : movieFound;
         }
     }
 }

@@ -5,6 +5,9 @@ using System.Text;
 
 namespace MovieCatalogApp.Models
 {
+    /// <summary>
+    /// Class representing a movie object.
+    /// </summary>
     public class Movie : IComparable<Movie>
     {
         public Movie()
@@ -33,6 +36,12 @@ namespace MovieCatalogApp.Models
 || Year: {5}", this.Title, string.Join(", ",this.Genre), this.Description, this.Director, string.Join(", ", this.Actors), this.Year, this.IsNew == true ? "(NEW)": "");
         }
 
+        /// <summary>
+        /// Implemented comparer for proper addition in the SortedSet collection.
+        /// Objects are compared by "Title" property.
+        /// </summary>
+        /// <param name="other">movie to be compared</param>
+        /// <returns>integer</returns>
         public int CompareTo(Movie other)
         {
             int result = this.Title.CompareTo(other.Title);
