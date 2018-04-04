@@ -38,7 +38,6 @@ namespace MovieCatalogApp.DataService.InMemoryDataService
         public void Add(Movie movieToAdd)
         {
             this.InitialMovieList.Add(movieToAdd);
-            this.MovieList.Add(movieToAdd);
         }
 
         /// <summary>
