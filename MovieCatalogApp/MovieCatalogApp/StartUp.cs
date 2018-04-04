@@ -19,8 +19,6 @@ namespace MovieCatalogApp
     {
         public static void Main(string[] args)
         {
-            //string filePath = @"..\..\..\SourceData\JsonMovieData.json";
-
             IKernel kernel = new StandardKernel(new MovieCatalogModule());
 
             JsonInputController dataController = kernel.Get<JsonInputController>();

@@ -226,13 +226,13 @@ namespace MovieCatalogApp.Commands
             }
 
             Console.WriteLine(@"
-Searching done! Time Elapsed : {0} ticks", stopwatch.ElapsedTicks.ToString());
+Sorting done! Time Elapsed : {0} ticks", stopwatch.ElapsedTicks.ToString());
 
             return @"
 
-=================
-Movies Listed!
-=================";
+======================================================================================================================================
+Movies Sorted!
+======================================================================================================================================";
         }
     }
 }

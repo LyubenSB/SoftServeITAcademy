@@ -66,6 +66,7 @@ namespace MovieCatalogApp.Core.Providers
                 }
                 else
                 {
+                    //calling the processCommand method
                     this.ProcessCommand(command);
                 }
             }
