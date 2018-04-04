@@ -19,11 +19,14 @@ namespace MovieCatalogApp
     {
         public static void Main(string[] args)
         {
+            //initializes a kernal instance/
             IKernel kernel = new StandardKernel(new MovieCatalogModule());
 
+            //loading objects from JSON file.
             JsonInputController dataController = kernel.Get<JsonInputController>();
             dataController.LoadObjects();
 
+            //Starting the application
             var engine = kernel.Get<Engine>();
             engine.DisplayStartScreen();
             engine.Start();

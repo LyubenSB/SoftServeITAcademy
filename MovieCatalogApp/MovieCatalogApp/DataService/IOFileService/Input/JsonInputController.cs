@@ -30,7 +30,10 @@ namespace MovieCatalogApp.DataService.IOFileService.Input
         {
             using (StreamReader readJson = new StreamReader(FILEPATH))
             {
+                //reads the json file
                 string jsonInfo = readJson.ReadToEnd();
+                
+                //parsing the json file to a json Array
                 var jsonObject = JArray.Parse(jsonInfo);
 
                 //parsing JSON objects to C# classes
