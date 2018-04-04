@@ -36,7 +36,8 @@ namespace MovieCatalogApp.Core.Factories
                 //Gets an instance of the specified service by using the first binding in the IOC container with the specified name
                 return this.kernel.Get<ICommand>(commandName);
             }
-            catch (Exception)
+            //catches the ninject "command not binded"
+            catch (Ninject.ActivationException)
             {
 
                 return null;
