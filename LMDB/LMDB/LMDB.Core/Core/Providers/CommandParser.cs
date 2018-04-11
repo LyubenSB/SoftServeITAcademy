@@ -1,14 +1,8 @@
-﻿using MovieCatalogApp.Commands.Contracts;
-using MovieCatalogApp.Core.Factories.Contracts;
-using MovieCatalogApp.Core.Providers.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LMDB.Core.Commands.Contracts;
+using LMDB.Core.Core.Factories.Contracts;
+using LMDB.Core.Core.Providers.Contracts;
 
-
-namespace MovieCatalogApp.Core.Providers
+namespace LMDB.Core.Core.Providers
 {
     /// <summary>
     /// Class responsible for parsing commands represented as a string from the user's input.

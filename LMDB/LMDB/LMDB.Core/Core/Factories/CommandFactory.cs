@@ -1,14 +1,9 @@
-﻿using MovieCatalogApp.Commands.Contracts;
-using MovieCatalogApp.Core.Factories.Contracts;
-using MovieCatalogApp.Core.Providers.Contracts;
+﻿using LMDB.Core.Commands.Contracts;
+using LMDB.Core.Core.Factories.Contracts;
+using LMDB.CoreServices.Providers.Contracts;
 using Ninject;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MovieCatalogApp.Core.Factories
+namespace LMDB.Core.Core.Factories
 {
     /// <summary>
     /// Class responsible for creating commands.

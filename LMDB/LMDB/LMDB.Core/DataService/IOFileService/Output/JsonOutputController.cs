@@ -1,12 +1,12 @@
 ﻿using LMDB.DataService.Contracts;
-using LMDB.ObjectModels
-using MovieCatalogApp.DataService.Contracts;
+using LMDB.ObjectModels.Models;
+using LMDB.Core.DataService.Contracts;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.IO;
 using System.Linq;
 
-namespace MovieCatalogApp.DataService.IOFileService.Output
+namespace LMDB.Core.DataService.IOFileService.Output
 {
     /// <summary>
     /// Class responsible for saving and removing C# objects to external JSON file.
@@ -39,11 +39,10 @@ namespace MovieCatalogApp.DataService.IOFileService.Output
         /// Method responsible for adding C# objects to JSON file.
         /// </summary>
         /// <param name="movie">movie object</param>
-        public void Add<Movie>(Movie movie)
+        public void Add<T>(T movie)
         {
             //reading json
             var movieList = ReadJson();
-
             using (StreamWriter writeJson = new StreamWriter(FILEPATH))
             {
                 //converting C# object to JSON object

@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MovieCatalogApp.Models
+namespace LMDB.ObjectModels.Models
 {
     /// <summary>
     /// Class representing a movie object.
     /// </summary>
-    public class Movie : IComparable<Movie>, IMotionPicture
+    public class Movie : IComparable<Movie>
     {
         public Movie()
         {

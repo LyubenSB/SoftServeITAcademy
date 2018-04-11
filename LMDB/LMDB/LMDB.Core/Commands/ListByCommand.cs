@@ -1,7 +1,7 @@
-﻿using MovieCatalogApp.Commands.Contracts;
-using MovieCatalogApp.Core.Providers.Contracts;
-using MovieCatalogApp.DataService.Contracts;
-using MovieCatalogApp.Models;
+﻿using LMDB.Core.Commands.Contracts;
+using LMDB.Core.DataService.Contracts;
+using LMDB.CoreServices.Providers.Contracts;
+using LMDB.ObjectModels.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace MovieCatalogApp.Commands.ListByCommand
+namespace LMDB.Core.Commands.ListByCommand
 {
     /// <summary>
     /// Class representing the implementation of listing data by a given parameter.

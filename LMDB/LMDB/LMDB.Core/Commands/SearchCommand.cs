@@ -1,14 +1,12 @@
-﻿using MovieCatalogApp.Commands.Contracts;
-using MovieCatalogApp.Core.Providers.Contracts;
-using MovieCatalogApp.DataService.Contracts;
+﻿using LMDB.Core.Commands.Contracts;
+using LMDB.Core.DataService.Contracts;
+using LMDB.CoreServices.Providers.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MovieCatalogApp.Commands
+namespace LMDB.Core.Commands
 {
     /// <summary>
     /// Class representing the implementation of searching movie objects in the in-memory collection by a set of given user input parameters.

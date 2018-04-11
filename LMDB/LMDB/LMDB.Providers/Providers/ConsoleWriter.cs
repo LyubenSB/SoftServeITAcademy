@@ -1,11 +1,11 @@
-﻿using MovieCatalogApp.Core.Providers.Contracts;
+﻿using LMDB.CoreServices.Providers.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieCatalogApp.Core.Providers
+namespace LMDB.CoreServices.Providers
 {
     /// <summary>
     /// Class responsible for writing of the program's execution results on the console.

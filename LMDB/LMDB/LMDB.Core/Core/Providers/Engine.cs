@@ -1,12 +1,13 @@
 ﻿using Bytes2you.Validation;
-using MovieCatalogApp.Core.Providers.Contracts;
+using LMDB.Core.Core.Providers.Contracts;
+using LMDB.CoreServices.Providers.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieCatalogApp.Core.Providers
+namespace LMDB.Core.Core.Providers
 {
     /// <summary>
     /// Class responsible for application initialization and execution.

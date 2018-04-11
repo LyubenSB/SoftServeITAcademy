@@ -1,14 +1,11 @@
-﻿using MovieCatalogApp.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Linq;
-using Wintellect.PowerCollections;
-using MovieCatalogApp.DataService.Contracts;
 using LMDB.DataService.Contracts;
+using LMDB.Core.DataService.Contracts;
+using LMDB.ObjectModels.Models;
 
-namespace MovieCatalogApp.DataService.IOFileService.Input
+namespace LMDB.Core.DataService.IOFileService.Input
 {
     /// <summary>
     /// Class responsible for loading movie dataset from external JSON file.

@@ -1,13 +1,9 @@
-﻿using MovieCatalogApp.Commands.Contracts;
-using MovieCatalogApp.Core.Providers.Contracts;
-using MovieCatalogApp.DataService.Contracts;
-using System;
+﻿using LMDB.Core.Commands.Contracts;
+using LMDB.Core.DataService.Contracts;
+using LMDB.CoreServices.Providers.Contracts;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MovieCatalogApp.Commands
+namespace LMDB.Core.Commands
 {
     /// <summary>
     /// Class representing the implementation of reseting the in-memory collection of objects to its initial state.

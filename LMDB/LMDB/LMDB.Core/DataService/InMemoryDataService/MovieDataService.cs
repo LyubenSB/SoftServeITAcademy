@@ -1,14 +1,8 @@
-﻿using MovieCatalogApp.DataService.Contracts;
-using MovieCatalogApp.DataService.IOFileService;
-using MovieCatalogApp.DataService.IOFileService.Input;
-using MovieCatalogApp.Models;
-using System;
+﻿using LMDB.Core.DataService.Contracts;
+using LMDB.ObjectModels.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MovieCatalogApp.DataService.InMemoryDataService
+namespace LMDB.Core.DataService.InMemoryDataService
 {
     /// <summary>
     /// Class responsible for operations with in-memory data collections. 

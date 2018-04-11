@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieCatalogApp.Commands.Contracts
+namespace LMDB.Core.Commands.Contracts
 {
     /// <summary>
     /// Interface for classes that execute commands.

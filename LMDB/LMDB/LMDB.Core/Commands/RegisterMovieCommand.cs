@@ -1,15 +1,12 @@
-﻿using MovieCatalogApp.Commands.Contracts;
-using MovieCatalogApp.Core.Providers.Contracts;
-using MovieCatalogApp.DataService.Contracts;
-using MovieCatalogApp.DataService.IOFileService.Output;
-using MovieCatalogApp.Models;
+﻿using LMDB.Core.Commands.Contracts;
+using LMDB.Core.DataService.Contracts;
+using LMDB.Core.DataService.IOFileService.Output;
+using LMDB.CoreServices.Providers.Contracts;
+using LMDB.ObjectModels.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MovieCatalogApp.Commands
+namespace LMDB.Core.Commands
 {
     /// <summary>
     /// Class representing the implementation of creating movie objects by a set of given user input parameters.

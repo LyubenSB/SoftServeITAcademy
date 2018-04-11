@@ -1,14 +1,11 @@
-﻿using MovieCatalogApp.Commands.Contracts;
-using MovieCatalogApp.Core.Providers.Contracts;
-using MovieCatalogApp.DataService.Contracts;
-using MovieCatalogApp.DataService.IOFileService.Output;
-using System;
+﻿using LMDB.Core.Commands.Contracts;
+using LMDB.Core.DataService.Contracts;
+using LMDB.Core.DataService.IOFileService.Output;
+using LMDB.CoreServices.Providers.Contracts;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MovieCatalogApp.Commands
+namespace LMDB.Core.Commands
 {
     /// <summary>
     /// Class representing the implementation of removing movie objects from the memory and external data file.

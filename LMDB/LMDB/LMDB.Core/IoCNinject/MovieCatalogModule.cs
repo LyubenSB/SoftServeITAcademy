@@ -1,20 +1,16 @@
-﻿using MovieCatalogApp.Commands;
-using MovieCatalogApp.Commands.Contracts;
-using MovieCatalogApp.Commands.ListByCommand;
-using MovieCatalogApp.Core.Factories;
-using MovieCatalogApp.Core.Factories.Contracts;
+﻿using LMDB.Core.Commands;
+using LMDB.Core.Commands.Contracts;
+using LMDB.Core.Commands.ListByCommand;
+using LMDB.Core.Core.Factories;
+using LMDB.Core.Core.Factories.Contracts;
+using LMDB.Core.Core.Providers;
+using LMDB.Core.Core.Providers.Contracts;
+using LMDB.Core.DataService.Contracts;
+using LMDB.Core.DataService.InMemoryDataService;
+using LMDB.CoreServices.Providers;
+using LMDB.CoreServices.Providers.Contracts;
 using MovieCatalogApp.Core.Providers;
-using MovieCatalogApp.Core.Providers.Contracts;
-using MovieCatalogApp.DataService.Contracts;
-using MovieCatalogApp.DataService.InMemoryDataService;
-using MovieCatalogApp.DataService.IOFileService;
-using MovieCatalogApp.DataService.IOFileService.Input;
 using Ninject.Modules;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MovieCatalogApp.IoCNinject
 {

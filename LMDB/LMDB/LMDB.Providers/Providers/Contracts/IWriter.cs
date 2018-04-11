@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieCatalogApp.Core.Providers.Contracts
+namespace LMDB.CoreServices.Providers.Contracts
 {
     /// <summary>
     /// Interface responsible for classes that implement writing of the program's execution results.

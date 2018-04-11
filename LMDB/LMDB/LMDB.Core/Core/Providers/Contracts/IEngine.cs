@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieCatalogApp.Core.Providers.Contracts
+namespace LMDB.Core.Core.Providers.Contracts
 {
     /// <summary>
     /// Interface for classes responsible for core execution processes in the program.

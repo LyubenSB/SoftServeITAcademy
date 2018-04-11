@@ -1,11 +1,8 @@
-﻿using MovieCatalogApp.Commands.Contracts;
+﻿using LMDB.Core.Commands.Contracts;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace MovieCatalogApp.Commands
+namespace LMDB.Core.Commands
 {
     /// <summary>
     /// Class responsible for displaying available application commands.

@@ -1,11 +1,6 @@
-﻿using MovieCatalogApp.Commands.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LMDB.Core.Commands.Contracts;
 
-namespace MovieCatalogApp.Core.Factories.Contracts
+namespace LMDB.Core.Core.Factories.Contracts
 {
     /// <summary>
     /// Interface for classes that are responsible for creating commands.
