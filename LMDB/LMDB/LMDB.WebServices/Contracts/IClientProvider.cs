@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LMDB.ObjectModels.ResponseObjects
+namespace LMDB.WebServices.Contracts
 {
-    public class TVSeriesResponseHandler
+    public interface IClientProvider<T>
     {
-
+        Task<T> HttpGetAsync(string url);
     }
 }

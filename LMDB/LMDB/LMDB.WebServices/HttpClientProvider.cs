@@ -1,4 +1,5 @@
 ﻿using LMDB.CoreServices.Providers.Contracts;
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -6,14 +7,8 @@ namespace LMDB.WebServices
 {
     public class HttpClientProvider
     {
-        private readonly IWriter writer;
-
-        public HttpClientProvider(IWriter writer)
-        {
-            this.writer = writer;
-        }
-
-        public async Task<string> GetAsync(string url)
+        
+        public async Task<string> HttpGetAsync(string url)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -27,8 +22,8 @@ namespace LMDB.WebServices
                 }
                 catch (HttpRequestException ex)
                 {
-                    writer.WriteLine("Http request was not succesfull");
-                    writer.WriteLine($"Message:{ex.Message}");
+                    Console.WriteLine("Http request was not succesfull");
+                    Console.WriteLine($"Message:{ex.Message}");
 
                     return null;
                 }

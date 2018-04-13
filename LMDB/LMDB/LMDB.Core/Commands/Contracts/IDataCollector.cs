@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LMDB.ObjectModels.ResponseObjects
+namespace LMDB.Core.Commands.Contracts
 {
-    public class MovieResponseHandler
+    public interface IDataCollector
     {
-
+        void CollectData();
     }
 }

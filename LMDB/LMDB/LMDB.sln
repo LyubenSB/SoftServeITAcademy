@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMDB.Core", "LMDB.Core\LMDB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMDB.CoreServices", "LMDB.Providers\LMDB.CoreServices.csproj", "{08B28705-E803-4ECB-8D42-17D4042E94D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMDB.ApiServices", "LMDB.ApiServices\LMDB.ApiServices.csproj", "{DF796AAE-DBB8-4840-BD88-D5FA1D177223}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMDB.DIServices", "LMDB.DIServices\LMDB.DIServices.csproj", "{0800D491-52B9-419E-A526-4E1169D562BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{08B28705-E803-4ECB-8D42-17D4042E94D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08B28705-E803-4ECB-8D42-17D4042E94D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08B28705-E803-4ECB-8D42-17D4042E94D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF796AAE-DBB8-4840-BD88-D5FA1D177223}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF796AAE-DBB8-4840-BD88-D5FA1D177223}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF796AAE-DBB8-4840-BD88-D5FA1D177223}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF796AAE-DBB8-4840-BD88-D5FA1D177223}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0800D491-52B9-419E-A526-4E1169D562BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0800D491-52B9-419E-A526-4E1169D562BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0800D491-52B9-419E-A526-4E1169D562BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0800D491-52B9-419E-A526-4E1169D562BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,5 @@
+usefull methods:
+
+getting all genres: /genre/movie/list
+
+searching for movie:/search

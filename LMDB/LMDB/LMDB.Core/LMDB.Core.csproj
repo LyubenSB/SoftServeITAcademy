@@ -55,12 +55,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\Contracts\ICommand.cs" />
+    <Compile Include="Commands\Contracts\IDataCollector.cs" />
     <Compile Include="Commands\HelpCommand.cs" />
     <Compile Include="Commands\ListByCommand.cs" />
     <Compile Include="Commands\RegisterMovieCommand.cs" />
     <Compile Include="Commands\RemoveMovieCommand.cs" />
     <Compile Include="Commands\ResetDataCommand.cs" />
     <Compile Include="Commands\SearchCommand.cs" />
+    <Compile Include="Commands\WatchList\SearchWatchListCommand.cs" />
     <Compile Include="Commands\SortCommand.cs" />
     <Compile Include="Core\Factories\CommandFactory.cs" />
     <Compile Include="Core\Factories\Contracts\ICommandFactory.cs" />
@@ -68,14 +70,6 @@
     <Compile Include="Core\Providers\Contracts\IEngine.cs" />
     <Compile Include="Core\Providers\Contracts\IParser.cs" />
     <Compile Include="Core\Providers\Engine.cs" />
-    <Compile Include="DataService\Contracts\IDataService.cs" />
-    <Compile Include="DataService\Contracts\IJsonInputController.cs" />
-    <Compile Include="DataService\Contracts\IJsonOutputController.cs" />
-    <Compile Include="DataService\InMemoryDataService\MovieDataService.cs" />
-    <Compile Include="DataService\IOFileService\Input\JsonInputController.cs" />
-    <Compile Include="DataService\IOFileService\Output\JsonOutputController.cs" />
-    <Compile Include="DataService\IOWebService\JsonWebInputController.cs" />
-    <Compile Include="IoCNinject\MovieCatalogModule.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -84,6 +78,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LMDB.ApiServices\LMDB.ApiServices.csproj">
+      <Project>{DF796AAE-DBB8-4840-BD88-D5FA1D177223}</Project>
+      <Name>LMDB.ApiServices</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LMDB.ObjectModels\LMDB.ObjectModels.csproj">
       <Project>{fd21913b-f8ed-408a-9bcf-ec0cd7e9c861}</Project>
       <Name>LMDB.ObjectModels</Name>

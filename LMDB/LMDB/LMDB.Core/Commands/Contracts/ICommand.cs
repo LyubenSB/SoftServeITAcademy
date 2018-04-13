@@ -11,6 +11,7 @@ namespace LMDB.Core.Commands.Contracts
     /// </summary>
     public interface ICommand
     {
+        //TODO : SEPARATE COLLECTIND FROM EXECUTING
         /// <summary>
         /// Void method responsible for collecting data from the user's input.
         /// </summary>

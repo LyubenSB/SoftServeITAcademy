@@ -1,8 +1,7 @@
 ﻿using LMDB.CoreServices.Providers.Contracts;
 using System;
 
-namespace MovieCatalogApp.Core.Providers
-{
+namespace LMDB.CoreServices.Providers
     /// <summary>
     /// Class responsible for reading commands represented as a string from the user's input.
     /// </summary>

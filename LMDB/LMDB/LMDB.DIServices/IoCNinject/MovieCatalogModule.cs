@@ -1,4 +1,5 @@
-﻿using LMDB.Core.Commands;
+﻿using LMDB.ApiServices;
+using LMDB.Core.Commands;
 using LMDB.Core.Commands.Contracts;
 using LMDB.Core.Commands.ListByCommand;
 using LMDB.Core.Core.Factories;
@@ -9,10 +10,10 @@ using LMDB.Core.DataService.Contracts;
 using LMDB.Core.DataService.InMemoryDataService;
 using LMDB.CoreServices.Providers;
 using LMDB.CoreServices.Providers.Contracts;
-using MovieCatalogApp.Core.Providers;
+
 using Ninject.Modules;
 
-namespace MovieCatalogApp.IoCNinject
+namespace LMDB.DIServices.IoCNinject
 {
     /// <summary>
     /// Inversion of control container implemented with Ninject.
@@ -28,6 +29,9 @@ namespace MovieCatalogApp.IoCNinject
             this.Bind<IParser>().To<CommandParser>().InSingletonScope();
             this.Bind<IDataService>().To<MovieDataService>().InSingletonScope();
             this.Bind<IEngine>().To<Engine>().InSingletonScope();
+
+            //webservice bindings
+            this.Bind<IQueryBuilder>().To<TMDBQueryBuilder>();
 
             //command bindings
             this.Bind<ICommandFactory>().To<CommandFactory>().InSingletonScope();
