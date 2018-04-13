@@ -10,13 +10,14 @@ namespace LMDB.Core.DataService.Contracts
     /// <summary>
     /// Interface for classes responsible for operations with data collections. 
     /// </summary>
-    public interface IDataService
+    public interface IDataService<T>
     {
-        void Add(Movie movieToAdd);
-        void Remove(Movie movieToRemove);
+        void Add(T movieToAdd);
+        void Remove(T movieToRemove);
         void ResetData();
-        ICollection<Movie> InitialMovieList { get; set; }
-        ICollection<Movie> MovieList { get; set; }
+        //TODO: FIGURE OUT THESE TWO DOWN HERE
+        //ICollection<Movie> InitialMovieList { get; set; }
+        //ICollection<Movie> MovieList { get; set; }
 
 
     }

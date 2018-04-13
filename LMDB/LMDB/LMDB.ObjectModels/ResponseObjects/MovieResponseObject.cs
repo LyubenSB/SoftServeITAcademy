@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LMDB.ObjectModels.ResponseObjects
 {
-    public class MovieResponseObject : IObjectResponseHandler
+    public class MovieResponseObject : IResponseObject
     {
         [JsonProperty("id")]
         public int Id { get; set; }

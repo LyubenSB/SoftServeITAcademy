@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LMDB.ApiServices
+namespace LMDB.Commands
 {
-    public interface ICallProcessor<T>
+    public class GetDetailsCommand
     {
-        Task<T> ProcessSearchCall(string searchParameter);
+
     }
 }

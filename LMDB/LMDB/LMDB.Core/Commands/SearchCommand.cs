@@ -3,6 +3,7 @@ using LMDB.ApiServices.Contratcts;
 using LMDB.Core.Commands.Contracts;
 using LMDB.Core.DataService.Contracts;
 using LMDB.CoreServices.Providers.Contracts;
+using LMDB.ObjectModels.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,14 +15,14 @@ namespace LMDB.Core.Commands
     /// </summary>
     public class SearchCommand : ICommand, IDataCollector
     {
-        private IDataService dataService;
+        private IDataService<IMotionPicture> dataService;
         private IDataCollector dataCollector;
-        private ICallProcessor callProcessor;
+        private ICallProcessor<string> callProcessor;
         private readonly IReader reader;
         private readonly IWriter writer;
         private readonly List<string> collectedData;
 
-        public SearchCommand(IDataService dataService, IDataCollector dataCollector,ICallProcessor callProcessor,  IReader reader, IWriter writer)
+        public SearchCommand(IDataService<IMotionPicture> dataService, IDataCollector dataCollector,ICallProcessor<string> callProcessor,  IReader reader, IWriter writer)
         {
             this.dataService = dataService;
             this.dataCollector = dataCollector;
@@ -41,7 +42,7 @@ namespace LMDB.Core.Commands
         {
             CollectData();
             string movieTitle = collectedData[0];
-            string quertString = queryBuilder.BuildSearchQuery(movieTitle);
+            //string quertString = queryBuilder.BuildSearchQuery(movieTitle);
             //izvika httpclient s toq url
             //posle obache imam json nasran ???
 

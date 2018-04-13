@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Commands\Contracts\ICommand.cs" />
     <Compile Include="Commands\Contracts\IDataCollector.cs" />
+    <Compile Include="Commands\GetDetailsCommand.cs" />
     <Compile Include="Commands\HelpCommand.cs" />
     <Compile Include="Commands\ListByCommand.cs" />
     <Compile Include="Commands\RegisterMovieCommand.cs" />

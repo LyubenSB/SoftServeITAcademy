@@ -55,6 +55,7 @@
     <Compile Include="DataService\Contracts\IDataService.cs" />
     <Compile Include="DataService\Contracts\IJsonInputController.cs" />
     <Compile Include="DataService\Contracts\IJsonOutputController.cs" />
+    <Compile Include="DataService\InMemoryDataService\TvSeriesDataService.cs" />
     <Compile Include="DataService\InMemoryDataService\MovieDataService.cs" />
     <Compile Include="DataService\IOFileService\Input\JsonInputController.cs" />
     <Compile Include="DataService\IOFileService\Output\JsonOutputController.cs" />
@@ -67,6 +68,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LMDB.ObjectModels\LMDB.ObjectModels.csproj">
+      <Project>{FD21913B-F8ED-408A-9BCF-EC0CD7E9C861}</Project>
+      <Name>LMDB.ObjectModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

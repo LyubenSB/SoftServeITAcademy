@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LMDB.ObjectModels.Contracts
+namespace LMDB.ApiServices.ObjectConverters
 {
-    public interface IObjectResponseHandler
+    public interface IObjectConverter
     {
-        int Id { get; }
+        void Convert();
     }
 }
