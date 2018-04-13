@@ -11,7 +11,7 @@ namespace LMDB.Core.DataService.IOFileService.Output
     /// <summary>
     /// Class responsible for saving and removing C# objects to external JSON file.
     /// </summary>
-    public class JsonOutputController : IJsonOutputController
+    public class JsonOutputController : IJsonOutputController<Movie>
     {
         private IDataService dataService;
         private const string FILEPATH = @"..\..\..\SourceData\JsonMovieData.json";
@@ -39,7 +39,7 @@ namespace LMDB.Core.DataService.IOFileService.Output
         /// Method responsible for adding C# objects to JSON file.
         /// </summary>
         /// <param name="movie">movie object</param>
-        public void Add<T>(T movie)
+        public void Add(Movie movie)
         {
             //reading json
             var movieList = ReadJson();
@@ -47,6 +47,7 @@ namespace LMDB.Core.DataService.IOFileService.Output
             {
                 //converting C# object to JSON object
                 var movieToAdd = new JObject();
+                //TODO:FIX THIS DOWN HERE
 
                 movieToAdd["Title"] = movie.Title;
                 movieToAdd["Genre"] = string.Join(", ", movie.Genre);
@@ -66,7 +67,7 @@ namespace LMDB.Core.DataService.IOFileService.Output
         /// Method responsible for removing movie objects from JSON file.
         /// </summary>
         /// <param name="movie">movie object</param>
-        public void Remove<Movie>(Movie movie)
+        public void Remove(Movie movie)
         {
             //reading json
             var movieList = ReadJson();

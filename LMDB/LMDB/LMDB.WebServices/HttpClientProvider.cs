@@ -8,6 +8,11 @@ namespace LMDB.WebServices
     {
         private readonly IWriter writer;
 
+        public HttpClientProvider(IWriter writer)
+        {
+            this.writer = writer;
+        }
+
         public async Task<string> GetAsync(string url)
         {
             using (HttpClient client = new HttpClient())

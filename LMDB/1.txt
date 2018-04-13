@@ -1,0 +1,9 @@
+private List<T> GetPersistedData<T>()
+        {
+            using (StreamReader readJson = new StreamReader(FILEPATH))
+            {
+                string jsonInfo = readJson.ReadToEnd();
+                List<T> result = JsonConvert.DeserializeObject<List<T>>(jsonInfo );
+                return result;
+            }
+        }

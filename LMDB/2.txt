@@ -1,0 +1,12 @@
+public void AddT(T objectToPersist)
+        {
+            reading json
+            var currentData = GetPersistedDataT();
+            using (StreamWriter writeJson = new StreamWriter(FILEPATH))
+            {
+                currentData.add(objectToPersist);
+                updating JSON file
+                string outputJson = JsonConvert.SerializeObject(currentData, Formatting.Indented);
+                writeJson.WriteLine(outputJson);
+            }
+        }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace LMDB.DataService.Contracts
 {
-    public interface IJsonOutputController
+    public interface IJsonOutputController<T>
     {
-        void Add<T>(T objectToAdd);
-        void Remove<T>(T objectToRemove);
+        void Add(T objectToAdd);
+        void Remove(T objectToRemove);
     }
 }

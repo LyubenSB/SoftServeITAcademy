@@ -11,7 +11,7 @@ namespace LMDB.ObjectModels.Models
     /// </summary>
     public class Movie : IComparable<Movie>
     {
-        public Movie()
+        public Movie()  
         {
             this.Genre = new HashSet<string>();
             this.Actors = new HashSet<string>();
