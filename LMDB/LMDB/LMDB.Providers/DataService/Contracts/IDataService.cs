@@ -1,4 +1,5 @@
-﻿using LMDB.ObjectModels.Models;
+﻿using LMDB.ObjectModels.Contracts;
+using LMDB.ObjectModels.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +17,10 @@ namespace LMDB.Core.DataService.Contracts
         void Remove(T movieToRemove);
         void ResetData();
         //TODO: FIGURE OUT THESE TWO DOWN HERE
-        //ICollection<Movie> InitialMovieList { get; set; }
-        //ICollection<Movie> MovieList { get; set; }
+        ICollection<IMotionPicture> InitialMovieList { get; }
+        ICollection<IMotionPicture> MovieList { get;}
+        ICollection<IMotionPicture> DetailedMovieList { get; }
+
 
 
     }

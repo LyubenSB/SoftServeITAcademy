@@ -1,7 +1,8 @@
-﻿using LMDB.CoreServices.Providers.Contracts;
+﻿using LMDB.ConsoleServices.Contracts;
 using System;
 
-namespace LMDB.CoreServices.Providers
+namespace LMDB.ConsoleServices
+{
     /// <summary>
     /// Class responsible for reading commands represented as a string from the user's input.
     /// </summary>

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace LMDB.ApiServices.ObjectConverters
 {
-    public interface IObjectConverter
+    public interface IObjectConverter<in T, out G>
     {
-        void Convert();
+        void Convert(T objctsToConvert);
+        G ConvertedObjects { get;}
     }
 }

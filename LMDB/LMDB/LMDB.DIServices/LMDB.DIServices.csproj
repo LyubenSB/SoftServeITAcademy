@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{0800D491-52B9-419E-A526-4E1169D562BB}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LMDB.DIServices</RootNamespace>
     <AssemblyName>LMDB.DIServices</AssemblyName>
@@ -29,6 +29,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -47,12 +51,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IoCNinject\MovieCatalogModule.cs" />
+    <Compile Include="IoCNinject\StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LMDB.ApiServices\LMDB.ApiServices.csproj">
       <Project>{df796aae-dbb8-4840-bd88-d5fa1d177223}</Project>
       <Name>LMDB.ApiServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LMDB.ConsoleServices\LMDB.ConsoleServices.csproj">
+      <Project>{9A9A190E-2A11-4689-9D8F-B38278C34E4C}</Project>
+      <Name>LMDB.ConsoleServices</Name>
     </ProjectReference>
     <ProjectReference Include="..\LMDB.Core\LMDB.Core.csproj">
       <Project>{e18cc3b0-5340-4440-a1e7-f0e274b3d9ea}</Project>

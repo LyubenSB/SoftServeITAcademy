@@ -15,12 +15,12 @@ namespace LMDB.Core.Commands.Contracts
         /// <summary>
         /// Void method responsible for collecting data from the user's input.
         /// </summary>
-        void CollectData();
 
         /// <summary>
         /// Method responsible for execution of the specific class' command implementation.
         /// </summary>
         /// <returns></returns>
         string Execute();
+        void CallProcess();
     }
 }

@@ -62,7 +62,7 @@ namespace LMDB.Core.Commands
             int movieYear = int.Parse(collectedData[5]);
 
             //creating Movie object from the user's input parameters.
-            Movie newMovie = new Movie()
+            DetailedMovie newMovie = new DetailedMovie()
             {
                 Title = movieTitle,
                 Genre = movieGenres,

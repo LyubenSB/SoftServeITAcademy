@@ -12,6 +12,8 @@ namespace LMDB.ObjectModels.ResponseObjects
     {
         [JsonProperty("id")]
         public int Id { get; set; }
-
+        public string Title { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Overview { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DateTime? ReleaseDate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }

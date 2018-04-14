@@ -64,7 +64,7 @@ namespace LMDB.Core.Commands
         /// <param name="elements">Collection of elements to be sorted</param>
         /// <param name="left">left index</param>
         /// <param name="right">right index</param>
-        public void QuickSortByYear(Movie[] elements, int left, int right)
+        public void QuickSortByYear(DetailedMovie[] elements, int left, int right)
         {
             //iterators
             int i = left;
@@ -113,7 +113,7 @@ namespace LMDB.Core.Commands
             }
 
         }
-        public void QuickSortByTitle(Movie[] elements, int left, int right)
+        public void QuickSortByTitle(DetailedMovie[] elements, int left, int right)
         {
             //iterators
             int i = left;
@@ -168,7 +168,7 @@ namespace LMDB.Core.Commands
         /// </summary>
         /// <param name="order">sorting order</param>
         /// <param name="movieList">sorted collection</param>
-        public void PrintInOrder(string order, ICollection<Movie> movieList)
+        public void PrintInOrder(string order, ICollection<DetailedMovie> movieList)
         {
             switch (order)
             {

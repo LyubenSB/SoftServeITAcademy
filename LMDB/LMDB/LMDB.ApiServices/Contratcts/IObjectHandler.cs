@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace LMDB.ApiServices.Contratcts
 {
-    public interface IObjectHandler<in T, out IList>
+    public interface IObjectHandler<T,G>
     {
         void HandleObject(T objectToHandle);
-        IList GetCollection();
+        IList<G> HandledResponseObjects { get;}
     }
 }

@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CallProcessor.cs" />
+    <Compile Include="CollectionCompositor.cs" />
     <Compile Include="Contratcts\IClientCaller.cs" />
     <Compile Include="Contratcts\IObjectHandler.cs" />
     <Compile Include="Contratcts\IQueryBuilder.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Contratcts\ICallProcessor.cs" />
     <Compile Include="Contratcts\IObjectConverter.cs" />
     <Compile Include="ObjectConverters\MovieObjectConverter.cs" />
+    <Compile Include="ObjectConverters\TVSeriesObjectConverter.cs" />
     <Compile Include="ObjectHandlers\MovieObjectJSONHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TMDBQueryBuilder.cs" />

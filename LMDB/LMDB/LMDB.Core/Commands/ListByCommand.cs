@@ -1,6 +1,7 @@
 ﻿using LMDB.Core.Commands.Contracts;
 using LMDB.Core.DataService.Contracts;
 using LMDB.CoreServices.Providers.Contracts;
+using LMDB.ObjectModels.Contracts;
 using LMDB.ObjectModels.Models;
 using System;
 using System.Collections.Generic;
@@ -16,19 +17,19 @@ namespace LMDB.Core.Commands.ListByCommand
     /// </summary>
     public class ListByCommand : ICommand
     {
-        private IDataService dataService;
+        private IDataService<IMotionPicture> dataService;
         private readonly IWriter writer;
         private readonly IReader reader;
         private readonly List<string> collectedData;
-        private readonly List<Movie> validCollection;
+        private readonly List<DetailedMovie> validCollection;
 
-        public ListByCommand(IDataService dataService, IReader reader, IWriter writer)
+        public ListByCommand(IDataService<IMotionPicture> dataService, IReader reader, IWriter writer)
         {
             this.dataService = dataService;
             this.reader = reader;
             this.writer = writer;
             this.collectedData = new List<string>();
-            this.validCollection = new List<Movie>();
+            this.validCollection = new List<DetailedMovie>();
         }
         
         public void CollectData()

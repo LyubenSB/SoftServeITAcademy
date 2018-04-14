@@ -3,38 +3,30 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace LMDB.ObjectModels.Models
+namespace LMDB.ObjectModels.OperationalObjects
 {
-    /// <summary>
-    /// Class representing a movie object.
-    /// </summary>
-    public class Movie : IComparable<Movie>
+    public class Movie : IComparable<Movie>, IMotionPicture
     {
-        public Movie()  
+        public Movie()
         {
-            this.Genre = new HashSet<string>();
-            this.Actors = new HashSet<string>();
+
         }
 
-        public int MovieID { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
-        public ICollection<string> Genre { get; set; }
+        public DateTime? ReleaseDate { get; set; }
         public string Description { get; set; }
-        public string Director { get; set; }
-        public ICollection<string> Actors { get; set; }
-        public int Year { get; set; }
-        public bool IsNew { get; set; }
 
         public override string ToString()
         {
             return string.Format(@"
-|| Title: {0}{6}
-|| Genre: {1}
-|| Description: {2}
-|| Director: {3}
-|| Actors: {4}
-|| Year: {5}", this.Title, string.Join(", ",this.Genre), this.Description, this.Director, string.Join(", ", this.Actors), this.Year, this.IsNew == true ? "(NEW)": "");
+|| ID: {0}
+|| Title: {1}
+|| Year: {2}
+|| Description: {3}
+",this.Id, this.Title, this.ReleaseDate.ToString(), this.Description);
         }
 
         /// <summary>

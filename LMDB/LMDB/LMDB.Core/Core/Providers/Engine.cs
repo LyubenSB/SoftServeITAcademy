@@ -1,6 +1,6 @@
 ﻿using Bytes2you.Validation;
 using LMDB.Core.Core.Providers.Contracts;
-using LMDB.CoreServices.Providers.Contracts;
+using LMDB.ConsoleServices.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -81,16 +81,16 @@ namespace LMDB.Core.Core.Providers
         {
             //passing the command to the command parser.
             var commandToExectue = this.parser.ParseCommand(command);
-            try
-            {
-                var exectutionResult = commandToExectue.Execute();
-                writer.WriteLine(exectutionResult);
-            }
-            catch (NullReferenceException)
-            {
-                writer.WriteLine("Invalid Command.Type /help for details.");
-                this.Start();
-            }
+            //try
+            //{
+            var exectutionResult = commandToExectue.Execute();
+            writer.WriteLine(exectutionResult);
+            //}
+            //catch (NullReferenceException)
+            //{
+            //    writer.WriteLine("Invalid Command.Type /help for details.");
+            //    this.Start();
+            //}
         }
     }
 }

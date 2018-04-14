@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace LMDB.ObjectModels.OperationalObjects
 {
-    public class TVSeries : IComparable<TVSeries>, IMotionPicture
+    public class DetailedTVSeries : IComparable<DetailedTVSeries>, IMotionPicture
     {
         public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        public int CompareTo(TVSeries other)
+        public int CompareTo(DetailedTVSeries other)
         {
             throw new NotImplementedException();
         }

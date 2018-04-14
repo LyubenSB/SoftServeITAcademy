@@ -1,11 +1,11 @@
-﻿using LMDB.CoreServices.Providers.Contracts;
+﻿using LMDB.ConsoleServices.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LMDB.CoreServices.Providers
+namespace LMDB.ConsoleServices
 {
     /// <summary>
     /// Class responsible for writing of the program's execution results on the console.

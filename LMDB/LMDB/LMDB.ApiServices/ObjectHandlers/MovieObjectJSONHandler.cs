@@ -1,4 +1,5 @@
 ﻿using LMDB.ApiServices.Contratcts;
+using LMDB.ObjectModels.Contracts;
 using LMDB.ObjectModels.ResponseObjects;
 using Newtonsoft.Json.Linq;
 using System;
@@ -9,14 +10,17 @@ using System.Threading.Tasks;
 
 namespace LMDB.ApiServices.ObjectHandlers
 {
-    public class MovieObjectJSONHandler : IObjectHandler<string, IList<MovieResponseObject>>
+    /// <summary>
+    /// Handles incoming json response and converts it to C# POCO objects
+    /// </summary>
+    public class MovieObjectJSONHandler : IObjectHandler<string, IResponseObject>
     {
         public MovieObjectJSONHandler()
         {
-            IList<MovieResponseObject> responseObjectCollection = new List<MovieResponseObject>();
+            this.HandledResponseObjects = new List<IResponseObject>();
         }
 
-        public IList<MovieResponseObject> ResponseObjectCollection { get; private set; }
+        public IList<IResponseObject> HandledResponseObjects { get; private set; }
 
         public void HandleObject(string objectToHandle)
         {
@@ -26,14 +30,13 @@ namespace LMDB.ApiServices.ObjectHandlers
 
             foreach (var obj in objectResults)
             {
-                MovieResponseObject objectToAdd = obj.ToObject<MovieResponseObject>();
-                ResponseObjectCollection.Add(objectToAdd);
+                //TODO:here it stops
+
+                IResponseObject objectToAdd = obj.ToObject<MovieResponseObject>();
+                HandledResponseObjects.Add(objectToAdd);
             }
         }
 
-        public IList<MovieResponseObject> GetCollection()
-        {
-            return this.ResponseObjectCollection;
-        }
+
     }
 }

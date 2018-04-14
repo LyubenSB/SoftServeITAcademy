@@ -1,6 +1,6 @@
-﻿using LMDB.Core.Commands.Contracts;
+﻿using LMDB.ConsoleServices.Contracts;
+using LMDB.Core.Commands.Contracts;
 using LMDB.Core.Core.Factories.Contracts;
-using LMDB.CoreServices.Providers.Contracts;
 using Ninject;
 
 namespace LMDB.Core.Core.Factories
@@ -26,17 +26,17 @@ namespace LMDB.Core.Core.Factories
         /// <returns>Returns ICommand implementing class</returns>
         public ICommand CreateCommand(string commandName)
         {
-            try
-            {
-                //Gets an instance of the specified service by using the first binding in the IOC container with the specified name
-                return this.kernel.Get<ICommand>(commandName);
-            }
-            //catches the ninject "command not binded"
-            catch (Ninject.ActivationException)
-            {
+            //try
+            //{
+            //    //Gets an instance of the specified service by using the first binding in the IOC container with the specified name
+            return this.kernel.Get<ICommand>(commandName);
+            //}
+            ////catches the ninject "command not binded"
+            //catch (Ninject.ActivationException)
+            //{
 
-                return null;
-            }
+            //    return null;
+            //}
         }
     }
 }

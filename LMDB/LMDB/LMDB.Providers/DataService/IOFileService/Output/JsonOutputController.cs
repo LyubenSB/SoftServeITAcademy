@@ -5,18 +5,19 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.IO;
 using System.Linq;
+using LMDB.ObjectModels.Contracts;
 
 namespace LMDB.Core.DataService.IOFileService.Output
 {
     /// <summary>
     /// Class responsible for saving and removing C# objects to external JSON file.
     /// </summary>
-    public class JsonOutputController : IJsonOutputController<Movie>
+    public class JsonOutputController : IJsonOutputController<DetailedMovie>
     {
-        private IDataService dataService;
+        private IDataService<IMotionPicture> dataService;
         private const string FILEPATH = @"..\..\..\SourceData\JsonMovieData.json";
 
-        public JsonOutputController(IDataService dataService)
+        public JsonOutputController(IDataService<IMotionPicture> dataService)
         {
             this.dataService = dataService;
         }
@@ -39,7 +40,7 @@ namespace LMDB.Core.DataService.IOFileService.Output
         /// Method responsible for adding C# objects to JSON file.
         /// </summary>
         /// <param name="movie">movie object</param>
-        public void Add(Movie movie)
+        public void Add(DetailedMovie movie)
         {
             //reading json
             var movieList = ReadJson();
@@ -67,7 +68,7 @@ namespace LMDB.Core.DataService.IOFileService.Output
         /// Method responsible for removing movie objects from JSON file.
         /// </summary>
         /// <param name="movie">movie object</param>
-        public void Remove(Movie movie)
+        public void Remove(DetailedMovie movie)
         {
             //reading json
             var movieList = ReadJson();

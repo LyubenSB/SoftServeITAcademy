@@ -1,11 +1,11 @@
-﻿using LMDB.CoreServices.Providers.Contracts;
+﻿using LMDB.WebServices.Contracts;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace LMDB.WebServices
 {
-    public class HttpClientProvider
+    public class HttpClientProvider : IClientProvider<string>
     {
         
         public async Task<string> HttpGetAsync(string url)

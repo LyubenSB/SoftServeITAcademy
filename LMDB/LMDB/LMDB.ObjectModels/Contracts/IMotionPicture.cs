@@ -8,6 +8,6 @@ namespace LMDB.ObjectModels.Contracts
 {
     public interface IMotionPicture
     {
-
+        int Id { get; set; }
     }
 }

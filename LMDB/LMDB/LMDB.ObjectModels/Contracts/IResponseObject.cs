@@ -8,6 +8,12 @@ namespace LMDB.ObjectModels.Contracts
 {
     public interface IResponseObject
     {
-        int Id { get; }
+        int Id { get; set; }
+
+        string Title { get; set; }
+
+        string Overview { get; set; }
+
+        DateTime? ReleaseDate { get; set; }
     }
 }

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace LMDB.ApiServices
 {
-    public interface ICallProcessor<T>
+    public interface ICallProcessor
     {
-        Task<T> ProcessSearchCall(string searchParameter);
+        void ProcessSearchCall(string searchParameter);
     }
 }

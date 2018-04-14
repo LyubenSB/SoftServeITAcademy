@@ -1,5 +1,6 @@
 ﻿using LMDB.Core.DataService.Contracts;
 using LMDB.DataService.Contracts;
+using LMDB.ObjectModels.Contracts;
 using LMDB.ObjectModels.Models;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
@@ -14,9 +15,9 @@ namespace LMDB.Core.DataService.IOFileService.Input
     {
         //the path of the external JSON file.
         private string FILEPATH = @"..\..\..\SourceData\JsonMovieData.json";
-        private IDataService dataService;
+        private IDataService<IMotionPicture> dataService;
 
-        public JsonInputController(IDataService dataService)
+        public JsonInputController(IDataService<IMotionPicture> dataService)
         {
             this.dataService = dataService;
         }
@@ -37,7 +38,7 @@ namespace LMDB.Core.DataService.IOFileService.Input
                 //parsing JSON objects to C# classes
                 foreach (var jsonMovie in jsonObject)
                 {
-                    dataService.Add(new Movie()
+                    dataService.Add(new DetailedMovie()
                     {
                         Title = jsonMovie.Value<string>("Title"),
                         Genre = jsonMovie.Value<string>("Genre").Split(','),
@@ -48,7 +49,7 @@ namespace LMDB.Core.DataService.IOFileService.Input
                     });
                 }
                 //removing empty spaces from JSON file's object properties.
-                RemoveEmptySpaces(dataService.InitialMovieList);
+                //RemoveEmptySpaces(dataService.InitialMovieList);
 
                 //initializing in-memory collection responsible for data manipulation during application execution
                 this.dataService.ResetData();
@@ -59,9 +60,9 @@ namespace LMDB.Core.DataService.IOFileService.Input
         /// Method responsile for removing empty spaces from JSON object's properties
         /// </summary>
         /// <param name="movies">In-memory collection of movies</param>
-        private static void RemoveEmptySpaces(ICollection<Movie> movies)
+        private static void RemoveEmptySpaces(ICollection<DetailedMovie> movies)
         {
-            foreach (Movie movie in movies)
+            foreach (DetailedMovie movie in movies)
             {
                 foreach (var genre in movie.Genre)
                 {

@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{E18CC3B0-5340-4440-A1E7-F0E274B3D9EA}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>LMDB</RootNamespace>
     <AssemblyName>LMDB</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -30,6 +30,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bytes2you.Validation, Version=2.0.0.0, Culture=neutral, PublicKeyToken=a7d501dd757e0442, processorArchitecture=MSIL">
@@ -56,22 +59,13 @@
   <ItemGroup>
     <Compile Include="Commands\Contracts\ICommand.cs" />
     <Compile Include="Commands\Contracts\IDataCollector.cs" />
-    <Compile Include="Commands\GetDetailsCommand.cs" />
-    <Compile Include="Commands\HelpCommand.cs" />
-    <Compile Include="Commands\ListByCommand.cs" />
-    <Compile Include="Commands\RegisterMovieCommand.cs" />
-    <Compile Include="Commands\RemoveMovieCommand.cs" />
-    <Compile Include="Commands\ResetDataCommand.cs" />
-    <Compile Include="Commands\SearchCommand.cs" />
-    <Compile Include="Commands\WatchList\SearchWatchListCommand.cs" />
-    <Compile Include="Commands\SortCommand.cs" />
+    <Compile Include="Commands\SearchMovieCommand.cs" />
     <Compile Include="Core\Factories\CommandFactory.cs" />
     <Compile Include="Core\Factories\Contracts\ICommandFactory.cs" />
     <Compile Include="Core\Providers\CommandParser.cs" />
     <Compile Include="Core\Providers\Contracts\IEngine.cs" />
     <Compile Include="Core\Providers\Contracts\IParser.cs" />
     <Compile Include="Core\Providers\Engine.cs" />
-    <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -82,6 +76,10 @@
     <ProjectReference Include="..\LMDB.ApiServices\LMDB.ApiServices.csproj">
       <Project>{DF796AAE-DBB8-4840-BD88-D5FA1D177223}</Project>
       <Name>LMDB.ApiServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LMDB.ConsoleServices\LMDB.ConsoleServices.csproj">
+      <Project>{9A9A190E-2A11-4689-9D8F-B38278C34E4C}</Project>
+      <Name>LMDB.ConsoleServices</Name>
     </ProjectReference>
     <ProjectReference Include="..\LMDB.ObjectModels\LMDB.ObjectModels.csproj">
       <Project>{fd21913b-f8ed-408a-9bcf-ec0cd7e9c861}</Project>
@@ -95,6 +93,9 @@
       <Project>{B403C8F5-7C88-4B15-A22F-D9F1581F4412}</Project>
       <Name>LMDB.WebServices</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\WatchList\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
