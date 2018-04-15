@@ -14,12 +14,12 @@ namespace LMDB.Core.Commands.ListByCommand
     /// </summary>
     public class ListByCommand : ICommand
     {
-        private IDataService<IMotionPicture> dataService;
+        private IDataService<IMotionPictureData> dataService;
         private readonly IWriter writer;
         private readonly IReader reader;
         private readonly List<string> collectedData;
 
-        public ListByCommand(IDataService<IMotionPicture> dataService, ListByProcessorContext processorCtx, IReader reader, IWriter writer)
+        public ListByCommand(IDataService<IMotionPictureData> dataService, ListByProcessorContext processorCtx, IReader reader, IWriter writer)
         {
             this.dataService = dataService;
             this.reader = reader;

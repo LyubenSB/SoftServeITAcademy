@@ -34,7 +34,7 @@ namespace LMDB.DIServices.IoCNinject
         public override void Load()
         {
             //operational object bindings
-            this.Bind<IMotionPicture>().To<Movie>().WhenInjectedInto<MovieObjectConverter>();
+            this.Bind<IMotionPictureData>().To<Movie>().WhenInjectedInto<MovieObjectConverter>();
 
             //response object bindings
             this.Bind<IResponseObject>().To<MovieResponseObject>().WhenInjectedInto<MovieObjectConverter>();
@@ -53,18 +53,20 @@ namespace LMDB.DIServices.IoCNinject
             this.Bind<ICallProcessorStrategy>().To<SearchTVSeriesCallStrategy>().Named("SearchTVSeriesStrategy");
 
             this.Bind<IQueryBuilder<string>>().To<SearchMovieQueryBuilder>().WhenInjectedExactlyInto<SearchMovieCallStrategy>();
-            this.Bind<IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>>>().To<MovieObjectConverter>().WhenInjectedInto<SearchMovieCallStrategy>();
+            this.Bind<IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPictureData>>>().To<MovieObjectConverter>().WhenInjectedInto<SearchMovieCallStrategy>();
             this.Bind<IObjectHandler<string, IResponseObject>>().To<MovieObjectJSONHandler>().WhenInjectedInto<SearchMovieCallStrategy>();
 
 
             this.Bind<IQueryBuilder<string>>().To<SearchTVSeriesQueryBuilder>().WhenInjectedExactlyInto<SearchTVSeriesCallStrategy>();
-            this.Bind<IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>>>().To<TVSeriesObjectConverter>().WhenInjectedInto<SearchTVSeriesCallStrategy>();
+            this.Bind<IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPictureData>>>().To<TVSeriesObjectConverter>().WhenInjectedInto<SearchTVSeriesCallStrategy>();
             this.Bind<IObjectHandler<string, IResponseObject>>().To<TVObjectJSONHandler>().WhenInjectedInto<SearchTVSeriesCallStrategy>();
 
 
             //dataservice bindings
-            this.Bind<IDataService<IMotionPicture>>().To<ObjectDataService>().InSingletonScope();
-           
+            this.Bind<IDataService<IMotionPictureData>>().To<ObjectDataService>().InSingletonScope();
+            this.Bind<GenreQueryBuilder>().ToSelf();
+            this.Bind<InitialDataGetter>().ToSelf();
+            this.Bind<GenreCollectionHandler>().ToSelf().InSingletonScope();
             //apiservice bindings
 
             this.Bind<IClientCaller<string>>().To<HttpClientCaller>().InSingletonScope();

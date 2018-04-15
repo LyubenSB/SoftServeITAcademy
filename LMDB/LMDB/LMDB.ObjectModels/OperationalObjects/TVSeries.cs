@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LMDB.ObjectModels.OperationalObjects
 {
-    public class TVSeries : IComparable<TVSeries>, IMotionPicture
+    public class TVSeries : IComparable<TVSeries>, IMotionPictureData
     {
         public int Id { get; set; }
         public string Title { get; set; }

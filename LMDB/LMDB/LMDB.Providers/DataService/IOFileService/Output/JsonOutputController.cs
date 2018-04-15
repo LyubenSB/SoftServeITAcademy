@@ -14,10 +14,10 @@ namespace LMDB.Core.DataService.IOFileService.Output
     /// </summary>
     public class JsonOutputController : IJsonOutputController<DetailedMovie>
     {
-        private IDataService<IMotionPicture> dataService;
+        private IDataService<IMotionPictureData> dataService;
         private const string FILEPATH = @"..\..\..\SourceData\JsonMovieData.json";
 
-        public JsonOutputController(IDataService<IMotionPicture> dataService)
+        public JsonOutputController(IDataService<IMotionPictureData> dataService)
         {
             this.dataService = dataService;
         }

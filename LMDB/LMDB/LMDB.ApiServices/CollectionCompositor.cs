@@ -10,16 +10,16 @@ using System.Threading.Tasks;
 
 namespace LMDB.ApiServices
 {
-    public class CollectionCompositor
+    public class CollectionCompositor : ICollectionCompositor<ICollection<IMotionPictureData>>
     {
-        private IDataService<IMotionPicture> dataService;
+        private IDataService<IMotionPictureData> dataService;
 
-        public CollectionCompositor(IDataService<IMotionPicture> dataService)
+        public CollectionCompositor(IDataService<IMotionPictureData> dataService)
         {
             this.dataService = dataService;
         }
 
-        public void Composite(ICollection<IMotionPicture> collectionToCompose)
+        public void Composite(ICollection<IMotionPictureData> collectionToCompose)
         {
             foreach (var obj in collectionToCompose)
             {

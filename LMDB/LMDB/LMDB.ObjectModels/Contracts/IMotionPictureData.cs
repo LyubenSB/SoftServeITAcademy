@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LMDB.ObjectModels.Contracts
 {
-    public interface IMotionPicture
+    public interface IMotionPictureData
     {
         int Id { get; set; }
     }

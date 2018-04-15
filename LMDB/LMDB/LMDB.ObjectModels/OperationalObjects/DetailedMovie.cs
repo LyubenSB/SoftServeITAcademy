@@ -9,7 +9,7 @@ namespace LMDB.ObjectModels.Models
     /// <summary>
     /// Class representing a movie object.
     /// </summary>
-    public class DetailedMovie : IComparable<DetailedMovie>, IMotionPicture
+    public class DetailedMovie : IComparable<DetailedMovie>, IMotionPictureData
     {
         public DetailedMovie()  
         {

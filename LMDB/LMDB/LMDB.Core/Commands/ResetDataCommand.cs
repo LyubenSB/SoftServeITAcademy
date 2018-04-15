@@ -11,12 +11,12 @@ namespace LMDB.Core.Commands
     /// </summary>
     public class ResetDataCommand : ICommand
     {
-        private IDataService<IMotionPicture> dataService;
+        private IDataService<IMotionPictureData> dataService;
         private readonly IWriter writer;
         private readonly IReader reader;
         private readonly List<string> collectedData;
 
-        public ResetDataCommand(IDataService<IMotionPicture> dataService, IWriter writer, IReader reader)
+        public ResetDataCommand(IDataService<IMotionPictureData> dataService, IWriter writer, IReader reader)
         {
             this.dataService = dataService;
             this.writer = writer;

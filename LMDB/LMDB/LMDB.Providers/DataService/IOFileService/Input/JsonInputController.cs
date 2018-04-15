@@ -15,9 +15,9 @@ namespace LMDB.Core.DataService.IOFileService.Input
     {
         //the path of the external JSON file.
         private string FILEPATH = @"..\..\..\SourceData\JsonMovieData.json";
-        private IDataService<IMotionPicture> dataService;
+        private IDataService<IMotionPictureData> dataService;
 
-        public JsonInputController(IDataService<IMotionPicture> dataService)
+        public JsonInputController(IDataService<IMotionPictureData> dataService)
         {
             this.dataService = dataService;
         }

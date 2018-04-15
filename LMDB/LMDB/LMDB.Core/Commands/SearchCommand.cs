@@ -16,13 +16,13 @@ namespace LMDB.Core.Commands
     /// </summary>
     public class SearchCommand : ICommand, IDataCollector
     {
-        private IDataService<IMotionPicture> dataService;
+        private IDataService<IMotionPictureData> dataService;
         private SearchProcessorContext processorCtx;
         private readonly IReader reader;
         private readonly IWriter writer;
         private readonly List<string> collectedData;
 
-        public SearchCommand(IDataService<IMotionPicture> dataService, SearchProcessorContext processorCtx, IReader reader, IWriter writer)
+        public SearchCommand(IDataService<IMotionPictureData> dataService, SearchProcessorContext processorCtx, IReader reader, IWriter writer)
         {
             this.dataService = dataService;
             this.processorCtx = processorCtx;

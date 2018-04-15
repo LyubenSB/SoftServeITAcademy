@@ -52,7 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IMotionPicture.cs" />
+    <Compile Include="Contracts\IMotionPictureData.cs" />
     <Compile Include="Contracts\IResponseObject.cs" />
     <Compile Include="OperationalObjects\DetailedMovie.cs" />
     <Compile Include="OperationalObjects\DetailedTVSeries.cs" />

@@ -12,17 +12,17 @@ using System.Threading.Tasks;
 
 namespace LMDB.ApiServices.ObjectConverters
 {
-    public class MovieObjectConverter : IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>>
+    public class MovieObjectConverter : IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPictureData>>
     {
         private IObjectHandler<string, IResponseObject> objectHandler;
 
         public MovieObjectConverter(IObjectHandler<string, IResponseObject> objectHandler)
         {
             this.objectHandler = objectHandler;
-            this.ConvertedObjects = new List<IMotionPicture>();
+            this.ConvertedObjects = new List<IMotionPictureData>();
         }
 
-        public ICollection<IMotionPicture> ConvertedObjects { get; private set; }
+        public ICollection<IMotionPictureData> ConvertedObjects { get; private set; }
 
         public void Convert(ICollection<IResponseObject> objctsToConvert)
         {

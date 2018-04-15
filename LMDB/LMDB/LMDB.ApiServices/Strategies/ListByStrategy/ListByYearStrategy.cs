@@ -9,9 +9,9 @@ namespace LMDB.ApiServices.Strategies.SearchStrategy
     {
         private readonly SearchStrategyServices strategyServices;
         private readonly IQueryBuilder<string> queryBuilder;
-        private readonly IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>> objectConverter;
+        private readonly IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPictureData>> objectConverter;
 
-        public ListByYearStrategy(SearchStrategyServices strategyServices, IQueryBuilder<string> queryBuilder, IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>> objectConverter)
+        public ListByYearStrategy(SearchStrategyServices strategyServices, IQueryBuilder<string> queryBuilder, IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPictureData>> objectConverter)
         {
             this.strategyServices = strategyServices;
             this.queryBuilder = queryBuilder;

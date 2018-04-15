@@ -17,9 +17,9 @@ namespace LMDB.Core.DataService.Contracts
         void Remove(T movieToRemove);
         void ResetData();
         //TODO: FIGURE OUT THESE TWO DOWN HERE
-        ICollection<IMotionPicture> InitialMovieList { get; }
-        ICollection<IMotionPicture> MovieList { get;}
-        ICollection<IMotionPicture> DetailedMovieList { get; }
+        ICollection<IMotionPictureData> InitialMovieList { get; }
+        ICollection<IMotionPictureData> MovieList { get;}
+        ICollection<IMotionPictureData> DetailedMovieList { get; }
 
 
 
