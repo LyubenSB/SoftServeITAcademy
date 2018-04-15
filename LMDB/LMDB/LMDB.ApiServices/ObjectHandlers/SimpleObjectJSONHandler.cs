@@ -30,7 +30,7 @@ namespace LMDB.ApiServices.ObjectHandlers
 
             foreach (var obj in objectResults)
             {
-                IResponseObject objectToAdd = obj.ToObject<MovieResponseObject>();
+                IResponseObject objectToAdd = obj.ToObject<TVSeriesResponseObject>();
                 HandledResponseObjects.Add(objectToAdd);
             }
         }

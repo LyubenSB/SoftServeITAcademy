@@ -11,11 +11,12 @@ namespace LMDB.ApiServices.Strategies
     {
         private Dictionary<string, ICallProcessorStrategy> strategies;
 
-
-        public SearchStrategyContainer([Named("SearchMovieStrategy")] ICallProcessorStrategy movieStrategy,
-            [Named("SearchTVSeriesStrategy")]ICallProcessorStrategy tvStrategy)
+        public SearchStrategyContainer(IKernel kernel)
         {
             this.Strategies = new Dictionary<string, ICallProcessorStrategy>();
+
+            ICallProcessorStrategy movieStrategy = kernel.Get<ICallProcessorStrategy>("SearchMovieStrategy");
+            ICallProcessorStrategy tvStrategy = kernel.Get<ICallProcessorStrategy>("SearchTVSeriesStrategy");
 
             Strategies.Add("movie", movieStrategy);
 
