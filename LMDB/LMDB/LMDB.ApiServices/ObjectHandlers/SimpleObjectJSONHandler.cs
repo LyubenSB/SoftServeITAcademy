@@ -13,9 +13,9 @@ namespace LMDB.ApiServices.ObjectHandlers
     /// <summary>
     /// Handles incoming json response and converts it to C# POCO objects
     /// </summary>
-    public class MovieObjectJSONHandler : IObjectHandler<string, IResponseObject>
+    public class SimpleObjectJSONHandler : IObjectHandler<string, IResponseObject>
     {
-        public MovieObjectJSONHandler()
+        public SimpleObjectJSONHandler()
         {
             this.HandledResponseObjects = new List<IResponseObject>();
         }
@@ -30,8 +30,6 @@ namespace LMDB.ApiServices.ObjectHandlers
 
             foreach (var obj in objectResults)
             {
-                //TODO:here it stops
-
                 IResponseObject objectToAdd = obj.ToObject<MovieResponseObject>();
                 HandledResponseObjects.Add(objectToAdd);
             }

@@ -15,8 +15,8 @@ namespace LMDB.ApiServices
         private IQueryBuilder<string> queryBuilder;
         private IClientCaller<string> clientCaller;
         private IObjectHandler<string, IResponseObject> objectHandler;
-        private IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>> objectConverter;
         private CollectionCompositor collectionCompositor;
+        private IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>> objectConverter;
 
         public SearchMovieCallStrategy(IQueryBuilder<string> queryBuilder, IClientCaller<string> clientCaller,
             IObjectHandler<string, IResponseObject> objectHandler, IObjectConverter<ICollection<IResponseObject>,

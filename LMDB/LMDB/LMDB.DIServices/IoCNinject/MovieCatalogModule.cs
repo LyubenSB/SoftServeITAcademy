@@ -20,6 +20,8 @@ using LMDB.ApiServices.ObjectHandlers;
 using LMDB.WebServices.Contracts;
 using LMDB.WebServices;
 using System.Collections.Generic;
+using LMDB.ApiServices.Strategies.SearchStrategy;
+using LMDB.ApiServices.Strategies;
 
 namespace LMDB.DIServices.IoCNinject
 {
@@ -32,8 +34,6 @@ namespace LMDB.DIServices.IoCNinject
         public override void Load()
         {
             //operational object bindings
-            this.Bind<IMotionPicture>().To<Movie>().WhenInjectedInto<ObjectDataService>();
-            this.Bind<IMotionPicture>().To<Movie>().WhenInjectedExactlyInto<SearchCommand>();
             this.Bind<IMotionPicture>().To<Movie>().WhenInjectedInto<MovieObjectConverter>();
 
             //response object bindings
@@ -47,27 +47,28 @@ namespace LMDB.DIServices.IoCNinject
             this.Bind<IEngine>().To<Engine>().InSingletonScope();
 
             //strategy bindings
-            //search Movie Bindings
             this.Bind<IStrategyContainer>().To<SearchStrategyContainer>().WhenInjectedInto<SearchProcessorContext>();
 
-            this.Bind<IQueryBuilder<string>>().To<SearchMovieQueryBuilder>().WhenInjectedInto<SearchMovieStrategyHandler>();
-            this.Bind<IClientCaller<string>>().To<HttpClientCaller>().WhenInjectedInto<SearchMovieStrategyHandler>();
-            this.Bind<IObjectHandler<string, IResponseObject>>().To<MovieObjectJSONHandler>().WhenInjectedInto<SearchMovieStrategyHandler>();
-            this.Bind<IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>>>().To<MovieObjectConverter>().WhenInjectedInto<SearchMovieStrategyHandler>();
+            this.Bind<ICallProcessorStrategy>().To<SearchMovieCallStrategy>().Named("SearchMovieStrategy");
+            this.Bind<ICallProcessorStrategy>().To<SearchTVSeriesCallStrategy>().Named("SearchTVSeriesStrategy");
 
+            this.Bind<IQueryBuilder<string>>().To<SearchMovieQueryBuilder>().WhenInjectedExactlyInto<SearchMovieCallStrategy>();
+            this.Bind<IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>>>().To<MovieObjectConverter>().WhenInjectedInto<SearchMovieCallStrategy>();
+
+            this.Bind<IQueryBuilder<string>>().To<SearchTVSeriesQueryBuilder>().WhenInjectedExactlyInto<SearchTVSeriesCallStrategy>();
+            this.Bind<IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>>>().To<TVSeriesObjectConverter>().WhenInjectedInto<SearchTVSeriesCallStrategy>();
 
 
             //dataservice bindings
-            //DataServicea trq da e singleton
             this.Bind<IDataService<IMotionPicture>>().To<ObjectDataService>().InSingletonScope();
-            //this.Bind<IDataService<IMotionPicture>>().To<MovieDataService>().WhenInjectedExactlyInto<MovieObjectConverter>().InSingletonScope();
-
+           
             //apiservice bindings
-            
+
             this.Bind<IClientCaller<string>>().To<HttpClientCaller>().InSingletonScope();
-            this.Bind<IQueryBuilder<string>>().To<SearchMovieQueryBuilder>().WhenInjectedInto<SearchMovieCallStrategy>();
-            this.Bind<IObjectHandler<string, IResponseObject>>().To<MovieObjectJSONHandler>().InSingletonScope();
+
+            this.Bind<IObjectHandler<string, IResponseObject>>().To<SimpleObjectJSONHandler>().InSingletonScope();
             this.Bind<IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>>>().To<MovieObjectConverter>();
+            this.Bind<IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>>>().To<TVSeriesObjectConverter>();
 
             //webservice bindings
             this.Bind<IClientProvider<string>>().To<HttpClientProvider>().InSingletonScope();

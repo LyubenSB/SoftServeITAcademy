@@ -9,11 +9,6 @@ namespace LMDB.ObjectModels.OperationalObjects
 {
     public class Movie : IComparable<Movie>, IMotionPicture
     {
-        public Movie()
-        {
-
-        }
-
         public int Id { get; set; }
         public string Title { get; set; }
         public DateTime? ReleaseDate { get; set; }
@@ -26,7 +21,7 @@ namespace LMDB.ObjectModels.OperationalObjects
 || Title: {1}
 || Year: {2}
 || Description: {3}
-",this.Id, this.Title, this.ReleaseDate.ToString(), this.Description);
+", this.Id, this.Title, this.ReleaseDate.ToString(), this.Description);
         }
 
         /// <summary>

@@ -10,9 +10,6 @@ namespace LMDB.ApiServices
     {
         public override string BuildQuery(string queryParams)
         {
-            string url = base.Url;
-            string apiKey = base.ApiKey;
-
             string queryComposite = $"{Url}/search/movie?api_key={ApiKey}&query='{queryParams}'";
 
             return queryComposite;

@@ -14,7 +14,6 @@ namespace LMDB.ApiServices
     {
         private IDataService<IMotionPicture> dataService;
 
-
         public CollectionCompositor(IDataService<IMotionPicture> dataService)
         {
             this.dataService = dataService;

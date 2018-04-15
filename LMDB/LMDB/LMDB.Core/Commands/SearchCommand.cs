@@ -50,18 +50,16 @@ namespace LMDB.Core.Commands
             var moviesFound = this.dataService.MovieList;
             writer.WriteLine(string.Join("\n", moviesFound));
 
-            //searching for a movie with specific title.
-
             string movieFound = @"
 
 ======================================================================================================================================
-Movie(s) Found!
+Movie(s)/TV Series Found!
 ======================================================================================================================================";
 
             string movieNotFound = @"
 
 ======================================================================================================================================
-Movie Not Found!
+Movie(s)/TV Series Not Found!
 ======================================================================================================================================";
 
             return this.dataService.MovieList.Count == 0 ? movieNotFound : movieFound;
