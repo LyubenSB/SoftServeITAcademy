@@ -59,13 +59,19 @@
   <ItemGroup>
     <Compile Include="Commands\Contracts\ICommand.cs" />
     <Compile Include="Commands\Contracts\IDataCollector.cs" />
-    <Compile Include="Commands\SearchMovieCommand.cs" />
+    <Compile Include="Commands\ListByCommand.cs" />
+    <Compile Include="Commands\SearchCommand.cs" />
+    <Compile Include="Commands\Strategy\ListByCmdStrategy\ListByCommandContext.cs" />
+    <Compile Include="Commands\Strategy\Contracts\IContext.cs" />
+    <Compile Include="Commands\Strategy\ListByCmdStrategy\ListByGenreStrategy.cs" />
     <Compile Include="Core\Factories\CommandFactory.cs" />
     <Compile Include="Core\Factories\Contracts\ICommandFactory.cs" />
+    <Compile Include="Core\Factories\Contracts\IStrategyFactory.cs" />
     <Compile Include="Core\Providers\CommandParser.cs" />
     <Compile Include="Core\Providers\Contracts\IEngine.cs" />
     <Compile Include="Core\Providers\Contracts\IParser.cs" />
     <Compile Include="Core\Providers\Engine.cs" />
+    <Compile Include="Commands\Strategy\Contracts\IStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -95,6 +101,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Commands\Strategy\SearchCmdStrategy\" />
     <Folder Include="Commands\WatchList\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,13 +1,9 @@
-﻿using LMDB.Core.Commands.Contracts;
+﻿using LMDB.ConsoleServices.Contracts;
+using LMDB.Core.Commands.Contracts;
 using LMDB.Core.DataService.Contracts;
-using LMDB.CoreServices.Providers.Contracts;
 using LMDB.ObjectModels.Contracts;
-using LMDB.ObjectModels.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace LMDB.Core.Commands.ListByCommand
@@ -21,7 +17,6 @@ namespace LMDB.Core.Commands.ListByCommand
         private readonly IWriter writer;
         private readonly IReader reader;
         private readonly List<string> collectedData;
-        private readonly List<DetailedMovie> validCollection;
 
         public ListByCommand(IDataService<IMotionPicture> dataService, IReader reader, IWriter writer)
         {
@@ -29,7 +24,6 @@ namespace LMDB.Core.Commands.ListByCommand
             this.reader = reader;
             this.writer = writer;
             this.collectedData = new List<string>();
-            this.validCollection = new List<DetailedMovie>();
         }
         
         public void CollectData()
@@ -46,47 +40,6 @@ namespace LMDB.Core.Commands.ListByCommand
             CollectData();
             string listedObjectsBy = collectedData.Last();
 
-            switch (listedObjectsBy)
-            {
-                case "all movies":
-                    writer.WriteLine(string.Join("\n", this.dataService.InitialMovieList));
-                    break;
-
-                case "genre":
-                    writer.WriteLine("Enter Genre:");
-                    string genre = reader.ReadLine();
-                    this.dataService.MovieList = dataService.MovieList.Where(x => x.Genre.Contains(genre)).ToList();
-                    writer.WriteLine(string.Join("\n", this.dataService.MovieList));
-                    break;
-
-                case "actor":
-                    writer.WriteLine("Enter Actor:");
-                    string actor = reader.ReadLine();
-                    this.dataService.MovieList = dataService.MovieList.Where(x => x.Actors.Contains(actor)).ToList();
-                    writer.WriteLine(string.Join("\n", this.dataService.MovieList));
-                    break;
-
-                case "director":
-                    writer.WriteLine("Enter Director:");
-                    string director = reader.ReadLine();
-                    this.dataService.MovieList = dataService.MovieList.Where(x => x.Director.Contains(director)).ToList();
-                    writer.WriteLine(string.Join("\n", this.dataService.MovieList));
-                    break;
-
-                case "year":
-                    writer.WriteLine("Enter Year:");
-                    int year = int.Parse(reader.ReadLine());
-                    this.dataService.MovieList = dataService.MovieList.Where(x => x.Year == year).ToList();
-                    writer.WriteLine(string.Join("\n", this.dataService.MovieList));
-                    break;
-
-                default:
-                    writer.WriteLine("");
-                    writer.WriteLine("Invalid Input! Type either one of these parameters to list movies!");
-                    writer.WriteLine("");
-                    this.Execute();
-                    break;
-            }
             string moviesListed = @"
 ======================================================================================================================================
 Movie(s) Listed!

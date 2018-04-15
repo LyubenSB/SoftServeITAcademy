@@ -14,18 +14,18 @@ namespace LMDB.Core.Commands
     /// <summary>
     /// Class representing the implementation of searching movie objects in the in-memory collection by a set of given user input parameters.
     /// </summary>
-    public class SearchMovieCommand : ICommand, IDataCollector
+    public class SearchCommand : ICommand, IDataCollector
     {
         private IDataService<IMotionPicture> dataService;
-        private ICallProcessor callProcessor;
+        private SearchProcessorContext processorCtx;
         private readonly IReader reader;
         private readonly IWriter writer;
         private readonly List<string> collectedData;
 
-        public SearchMovieCommand(IDataService<IMotionPicture> dataService, ICallProcessor callProcessor, IReader reader, IWriter writer)
+        public SearchCommand(IDataService<IMotionPicture> dataService, SearchProcessorContext processorCtx, IReader reader, IWriter writer)
         {
             this.dataService = dataService;
-            this.callProcessor = callProcessor;
+            this.processorCtx = processorCtx;
             this.reader = reader;
             this.writer = writer;
             this.collectedData = new List<string>();
@@ -33,25 +33,22 @@ namespace LMDB.Core.Commands
 
         public void CollectData()
         {
-            writer.WriteLine("Enter Movie Title: ");
+            writer.WriteLine("(''movie' or 'tvseries')");
             collectedData.Add(reader.ReadLine());
-        }
-
-        public void CallProcess()
-        {
-            string movieTitle = collectedData[0];
-             this.callProcessor.ProcessSearchCall(movieTitle);
+            writer.WriteLine("Enter Title: ");
+            collectedData.Add(reader.ReadLine());
         }
 
         public string Execute()
         {
             CollectData();
-            CallProcess();
-            var moviesFound = this.dataService.MovieList;
+            string typeOfPicture = collectedData[0];
+            string title = collectedData[1];
+            this.processorCtx.AddParameter(title);
+            this.processorCtx.ContextExecute(typeOfPicture);
 
+            var moviesFound = this.dataService.MovieList;
             writer.WriteLine(string.Join("\n", moviesFound));
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
 
             //searching for a movie with specific title.
 
@@ -67,11 +64,7 @@ Movie(s) Found!
 Movie Not Found!
 ======================================================================================================================================";
 
-            stopwatch.Stop();
-            Console.WriteLine(@"
-Searching done! Time Elapsed : {0} milisecond(s)", stopwatch.ElapsedMilliseconds.ToString());
-
-            return "success";
+            return this.dataService.MovieList.Count == 0 ? movieNotFound : movieFound;
         }
 
 

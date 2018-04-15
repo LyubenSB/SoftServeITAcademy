@@ -33,7 +33,7 @@ namespace LMDB.DIServices.IoCNinject
         {
             //operational object bindings
             this.Bind<IMotionPicture>().To<Movie>().WhenInjectedInto<ObjectDataService>();
-            this.Bind<IMotionPicture>().To<Movie>().WhenInjectedExactlyInto<SearchMovieCommand>();
+            this.Bind<IMotionPicture>().To<Movie>().WhenInjectedExactlyInto<SearchCommand>();
             this.Bind<IMotionPicture>().To<Movie>().WhenInjectedInto<MovieObjectConverter>();
 
             //response object bindings
@@ -46,15 +46,26 @@ namespace LMDB.DIServices.IoCNinject
             this.Bind<IDataCollector>().ToSelf();
             this.Bind<IEngine>().To<Engine>().InSingletonScope();
 
+            //strategy bindings
+            //search Movie Bindings
+            this.Bind<IStrategyContainer>().To<SearchStrategyContainer>().WhenInjectedInto<SearchProcessorContext>();
+
+            this.Bind<IQueryBuilder<string>>().To<SearchMovieQueryBuilder>().WhenInjectedInto<SearchMovieStrategyHandler>();
+            this.Bind<IClientCaller<string>>().To<HttpClientCaller>().WhenInjectedInto<SearchMovieStrategyHandler>();
+            this.Bind<IObjectHandler<string, IResponseObject>>().To<MovieObjectJSONHandler>().WhenInjectedInto<SearchMovieStrategyHandler>();
+            this.Bind<IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>>>().To<MovieObjectConverter>().WhenInjectedInto<SearchMovieStrategyHandler>();
+
+
+
             //dataservice bindings
             //DataServicea trq da e singleton
             this.Bind<IDataService<IMotionPicture>>().To<ObjectDataService>().InSingletonScope();
             //this.Bind<IDataService<IMotionPicture>>().To<MovieDataService>().WhenInjectedExactlyInto<MovieObjectConverter>().InSingletonScope();
 
             //apiservice bindings
-            this.Bind<ICallProcessor>().To<CallProcessor>().InSingletonScope();
+            
             this.Bind<IClientCaller<string>>().To<HttpClientCaller>().InSingletonScope();
-            this.Bind<IQueryBuilder>().To<TMDBQueryBuilder>();
+            this.Bind<IQueryBuilder<string>>().To<SearchMovieQueryBuilder>().WhenInjectedInto<SearchMovieCallStrategy>();
             this.Bind<IObjectHandler<string, IResponseObject>>().To<MovieObjectJSONHandler>().InSingletonScope();
             this.Bind<IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>>>().To<MovieObjectConverter>();
 
@@ -66,7 +77,7 @@ namespace LMDB.DIServices.IoCNinject
             //this.Bind<ICommand>().To<ListByCommand>().Named("list movies by");
             //this.Bind<ICommand>().To<RegisterMovieCommand>().Named("register movie");
             //this.Bind<ICommand>().To<RemoveMovieCommand>().Named("remove movie");
-            this.Bind<ICommand>().To<SearchMovieCommand>().Named("search movie");
+            this.Bind<ICommand>().To<SearchCommand>().Named("search for");
             //this.Bind<ICommand>().To<SortCommand>().Named("sort movies");
             //this.Bind<ICommand>().To<HelpCommand>().Named("/help");
             //this.Bind<ICommand>().To<ResetDataCommand>().Named("reset");

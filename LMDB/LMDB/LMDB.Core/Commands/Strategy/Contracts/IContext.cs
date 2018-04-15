@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LMDB.ApiServices
+namespace LMDB.Commands.Strategy.Contracts
 {
-    public interface ICallProcessor
+    public interface IContext
     {
-        void ProcessSearchCall(string searchParameter, string context);
+        void ContextExecute();
     }
 }

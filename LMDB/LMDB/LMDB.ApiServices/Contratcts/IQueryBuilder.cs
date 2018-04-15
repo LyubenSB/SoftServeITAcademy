@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace LMDB.ApiServices
 {
-    public interface IQueryBuilder
+    public interface IQueryBuilder<T>
     {
-        string BuildSearchQuery(string searchParameter);
+        string BuildQuery(T queryParams);
     }
 }

@@ -1,4 +1,5 @@
-﻿using LMDB.Core.Commands.Contracts;
+﻿using LMDB.ConsoleServices.Contracts;
+using LMDB.Core.Commands.Contracts;
 using LMDB.Core.DataService.Contracts;
 using LMDB.CoreServices.Providers.Contracts;
 using LMDB.ObjectModels.Models;
@@ -12,7 +13,7 @@ namespace LMDB.Core.Commands
     /// <summary>
     /// Class representing the implementation of sorting movie objects in the in-memory collection by a set of given user input parameters.
     /// </summary>
-    public class SortCommand : ICommand
+    public class SortCommand : ICommand, IDataCollector
     {
         private IDataService dataService;
         private readonly IWriter writer;

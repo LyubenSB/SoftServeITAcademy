@@ -1,26 +1,26 @@
-﻿using LMDB.ApiServices.ObjectConverters;
+﻿using LMDB.ApiServices.Contratcts;
+using LMDB.ApiServices.ObjectConverters;
 using LMDB.ObjectModels.Contracts;
+using LMDB.ObjectModels.ResponseObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LMDB.ApiServices.Contratcts
+namespace LMDB.ApiServices
 {
-    public class CallProcessor : ICallProcessor
+    public class SearchMovieCallStrategy : ICallProcessorStrategy
     {
-        private IQueryBuilder queryBuilder;
+        private IQueryBuilder<string> queryBuilder;
         private IClientCaller<string> clientCaller;
         private IObjectHandler<string, IResponseObject> objectHandler;
         private IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>> objectConverter;
         private CollectionCompositor collectionCompositor;
 
-        public CallProcessor(IQueryBuilder queryBuilder, IClientCaller<string> clientCaller,
-            IObjectHandler<string, IResponseObject> objectHandler,
-            IObjectConverter<ICollection<IResponseObject>,
-                ICollection<IMotionPicture>> objectConverter,
-            CollectionCompositor collectionCompositor)
+        public SearchMovieCallStrategy(IQueryBuilder<string> queryBuilder, IClientCaller<string> clientCaller,
+            IObjectHandler<string, IResponseObject> objectHandler, IObjectConverter<ICollection<IResponseObject>,
+                ICollection<IMotionPicture>> objectConverter, CollectionCompositor collectionCompositor)
         {
             this.queryBuilder = queryBuilder;
             this.clientCaller = clientCaller;
@@ -29,9 +29,9 @@ namespace LMDB.ApiServices.Contratcts
             this.collectionCompositor = collectionCompositor;
         }
 
-        public void ProcessSearchCall(string searchParameter)
+        public void ExectuteStrategy(string parameter)
         {
-            string searchCallQuery = this.queryBuilder.BuildSearchQuery(searchParameter);
+            string searchCallQuery = this.queryBuilder.BuildQuery(parameter);
 
             string responseString = this.clientCaller.CallClient(searchCallQuery).Result;
 
@@ -45,7 +45,5 @@ namespace LMDB.ApiServices.Contratcts
 
             this.collectionCompositor.Composite(convertedObjects);
         }
-
-        
     }
 }
