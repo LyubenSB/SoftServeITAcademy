@@ -1,6 +1,7 @@
-﻿using LMDB.Core.Commands.Contracts;
+﻿using LMDB.ConsoleServices.Contracts;
+using LMDB.Core.Commands.Contracts;
 using LMDB.Core.DataService.Contracts;
-using LMDB.CoreServices.Providers.Contracts;
+using LMDB.ObjectModels.Contracts;
 using System.Collections.Generic;
 
 namespace LMDB.Core.Commands
@@ -10,12 +11,12 @@ namespace LMDB.Core.Commands
     /// </summary>
     public class ResetDataCommand : ICommand
     {
-        private IDataService dataService;
+        private IDataService<IMotionPicture> dataService;
         private readonly IWriter writer;
         private readonly IReader reader;
         private readonly List<string> collectedData;
 
-        public ResetDataCommand(IDataService dataService, IWriter writer, IReader reader)
+        public ResetDataCommand(IDataService<IMotionPicture> dataService, IWriter writer, IReader reader)
         {
             this.dataService = dataService;
             this.writer = writer;

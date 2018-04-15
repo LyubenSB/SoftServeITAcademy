@@ -2,7 +2,7 @@
 using LMDB.ApiServices.ObjectConverters;
 using LMDB.Core.Commands;
 using LMDB.Core.Commands.Contracts;
-//using LMDB.Core.Commands.ListByCommand;
+using LMDB.Core.Commands.ListByCommand;
 using LMDB.Core.Core.Factories;
 using LMDB.Core.Core.Factories.Contracts;
 using LMDB.Core.Core.Providers;
@@ -54,9 +54,12 @@ namespace LMDB.DIServices.IoCNinject
 
             this.Bind<IQueryBuilder<string>>().To<SearchMovieQueryBuilder>().WhenInjectedExactlyInto<SearchMovieCallStrategy>();
             this.Bind<IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>>>().To<MovieObjectConverter>().WhenInjectedInto<SearchMovieCallStrategy>();
+            this.Bind<IObjectHandler<string, IResponseObject>>().To<MovieObjectJSONHandler>().WhenInjectedInto<SearchMovieCallStrategy>();
+
 
             this.Bind<IQueryBuilder<string>>().To<SearchTVSeriesQueryBuilder>().WhenInjectedExactlyInto<SearchTVSeriesCallStrategy>();
             this.Bind<IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>>>().To<TVSeriesObjectConverter>().WhenInjectedInto<SearchTVSeriesCallStrategy>();
+            this.Bind<IObjectHandler<string, IResponseObject>>().To<TVObjectJSONHandler>().WhenInjectedInto<SearchTVSeriesCallStrategy>();
 
 
             //dataservice bindings
@@ -65,23 +68,24 @@ namespace LMDB.DIServices.IoCNinject
             //apiservice bindings
 
             this.Bind<IClientCaller<string>>().To<HttpClientCaller>().InSingletonScope();
+            //this.Bind<IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>>>().To<MovieObjectConverter>();
+            //this.Bind<IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>>>().To<TVSeriesObjectConverter>();
 
-            this.Bind<IObjectHandler<string, IResponseObject>>().To<SimpleObjectJSONHandler>().InSingletonScope();
-            this.Bind<IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>>>().To<MovieObjectConverter>();
-            this.Bind<IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>>>().To<TVSeriesObjectConverter>();
+            this.Bind<IObjectHandler<string, IResponseObject>>().To<MovieObjectJSONHandler>().WhenInjectedInto<MovieObjectConverter>();
+            this.Bind<IObjectHandler<string, IResponseObject>>().To<TVObjectJSONHandler>().WhenInjectedInto<TVSeriesObjectConverter>();
 
             //webservice bindings
             this.Bind<IClientProvider<string>>().To<HttpClientProvider>().InSingletonScope();
 
             //command bindings
             this.Bind<ICommandFactory>().To<CommandFactory>().InSingletonScope();
-            //this.Bind<ICommand>().To<ListByCommand>().Named("list movies by");
+            this.Bind<ICommand>().To<ListByCommand>().Named("list movies by");
             //this.Bind<ICommand>().To<RegisterMovieCommand>().Named("register movie");
             //this.Bind<ICommand>().To<RemoveMovieCommand>().Named("remove movie");
             this.Bind<ICommand>().To<SearchCommand>().Named("search for");
             //this.Bind<ICommand>().To<SortCommand>().Named("sort movies");
             //this.Bind<ICommand>().To<HelpCommand>().Named("/help");
-            //this.Bind<ICommand>().To<ResetDataCommand>().Named("reset");
+            this.Bind<ICommand>().To<ResetDataCommand>().Named("reset");
 
 
         }

@@ -13,9 +13,9 @@ namespace LMDB.ApiServices.ObjectHandlers
     /// <summary>
     /// Handles incoming json response and converts it to C# POCO objects
     /// </summary>
-    public class SimpleObjectJSONHandler : IObjectHandler<string, IResponseObject>
+    public class TVObjectJSONHandler : IObjectHandler<string, IResponseObject>
     {
-        public SimpleObjectJSONHandler()
+        public TVObjectJSONHandler()
         {
             this.HandledResponseObjects = new List<IResponseObject>();
         }

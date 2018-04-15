@@ -56,13 +56,18 @@
     <Compile Include="HttpClientCaller.cs" />
     <Compile Include="Contratcts\ICallProcessor.cs" />
     <Compile Include="Contratcts\IObjectConverter.cs" />
+    <Compile Include="ListByGenreQueryBuidler.cs" />
     <Compile Include="ObjectConverters\MovieObjectConverter.cs" />
     <Compile Include="ObjectConverters\TVSeriesObjectConverter.cs" />
-    <Compile Include="ObjectHandlers\SimpleObjectJSONHandler.cs" />
+    <Compile Include="ObjectHandlers\MovieObjectJSONHandler.cs" />
+    <Compile Include="ObjectHandlers\TVObjectJSONHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchTVSeriesQueryBuilder.cs" />
     <Compile Include="SearchProcessorContext.cs" />
     <Compile Include="SearchMovieQueryBuilder.cs" />
+    <Compile Include="ListByProcessorContext.cs" />
+    <Compile Include="Strategies\ListByStrategy\ListByGenreStrategy.cs" />
+    <Compile Include="Strategies\ListByStrategy\ListByYearStrategy.cs" />
     <Compile Include="Strategies\SearchStrategy\SearchTVSeriesCallStrategy.cs" />
     <Compile Include="Strategies\SearchStrategyContainer.cs" />
     <Compile Include="Strategies\SearchStrategy\SearchMovieCallStrategy.cs" />
@@ -86,5 +91,6 @@
       <Name>LMDB.WebServices</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

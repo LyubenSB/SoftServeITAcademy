@@ -1,4 +1,5 @@
-﻿using LMDB.ConsoleServices.Contracts;
+﻿using LMDB.ApiServices;
+using LMDB.ConsoleServices.Contracts;
 using LMDB.Core.Commands.Contracts;
 using LMDB.Core.DataService.Contracts;
 using LMDB.ObjectModels.Contracts;
@@ -18,7 +19,7 @@ namespace LMDB.Core.Commands.ListByCommand
         private readonly IReader reader;
         private readonly List<string> collectedData;
 
-        public ListByCommand(IDataService<IMotionPicture> dataService, IReader reader, IWriter writer)
+        public ListByCommand(IDataService<IMotionPicture> dataService, ListByProcessorContext processorCtx, IReader reader, IWriter writer)
         {
             this.dataService = dataService;
             this.reader = reader;

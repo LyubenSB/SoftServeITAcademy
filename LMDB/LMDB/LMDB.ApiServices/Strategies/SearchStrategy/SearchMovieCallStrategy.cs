@@ -14,12 +14,14 @@ namespace LMDB.ApiServices.Strategies.SearchStrategy
     {
         private readonly SearchStrategyServices strategyServices;
         private readonly IQueryBuilder<string> queryBuilder;
+        private readonly IObjectHandler<string, IResponseObject> objectHandler;
         private readonly IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>> objectConverter;
 
-        public SearchMovieCallStrategy(SearchStrategyServices strategyServices, IQueryBuilder<string> queryBuilder, IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>> objectConverter) 
+        public SearchMovieCallStrategy(SearchStrategyServices strategyServices, IQueryBuilder<string> queryBuilder, IObjectHandler<string, IResponseObject> objectHandler, IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>> objectConverter) 
         {
             this.strategyServices = strategyServices;
             this.queryBuilder = queryBuilder;
+            this.objectHandler = objectHandler;
             this.objectConverter = objectConverter;
         }
 
@@ -29,9 +31,9 @@ namespace LMDB.ApiServices.Strategies.SearchStrategy
 
             string responseString = this.strategyServices.ClientCaller.CallClient(searchCallQuery).Result;
 
-            this.strategyServices.ObjectHandler.HandleObject(responseString);
+            this.objectHandler.HandleObject(responseString);
 
-            var handledObjects = this.strategyServices.ObjectHandler.HandledResponseObjects;
+            var handledObjects = this.objectHandler.HandledResponseObjects;
 
             this.objectConverter.Convert(handledObjects);
 

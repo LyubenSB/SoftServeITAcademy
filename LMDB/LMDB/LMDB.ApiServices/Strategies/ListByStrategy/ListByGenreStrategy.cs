@@ -1,22 +1,24 @@
-﻿using System.Collections.Generic;
-using LMDB.ApiServices.Contratcts;
+﻿using LMDB.ApiServices.Contratcts;
 using LMDB.ApiServices.ObjectConverters;
 using LMDB.ObjectModels.Contracts;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace LMDB.ApiServices.Strategies.SearchStrategy
 {
-    public class SearchTVSeriesCallStrategy : ICallProcessorStrategy
+    public class ListByGenreStrategy :  ICallProcessorStrategy
     {
         private readonly SearchStrategyServices strategyServices;
         private readonly IQueryBuilder<string> queryBuilder;
-        private readonly IObjectHandler<string, IResponseObject> objectHandler;
         private readonly IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>> objectConverter;
 
-        public SearchTVSeriesCallStrategy(SearchStrategyServices strategyServices, IQueryBuilder<string> queryBuilder, IObjectHandler<string, IResponseObject> objectHandler, IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>> objectConverter)
+        public ListByGenreStrategy(SearchStrategyServices strategyServices, IQueryBuilder<string> queryBuilder, IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>> objectConverter) 
         {
             this.strategyServices = strategyServices;
             this.queryBuilder = queryBuilder;
-            this.objectHandler = objectHandler;
             this.objectConverter = objectConverter;
         }
 
@@ -26,11 +28,11 @@ namespace LMDB.ApiServices.Strategies.SearchStrategy
 
             string responseString = this.strategyServices.ClientCaller.CallClient(searchCallQuery).Result;
 
-            this.objectHandler.HandleObject(responseString);
+            //this.strategyServices.ObjectHandler.HandleObject(responseString);
 
-            var handledObjects = this.objectHandler.HandledResponseObjects;
+            //var handledObjects = this.strategyServices.ObjectHandler.HandledResponseObjects;
 
-            this.objectConverter.Convert(handledObjects);
+            //this.objectConverter.Convert(handledObjects);
 
             var convertedObjects = this.objectConverter.ConvertedObjects;
 
