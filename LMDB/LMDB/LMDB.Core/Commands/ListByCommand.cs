@@ -31,15 +31,18 @@ namespace LMDB.Core.Commands.ListByCommand
         {
             writer.WriteLine("======================================================================================================================================");
             writer.WriteLine("List Movies by:");
-            writer.WriteLine("genre | actor | director | year | all movies");
+            writer.WriteLine("genre | person | year ");
             writer.WriteLine("======================================================================================================================================");
+            collectedData.Add(reader.ReadLine());
+            writer.WriteLine("Enter Parameter :");
             collectedData.Add(reader.ReadLine());
         }
 
         public string Execute()
         {
             CollectData();
-            string listedObjectsBy = collectedData.Last();
+            string listedObjectsBy = collectedData[0];
+            string listingParameter = collectedData[1];
 
             string moviesListed = @"
 ======================================================================================================================================
@@ -50,6 +53,7 @@ Movie(s) Listed!
 ======================================================================================================================================
 Movie(s) with that parameter are Not Found!
 ======================================================================================================================================";
+
             return this.dataService.MovieList.Count == 0 ? movieNotFound : moviesListed;
         }
     }

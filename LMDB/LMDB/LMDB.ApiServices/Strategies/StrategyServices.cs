@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace LMDB.ApiServices.Strategies.SearchStrategy
 {
-    public class SearchStrategyServices
+    public class StrategyServices
     {
         private IClientCaller<string> clientCaller;
-        private CollectionCompositor collectionCompositor;
+        private RecievedDataHandler collectionCompositor;
 
-        public SearchStrategyServices(IClientCaller<string> clientCaller,  CollectionCompositor collectionCompositor)
+        public StrategyServices(IClientCaller<string> clientCaller,  RecievedDataHandler collectionCompositor)
         {
             this.clientCaller = clientCaller;
             this.collectionCompositor = collectionCompositor;
         }
 
         public IClientCaller<string> ClientCaller { get => clientCaller; }
-        public CollectionCompositor CollectionCompositor { get => collectionCompositor; }
+        public RecievedDataHandler CollectionCompositor { get => collectionCompositor; }
     }
 }

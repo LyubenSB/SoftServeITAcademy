@@ -17,12 +17,12 @@ namespace LMDB.Core.Commands
     public class SearchCommand : ICommand, IDataCollector
     {
         private IDataService<IMotionPictureData> dataService;
-        private SearchProcessorContext processorCtx;
+        private ProcessorContext processorCtx;
         private readonly IReader reader;
         private readonly IWriter writer;
         private readonly List<string> collectedData;
 
-        public SearchCommand(IDataService<IMotionPictureData> dataService, SearchProcessorContext processorCtx, IReader reader, IWriter writer)
+        public SearchCommand(IDataService<IMotionPictureData> dataService, ProcessorContext processorCtx, IReader reader, IWriter writer)
         {
             this.dataService = dataService;
             this.processorCtx = processorCtx;
@@ -33,7 +33,7 @@ namespace LMDB.Core.Commands
 
         public void CollectData()
         {
-            writer.WriteLine("(''movie' or 'tvseries')");
+            writer.WriteLine("('movie' or 'tvseries')");
             collectedData.Add(reader.ReadLine());
             writer.WriteLine("Enter Title: ");
             collectedData.Add(reader.ReadLine());

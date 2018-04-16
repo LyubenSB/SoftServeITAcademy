@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace LMDB.ApiServices
 {
-    public class SearchProcessorContext : ICallProcessorContext
+    public class ProcessorContext : ICallProcessorContext
     {
-        private SearchStrategyContainer strContainer;
+        private StrategyContainer strContainer;
 
-        public SearchProcessorContext(SearchStrategyContainer strContainer)
+        public ProcessorContext(StrategyContainer strContainer)
         {
             this.strContainer = strContainer;
             this.Parameters = new List<string>();
@@ -28,8 +28,8 @@ namespace LMDB.ApiServices
 
         public void ContextExecute(string context)
         {
-            string searchParameter = Parameters[0];
-            strContainer.Strategies[context].ExectuteStrategy(searchParameter);
+            string executeParameter = Parameters[0];
+            strContainer.Strategies[context].ExectuteStrategy(executeParameter);
         }
 
     }

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace LMDB.ApiServices.Contratcts
 {
-    public interface ICallProcessorStrategy
+    public interface ICallProcessorStrategy<in T>
     {
-        void ExectuteStrategy(string parameter);
+        void ExectuteStrategy(T parameter);
     }
 }

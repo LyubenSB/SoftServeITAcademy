@@ -5,13 +5,13 @@ using LMDB.ObjectModels.Contracts;
 
 namespace LMDB.ApiServices.Strategies.SearchStrategy
 {
-    public class ListByYearStrategy : ICallProcessorStrategy
+    public class ListByYearStrategy : ICallProcessorStrategy<string>
     {
-        private readonly SearchStrategyServices strategyServices;
+        private readonly StrategyServices strategyServices;
         private readonly IQueryBuilder<string> queryBuilder;
         private readonly IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPictureData>> objectConverter;
 
-        public ListByYearStrategy(SearchStrategyServices strategyServices, IQueryBuilder<string> queryBuilder, IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPictureData>> objectConverter)
+        public ListByYearStrategy(StrategyServices strategyServices, IQueryBuilder<string> queryBuilder, IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPictureData>> objectConverter)
         {
             this.strategyServices = strategyServices;
             this.queryBuilder = queryBuilder;

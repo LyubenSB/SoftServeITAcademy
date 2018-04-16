@@ -22,6 +22,7 @@ using LMDB.WebServices;
 using System.Collections.Generic;
 using LMDB.ApiServices.Strategies.SearchStrategy;
 using LMDB.ApiServices.Strategies;
+using LMDB.Commands;
 
 namespace LMDB.DIServices.IoCNinject
 {
@@ -46,11 +47,11 @@ namespace LMDB.DIServices.IoCNinject
             this.Bind<IDataCollector>().ToSelf();
             this.Bind<IEngine>().To<Engine>().InSingletonScope();
 
-            //strategy bindings
-            this.Bind<IStrategyContainer>().To<SearchStrategyContainer>().WhenInjectedInto<SearchProcessorContext>();
+            //search strategy bindings
+            this.Bind<StrategyContainer>().ToSelf().InSingletonScope();
 
-            this.Bind<ICallProcessorStrategy>().To<SearchMovieCallStrategy>().Named("SearchMovieStrategy");
-            this.Bind<ICallProcessorStrategy>().To<SearchTVSeriesCallStrategy>().Named("SearchTVSeriesStrategy");
+            this.Bind<ICallProcessorStrategy<string>>().To<SearchMovieCallStrategy>().Named("SearchMovieStrategy");
+            this.Bind<ICallProcessorStrategy<string>>().To<SearchTVSeriesCallStrategy>().Named("SearchTVSeriesStrategy");
 
             this.Bind<IQueryBuilder<string>>().To<SearchMovieQueryBuilder>().WhenInjectedExactlyInto<SearchMovieCallStrategy>();
             this.Bind<IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPictureData>>>().To<MovieObjectConverter>().WhenInjectedInto<SearchMovieCallStrategy>();
@@ -61,20 +62,26 @@ namespace LMDB.DIServices.IoCNinject
             this.Bind<IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPictureData>>>().To<TVSeriesObjectConverter>().WhenInjectedInto<SearchTVSeriesCallStrategy>();
             this.Bind<IObjectHandler<string, IResponseObject>>().To<TVObjectJSONHandler>().WhenInjectedInto<SearchTVSeriesCallStrategy>();
 
+            //getDetails strategy bindings
+            this.Bind<ICallProcessorStrategy<string>>().To<GetMovieDetailsCallStrategy>().Named("GetMovieDetailsStrategy");
+            this.Bind<IQueryBuilder<string>>().To<GetDetailsQueryBuilder>().WhenInjectedInto<GetMovieDetailsCallStrategy>();
+            this.Bind<IObjectConverter<DetailedMovieResponseObject, IMotionPictureData>>().To<DetailMovieObjectConverter>().WhenInjectedInto<GetMovieDetailsCallStrategy>();
+            this.Bind<IObjectHandler<string, DetailedMovieResponseObject>>().To<DetailedMovieObjectJSONHandler>().WhenInjectedInto<GetMovieDetailsCallStrategy>();
 
             //dataservice bindings
             this.Bind<IDataService<IMotionPictureData>>().To<ObjectDataService>().InSingletonScope();
             this.Bind<GenreQueryBuilder>().ToSelf();
             this.Bind<InitialDataGetter>().ToSelf();
             this.Bind<GenreCollectionHandler>().ToSelf().InSingletonScope();
-            //apiservice bindings
 
+            //apiservice bindings
             this.Bind<IClientCaller<string>>().To<HttpClientCaller>().InSingletonScope();
             //this.Bind<IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>>>().To<MovieObjectConverter>();
             //this.Bind<IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPicture>>>().To<TVSeriesObjectConverter>();
 
             this.Bind<IObjectHandler<string, IResponseObject>>().To<MovieObjectJSONHandler>().WhenInjectedInto<MovieObjectConverter>();
             this.Bind<IObjectHandler<string, IResponseObject>>().To<TVObjectJSONHandler>().WhenInjectedInto<TVSeriesObjectConverter>();
+            this.Bind<IObjectHandler<string, DetailedMovieResponseObject>>().To<DetailedMovieObjectJSONHandler>().WhenInjectedInto<DetailMovieObjectConverter>();
 
             //webservice bindings
             this.Bind<IClientProvider<string>>().To<HttpClientProvider>().InSingletonScope();
@@ -82,6 +89,7 @@ namespace LMDB.DIServices.IoCNinject
             //command bindings
             this.Bind<ICommandFactory>().To<CommandFactory>().InSingletonScope();
             this.Bind<ICommand>().To<ListByCommand>().Named("list movies by");
+            this.Bind<ICommand>().To<GetDetailsCommand>().Named("get details on");
             //this.Bind<ICommand>().To<RegisterMovieCommand>().Named("register movie");
             //this.Bind<ICommand>().To<RemoveMovieCommand>().Named("remove movie");
             this.Bind<ICommand>().To<SearchCommand>().Named("search for");

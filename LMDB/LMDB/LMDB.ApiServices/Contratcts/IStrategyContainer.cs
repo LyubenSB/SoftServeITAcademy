@@ -8,6 +8,6 @@ namespace LMDB.ApiServices.Contratcts
 {
     public interface IStrategyContainer
     {
-        Dictionary<string, ICallProcessorStrategy> Strategies { get; }
+        Dictionary<string, ICallProcessorStrategy<string>> Strategies { get; }
     }
 }

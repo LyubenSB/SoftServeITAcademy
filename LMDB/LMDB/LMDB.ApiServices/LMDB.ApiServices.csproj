@@ -46,37 +46,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CollectionCompositor.cs" />
+    <Compile Include="RecievedDataHandler.cs" />
     <Compile Include="Contratcts\ICallProcessorContext.cs" />
     <Compile Include="Contratcts\ICallProcessorStrategy.cs" />
     <Compile Include="Contratcts\IClientCaller.cs" />
-    <Compile Include="Contratcts\ICollectionCompositor.cs" />
+    <Compile Include="Contratcts\IDataHandler.cs" />
     <Compile Include="Contratcts\IObjectHandler.cs" />
     <Compile Include="Contratcts\IQueryBuilder.cs" />
     <Compile Include="Contratcts\IStrategyContainer.cs" />
     <Compile Include="GenreCollectionHandler.cs" />
-    <Compile Include="GenreQueryBuilder.cs" />
+    <Compile Include="GetDetailsQueryBuilder.cs" />
+    <Compile Include="InitData\GenreQueryBuilder.cs" />
     <Compile Include="HttpClientCaller.cs" />
     <Compile Include="Contratcts\ICallProcessor.cs" />
     <Compile Include="Contratcts\IObjectConverter.cs" />
-    <Compile Include="InitialDataGetter.cs" />
+    <Compile Include="InitData\InitialDataGetter.cs" />
     <Compile Include="ListByGenreQueryBuidler.cs" />
+    <Compile Include="ObjectConverters\DetailMovieObjectConverter.cs" />
     <Compile Include="ObjectConverters\MovieObjectConverter.cs" />
     <Compile Include="ObjectConverters\TVSeriesObjectConverter.cs" />
-    <Compile Include="ObjectHandlers\GenreObjectJSONHandler.cs" />
+    <Compile Include="InitData\GenreObjectJSONHandler.cs" />
+    <Compile Include="ObjectHandlers\DetailedMovieObjectJSONHandler.cs" />
     <Compile Include="ObjectHandlers\MovieObjectJSONHandler.cs" />
     <Compile Include="ObjectHandlers\TVObjectJSONHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchTVSeriesQueryBuilder.cs" />
-    <Compile Include="SearchProcessorContext.cs" />
+    <Compile Include="ProcessorContext.cs" />
     <Compile Include="SearchMovieQueryBuilder.cs" />
     <Compile Include="ListByProcessorContext.cs" />
+    <Compile Include="Strategies\GetMovieDetailsCallStrategy.cs" />
     <Compile Include="Strategies\ListByStrategy\ListByGenreStrategy.cs" />
     <Compile Include="Strategies\ListByStrategy\ListByYearStrategy.cs" />
     <Compile Include="Strategies\SearchStrategy\SearchTVSeriesCallStrategy.cs" />
-    <Compile Include="Strategies\SearchStrategyContainer.cs" />
+    <Compile Include="Strategies\StrategyContainer.cs" />
     <Compile Include="Strategies\SearchStrategy\SearchMovieCallStrategy.cs" />
-    <Compile Include="Strategies\SearchStrategy\SearchStrategyServices.cs" />
+    <Compile Include="Strategies\StrategyServices.cs" />
     <Compile Include="TMDBQueryBuilder.cs" />
   </ItemGroup>
   <ItemGroup>

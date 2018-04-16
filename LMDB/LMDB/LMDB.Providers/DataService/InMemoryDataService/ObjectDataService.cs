@@ -43,11 +43,16 @@ namespace LMDB.Core.DataService.InMemoryDataService
         {
             this.MovieList.Add(movieToAdd);
         }
+
+        public void AddDetailedObject(IMotionPictureData movieToAdd)
+        {
+            this.DetailedMovieList.Add(movieToAdd);
+        }
         /// <summary>
         /// Adding data to in-memory collections.
         /// </summary>
         /// <param name="movieToAdd">movie object</param>
-        
+
         /// <summary>
         /// Removing data from in-memory collections.
         /// </summary>

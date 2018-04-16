@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LMDB.ApiServices.Contratcts
 {
-    public interface ICollectionCompositor<T>
+    public interface IDataHandler<T>
     {
         void Composite(T collectionToCompose);
     }

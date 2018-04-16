@@ -5,14 +5,14 @@ using LMDB.ObjectModels.Contracts;
 
 namespace LMDB.ApiServices.Strategies.SearchStrategy
 {
-    public class SearchTVSeriesCallStrategy : ICallProcessorStrategy
+    public class SearchTVSeriesCallStrategy : ICallProcessorStrategy<string>
     {
-        private readonly SearchStrategyServices strategyServices;
+        private readonly StrategyServices strategyServices;
         private readonly IQueryBuilder<string> queryBuilder;
         private readonly IObjectHandler<string, IResponseObject> objectHandler;
         private readonly IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPictureData>> objectConverter;
 
-        public SearchTVSeriesCallStrategy(SearchStrategyServices strategyServices, IQueryBuilder<string> queryBuilder, IObjectHandler<string, IResponseObject> objectHandler, IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPictureData>> objectConverter)
+        public SearchTVSeriesCallStrategy(StrategyServices strategyServices, IQueryBuilder<string> queryBuilder, IObjectHandler<string, IResponseObject> objectHandler, IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPictureData>> objectConverter)
         {
             this.strategyServices = strategyServices;
             this.queryBuilder = queryBuilder;

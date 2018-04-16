@@ -56,11 +56,12 @@
     <Compile Include="Contracts\IResponseObject.cs" />
     <Compile Include="OperationalObjects\DetailedMovie.cs" />
     <Compile Include="OperationalObjects\DetailedTVSeries.cs" />
+    <Compile Include="OperationalObjects\Genre.cs" />
     <Compile Include="OperationalObjects\Movie.cs" />
     <Compile Include="OperationalObjects\TVSeries.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseObjects\GenreResponseObject.cs" />
-    <Compile Include="ResponseObjects\MovieDetailsResponseObject.cs" />
+    <Compile Include="ResponseObjects\DetailedMovieResponseObject.cs" />
     <Compile Include="ResponseObjects\MovieResponseObject.cs" />
     <Compile Include="ResponseObjects\TVSeriesDetailsResponseObject.cs" />
     <Compile Include="ResponseObjects\TVSeriesResponseObject.cs" />

@@ -14,6 +14,7 @@ namespace LMDB.Core.DataService.Contracts
     public interface IDataService<T>
     {
         void Add(T movieToAdd);
+        void AddDetailedObject(T movieToAdd);
         void Remove(T movieToRemove);
         void ResetData();
         //TODO: FIGURE OUT THESE TWO DOWN HERE

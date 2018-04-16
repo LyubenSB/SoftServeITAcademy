@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 namespace LMDB.ApiServices.Strategies.SearchStrategy
 {
     //trq se injectne querybuilder za search movie i objectconverter za movie
-    public class SearchMovieCallStrategy :  ICallProcessorStrategy
+    public class SearchMovieCallStrategy :  ICallProcessorStrategy<string>
     {
-        private readonly SearchStrategyServices strategyServices;
+        private readonly StrategyServices strategyServices;
         private readonly IQueryBuilder<string> queryBuilder;
         private readonly IObjectHandler<string, IResponseObject> objectHandler;
         private readonly IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPictureData>> objectConverter;
 
-        public SearchMovieCallStrategy(SearchStrategyServices strategyServices, IQueryBuilder<string> queryBuilder, IObjectHandler<string, IResponseObject> objectHandler, IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPictureData>> objectConverter) 
+        public SearchMovieCallStrategy(StrategyServices strategyServices, IQueryBuilder<string> queryBuilder, IObjectHandler<string, IResponseObject> objectHandler, IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPictureData>> objectConverter) 
         {
             this.strategyServices = strategyServices;
             this.queryBuilder = queryBuilder;

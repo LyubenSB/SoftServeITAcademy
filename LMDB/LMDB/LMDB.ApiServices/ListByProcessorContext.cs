@@ -10,15 +10,16 @@ namespace LMDB.ApiServices
 {
     public class ListByProcessorContext : ICallProcessorContext
     {
-        private SearchStrategyContainer strContainer;
+        private StrategyContainer strContainer;
 
-        public ListByProcessorContext(SearchStrategyContainer strContainer)
+        public ListByProcessorContext(StrategyContainer strContainer)
         {
             this.strContainer = strContainer;
             this.Parameters = new List<string>();
         }
 
         public string Context { get; private set; }
+
         public List<string> Parameters { get; private set; }
 
         public void AddParameter(string parameter)

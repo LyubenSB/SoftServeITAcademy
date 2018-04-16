@@ -14,12 +14,12 @@ namespace LMDB.ApiServices
 {
     public class InitialDataGetter
     {
-        private readonly SearchStrategyServices strategyServices;
+        private readonly StrategyServices strategyServices;
         private readonly GenreQueryBuilder queryBuilder;
         private readonly GenreObjectJSONHandler objectHandler;
         private readonly GenreCollectionHandler genreCollectionHandler;
 
-        public InitialDataGetter(SearchStrategyServices strategyServices, GenreQueryBuilder queryBuilder, GenreObjectJSONHandler objectHandler, GenreCollectionHandler genreCollectionHandler)
+        public InitialDataGetter(StrategyServices strategyServices, GenreQueryBuilder queryBuilder, GenreObjectJSONHandler objectHandler, GenreCollectionHandler genreCollectionHandler)
         {
             this.strategyServices = strategyServices;
             this.queryBuilder = queryBuilder;

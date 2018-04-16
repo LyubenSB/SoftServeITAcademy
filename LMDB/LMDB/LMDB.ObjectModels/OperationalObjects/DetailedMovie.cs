@@ -1,4 +1,5 @@
 ﻿using LMDB.ObjectModels.Contracts;
+using LMDB.ObjectModels.OperationalObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,28 +14,33 @@ namespace LMDB.ObjectModels.Models
     {
         public DetailedMovie()  
         {
-            this.Genre = new HashSet<string>();
-            this.Actors = new HashSet<string>();
+            this.Genres = new List<Genre>();
         }
 
         public int Id { get; set; }
+
         public string Title { get; set; }
-        public ICollection<string> Genre { get; set; }
-        public string Description { get; set; }
-        public string Director { get; set; }
-        public ICollection<string> Actors { get; set; }
-        public int Year { get; set; }
-        public bool IsNew { get; set; }
+
+        public ICollection<Genre> Genres { get; set; }
+
+        public DateTime? ReleaseDate { get; set; }
+
+        public string Overview { get; set; }
+
+        public string Rating { get; set; }
+
+        public decimal Budget { get; set; }
 
         public override string ToString()
         {
             return string.Format(@"
-|| Title: {0}{6}
-|| Genre: {1}
-|| Description: {2}
-|| Director: {3}
-|| Actors: {4}
-|| Year: {5}", this.Title, string.Join(", ",this.Genre), this.Description, this.Director, string.Join(", ", this.Actors), this.Year, this.IsNew == true ? "(NEW)": "");
+|| ID: {0}
+|| Title: {1}
+|| Genres: {2}
+|| ReleaseDate: {3}
+|| Overview: {4}
+|| Rating: {5}
+|| Budget: {6}", this.Id, this.Title, string.Join(", ",this.Genres), this.ReleaseDate, this.Overview, this.Rating, this.Budget);
         }
 
         /// <summary>

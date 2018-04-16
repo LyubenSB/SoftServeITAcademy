@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace LMDB.ApiServices
 {
-    public class CollectionCompositor : ICollectionCompositor<ICollection<IMotionPictureData>>
+    public class RecievedDataHandler : IDataHandler<ICollection<IMotionPictureData>>
     {
         private IDataService<IMotionPictureData> dataService;
 
-        public CollectionCompositor(IDataService<IMotionPictureData> dataService)
+        public RecievedDataHandler(IDataService<IMotionPictureData> dataService)
         {
             this.dataService = dataService;
         }
@@ -25,6 +25,11 @@ namespace LMDB.ApiServices
             {
                 this.dataService.Add(obj);
             }
+        }
+
+        public void AddDetailedObject(IMotionPictureData objectToAdd)
+        {
+            this.dataService.AddDetailedObject(objectToAdd);
         }
     }
 }

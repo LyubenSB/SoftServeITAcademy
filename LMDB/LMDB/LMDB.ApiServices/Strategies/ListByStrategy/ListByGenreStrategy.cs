@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace LMDB.ApiServices.Strategies.SearchStrategy
 {
-    public class ListByGenreStrategy :  ICallProcessorStrategy
+    public class ListByGenreStrategy :  ICallProcessorStrategy<string>
     {
-        private readonly SearchStrategyServices strategyServices;
+        private readonly StrategyServices strategyServices;
         private readonly IQueryBuilder<string> queryBuilder;
         private readonly IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPictureData>> objectConverter;
 
-        public ListByGenreStrategy(SearchStrategyServices strategyServices, IQueryBuilder<string> queryBuilder, IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPictureData>> objectConverter) 
+        public ListByGenreStrategy(StrategyServices strategyServices, IQueryBuilder<string> queryBuilder, IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPictureData>> objectConverter) 
         {
             this.strategyServices = strategyServices;
             this.queryBuilder = queryBuilder;
