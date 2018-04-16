@@ -38,9 +38,9 @@ namespace LMDB.ObjectModels.Models
 || Title: {1}
 || Genres: {2}
 || ReleaseDate: {3}
-|| Overview: {4}
-|| Rating: {5}
-|| Budget: {6}", this.Id, this.Title, string.Join(", ",this.Genres), this.ReleaseDate, this.Overview, this.Rating, this.Budget);
+|| Rating: {4}
+|| Budget: {5}$
+|| Overview: {6}", this.Id, this.Title, string.Join(", ",this.Genres), this.ReleaseDate, this.Rating, this.Budget, this.Overview);
         }
 
         /// <summary>

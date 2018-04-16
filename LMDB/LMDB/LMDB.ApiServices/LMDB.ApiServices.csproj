@@ -80,6 +80,7 @@
     <Compile Include="Strategies\SearchStrategy\SearchTVSeriesCallStrategy.cs" />
     <Compile Include="Strategies\StrategyContainer.cs" />
     <Compile Include="Strategies\SearchStrategy\SearchMovieCallStrategy.cs" />
+    <Compile Include="Strategies\StrategyLoader.cs" />
     <Compile Include="Strategies\StrategyServices.cs" />
     <Compile Include="TMDBQueryBuilder.cs" />
   </ItemGroup>

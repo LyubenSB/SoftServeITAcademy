@@ -34,8 +34,11 @@ namespace LMDB.DIServices.IoCNinject
     {
         public override void Load()
         {
-            //operational object bindings
-            this.Bind<IMotionPictureData>().To<Movie>().WhenInjectedInto<MovieObjectConverter>();
+            //utils bindings
+            this.Bind<StrategyLoader>().ToSelf().InSingletonScope();
+
+            ////operational object bindings
+            //this.Bind<IMotionPictureData>().To<Movie>().WhenInjectedInto<MovieObjectConverter>();
 
             //response object bindings
             this.Bind<IResponseObject>().To<MovieResponseObject>().WhenInjectedInto<MovieObjectConverter>();
