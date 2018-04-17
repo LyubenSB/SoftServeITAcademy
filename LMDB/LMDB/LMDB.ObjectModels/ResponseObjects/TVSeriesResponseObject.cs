@@ -20,6 +20,6 @@ namespace LMDB.ObjectModels.ResponseObjects
         public string Overview { get; set; }
 
         [JsonProperty("first_air_date")]
-        public DateTime? ReleaseDate { get; set; }
+        public DateTime ReleaseDate { get; set; }
     }
 }

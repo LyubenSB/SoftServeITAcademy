@@ -34,7 +34,7 @@ namespace LMDB.Commands
         public void CollectData()
         {
             writer.WriteLine("To check details for movies or tv series:");
-            writer.WriteLine("Enter 'details/movie' or 'details/tvseries'");
+            writer.WriteLine("Enter '/movie' or '/tvseries'");
             collectedData.Add(reader.ReadLine());
             writer.WriteLine("Enter ID: ");
             collectedData.Add(reader.ReadLine());
@@ -51,19 +51,13 @@ namespace LMDB.Commands
             var moviesFound = this.dataService.DetailedMovieList;
             writer.WriteLine(string.Join("\n", moviesFound));
 
-            string movieFound = @"
+            string detailsFound = @"
 
 ======================================================================================================================================
 Details Found!
 ======================================================================================================================================";
 
-            string movieNotFound = @"
-
-======================================================================================================================================
-Wrong ID! Try again!
-======================================================================================================================================";
-
-            return this.dataService.MovieList.Count == 0 ? movieNotFound : movieFound;
+            return detailsFound;
         }
 
 

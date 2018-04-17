@@ -21,7 +21,7 @@ namespace LMDB.ObjectModels.ResponseObjects
         public ICollection<GenreResponseObject> Genres{get;set;}
 
         [JsonProperty("release_date")]
-        public DateTime? ReleaseDate { get; set; }
+        public DateTime ReleaseDate { get; set; }
 
         [JsonProperty("overview")]
         public string Overview { get; set; }
@@ -31,15 +31,6 @@ namespace LMDB.ObjectModels.ResponseObjects
 
         [JsonProperty("budget")]
         public decimal Budget { get; set; }
-
-        public void ConvertGenres(Genre inputGenre)
-        {
-            foreach (var genre in Genres)
-            {
-                inputGenre.Genres = genre.Genre;
-                inputGenre.Id = genre.Id;
-            }
-        }
-
+               
     }
 }

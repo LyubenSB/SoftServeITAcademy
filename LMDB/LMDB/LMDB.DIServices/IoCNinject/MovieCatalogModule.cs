@@ -67,9 +67,14 @@ namespace LMDB.DIServices.IoCNinject
 
             //getDetails strategy bindings
             this.Bind<ICallProcessorStrategy<string>>().To<GetMovieDetailsCallStrategy>().Named("GetMovieDetailsStrategy");
-            this.Bind<IQueryBuilder<string>>().To<GetDetailsQueryBuilder>().WhenInjectedInto<GetMovieDetailsCallStrategy>();
+            this.Bind<IQueryBuilder<string>>().To<GetMovieDetailsQueryBuilder>().WhenInjectedInto<GetMovieDetailsCallStrategy>();
             this.Bind<IObjectConverter<DetailedMovieResponseObject, IMotionPictureData>>().To<DetailMovieObjectConverter>().WhenInjectedInto<GetMovieDetailsCallStrategy>();
             this.Bind<IObjectHandler<string, DetailedMovieResponseObject>>().To<DetailedMovieObjectJSONHandler>().WhenInjectedInto<GetMovieDetailsCallStrategy>();
+
+            this.Bind<ICallProcessorStrategy<string>>().To<GetTVSeriesDetailsCallStrategy>().Named("GetTVSeriesDetailsStrategy");
+            this.Bind<IQueryBuilder<string>>().To<GetTVSeriesDetailsQueryBuilder>().WhenInjectedInto<GetTVSeriesDetailsCallStrategy>();
+            this.Bind<IObjectConverter<DetailedTVseriesResponseObject, IMotionPictureData>>().To<DetailTVSeriesObjectConverter>().WhenInjectedInto<GetTVSeriesDetailsCallStrategy>();
+            this.Bind<IObjectHandler<string, DetailedTVseriesResponseObject>>().To<DetailedTvSeriesObjectJSONHandler>().WhenInjectedInto<GetTVSeriesDetailsCallStrategy>();
 
             //dataservice bindings
             this.Bind<IDataService<IMotionPictureData>>().To<ObjectDataService>().InSingletonScope();
@@ -85,6 +90,8 @@ namespace LMDB.DIServices.IoCNinject
             this.Bind<IObjectHandler<string, IResponseObject>>().To<MovieObjectJSONHandler>().WhenInjectedInto<MovieObjectConverter>();
             this.Bind<IObjectHandler<string, IResponseObject>>().To<TVObjectJSONHandler>().WhenInjectedInto<TVSeriesObjectConverter>();
             this.Bind<IObjectHandler<string, DetailedMovieResponseObject>>().To<DetailedMovieObjectJSONHandler>().WhenInjectedInto<DetailMovieObjectConverter>();
+            this.Bind<IObjectHandler<string, DetailedTVseriesResponseObject>>().To<DetailedTvSeriesObjectJSONHandler>().WhenInjectedInto<DetailTVSeriesObjectConverter>();
+
 
             //webservice bindings
             this.Bind<IClientProvider<string>>().To<HttpClientProvider>().InSingletonScope();

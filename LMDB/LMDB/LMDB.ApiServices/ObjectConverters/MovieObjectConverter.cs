@@ -33,7 +33,6 @@ namespace LMDB.ApiServices.ObjectConverters
                     Id = respObj.Id,
                     Title = respObj.Title,
                     ReleaseDate = respObj.ReleaseDate,
-                    Description = respObj.Overview,
                 };
                 ConvertedObjects.Add(newMovie);
             }

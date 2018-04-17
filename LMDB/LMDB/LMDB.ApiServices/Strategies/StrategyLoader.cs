@@ -22,11 +22,12 @@ namespace LMDB.ApiServices.Strategies
             ICallProcessorStrategy<string> movieStrategy = kernel.Get<ICallProcessorStrategy<string>>("SearchMovieStrategy");
             ICallProcessorStrategy<string> tvStrategy = kernel.Get<ICallProcessorStrategy<string>>("SearchTVSeriesStrategy");
             ICallProcessorStrategy<string> getMovieDetailsStrategy = kernel.Get<ICallProcessorStrategy<string>>("GetMovieDetailsStrategy");
+            ICallProcessorStrategy<string> getTvSeriesDetailsStrategy = kernel.Get<ICallProcessorStrategy<string>>("GetTVSeriesDetailsStrategy");
 
             strategyContainer.AddStrategy("movie", movieStrategy);
             strategyContainer.AddStrategy("tvseries", tvStrategy);
-            strategyContainer.AddStrategy("details/movie", getMovieDetailsStrategy);
-            //strategyContainer.AddStrategy("details/tvseries", tvStrategy);
+            strategyContainer.AddStrategy("/movie", getMovieDetailsStrategy);
+            strategyContainer.AddStrategy("/tvseries", getTvSeriesDetailsStrategy);
         }
     }
 }

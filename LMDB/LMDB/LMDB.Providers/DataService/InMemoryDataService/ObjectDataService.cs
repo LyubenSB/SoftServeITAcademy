@@ -68,7 +68,8 @@ namespace LMDB.Core.DataService.InMemoryDataService
         /// </summary>
         public void ResetData()
         {
-            this.MovieList = this.InitialMovieList;
+            this.MovieList.Clear();
+            this.DetailedMovieList.Clear();
         }
     }
 }

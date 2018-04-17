@@ -9,19 +9,17 @@ namespace LMDB.ObjectModels.OperationalObjects
 {
     public class TVSeries : IComparable<TVSeries>, IMotionPictureData
     {
+       
         public int Id { get; set; }
         public string Title { get; set; }
-        public DateTime? ReleaseDate { get; set; }
-        public string Description { get; set; }
+        public DateTime ReleaseDate { get; set; }
 
         public override string ToString()
         {
             return string.Format(@"
 || ID: {0}
 || Title: {1}
-|| Year: {2}
-|| Description: {3}
-", this.Id, this.Title, this.ReleaseDate.ToString(), this.Description);
+|| Release Date: {2}", this.Id, this.Title, this.ReleaseDate.Date.ToShortDateString());
         }
 
         /// <summary>

@@ -14,6 +14,6 @@ namespace LMDB.ObjectModels.Contracts
 
         string Overview { get; set; }
 
-        DateTime? ReleaseDate { get; set; }
+        DateTime ReleaseDate { get; set; }
     }
 }

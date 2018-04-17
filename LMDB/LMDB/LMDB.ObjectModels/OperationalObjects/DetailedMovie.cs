@@ -23,7 +23,7 @@ namespace LMDB.ObjectModels.Models
 
         public ICollection<Genre> Genres { get; set; }
 
-        public DateTime? ReleaseDate { get; set; }
+        public DateTime ReleaseDate { get; set; }
 
         public string Overview { get; set; }
 
@@ -37,10 +37,10 @@ namespace LMDB.ObjectModels.Models
 || ID: {0}
 || Title: {1}
 || Genres: {2}
-|| ReleaseDate: {3}
+|| Release Date: {3}
 || Rating: {4}
 || Budget: {5}$
-|| Overview: {6}", this.Id, this.Title, string.Join(", ",this.Genres), this.ReleaseDate, this.Rating, this.Budget, this.Overview);
+|| Overview: {6}", this.Id, this.Title, string.Join(", ",this.Genres), this.ReleaseDate.Date.ToShortDateString(), this.Rating, this.Budget, this.Overview);
         }
 
         /// <summary>
