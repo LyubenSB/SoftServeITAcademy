@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GetTVSeriesDetailsQueryBuilder.cs" />
+    <Compile Include="ListTVSeriesByYearQueryBuilder.cs" />
     <Compile Include="ListTVSeriesByPersonQueryBuilder.cs" />
     <Compile Include="ListTVSeriesByGenreQueryBuilder.cs" />
     <Compile Include="ListMoviesByGenreQueryBuilder.cs" />
@@ -78,11 +79,14 @@
     <Compile Include="ObjectHandlers\TVObjectJSONHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchPersonQueryBuilder.cs" />
+    <Compile Include="ListMoviesByYearQueryBuilder.cs" />
     <Compile Include="SearchTVSeriesQueryBuilder.cs" />
     <Compile Include="ProcessorContext.cs" />
     <Compile Include="SearchMovieQueryBuilder.cs" />
     <Compile Include="Strategies\GetTVSeriesDetailsCallStrategy.cs" />
     <Compile Include="Strategies\GetMovieDetailsCallStrategy.cs" />
+    <Compile Include="Strategies\ListByStrategy\ListTVSeriesByYearCallStrategy.cs" />
+    <Compile Include="Strategies\ListByStrategy\ListMoviesByYearCallStrategy.cs" />
     <Compile Include="Strategies\ListByStrategy\ListTVSeriesByPersonCallStrategy.cs" />
     <Compile Include="Strategies\ListByStrategy\ListMoviesByPersonCallStrategy.cs" />
     <Compile Include="Strategies\ListByStrategy\ListTVSeriesByGenreCallStrategy.cs" />
