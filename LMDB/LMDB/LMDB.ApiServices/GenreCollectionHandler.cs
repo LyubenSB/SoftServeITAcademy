@@ -15,17 +15,22 @@ namespace LMDB.ApiServices
 
         public GenreCollectionHandler()
         {
-            this.GenreCollection = new Dictionary<int, string>();
+            this.GenreCollection = new Dictionary<string, int>();
         }
 
-        public Dictionary<int, string> GenreCollection { get; private set; }
+        public Dictionary<string, int> GenreCollection { get; private set; }
 
         public void Composite(IList<GenreResponseObject> collectionToCompose)
         {
             foreach (var obj in collectionToCompose)
             {
-                this.GenreCollection.Add(obj.Id, obj.Genre);
+                this.GenreCollection.Add(obj.Genre, obj.Id);
             }
+        }
+
+        public string GetGenreId(string genreName)
+        {
+            return this.GenreCollection[genreName].ToString();
         }
     }
 }

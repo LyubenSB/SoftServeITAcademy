@@ -70,6 +70,8 @@ namespace LMDB.Core.Core.Providers
                     //calling the processCommand method
                     this.ProcessCommand(command);
                 }
+                writer.WriteLine(@"Enter Command:...
+(For help type '/help'");
             }
         }
 
@@ -81,16 +83,16 @@ namespace LMDB.Core.Core.Providers
         {
             //passing the command to the command parser.
             var commandToExectue = this.parser.ParseCommand(command);
-            //try
-            //{
+            try
+            {
             var exectutionResult = commandToExectue.Execute();
             writer.WriteLine(exectutionResult);
-            //}
-            //catch (NullReferenceException)
-            //{
-            //    writer.WriteLine("Invalid Command.Type /help for details.");
-            //    this.Start();
-            //}
+            }
+            catch (NullReferenceException)
+            {
+                writer.WriteLine("Invalid Command.Type /help for details.");
+                this.Start();
+            }
         }
     }
 }

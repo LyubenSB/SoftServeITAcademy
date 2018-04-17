@@ -47,6 +47,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GetTVSeriesDetailsQueryBuilder.cs" />
+    <Compile Include="ListMoviesByGenreQueryBuilder.cs" />
+    <Compile Include="ListByPersonQueryBuilder.cs" />
     <Compile Include="ObjectConverters\DetailTVSeriesObjectConverter.cs" />
     <Compile Include="ObjectHandlers\DetailedTvSeriesObjectJSONHandler.cs" />
     <Compile Include="RecievedDataHandler.cs" />
@@ -64,7 +66,6 @@
     <Compile Include="Contratcts\ICallProcessor.cs" />
     <Compile Include="Contratcts\IObjectConverter.cs" />
     <Compile Include="InitData\InitialDataGetter.cs" />
-    <Compile Include="ListByGenreQueryBuidler.cs" />
     <Compile Include="ObjectConverters\DetailMovieObjectConverter.cs" />
     <Compile Include="ObjectConverters\MovieObjectConverter.cs" />
     <Compile Include="ObjectConverters\TVSeriesObjectConverter.cs" />
@@ -76,10 +77,9 @@
     <Compile Include="SearchTVSeriesQueryBuilder.cs" />
     <Compile Include="ProcessorContext.cs" />
     <Compile Include="SearchMovieQueryBuilder.cs" />
-    <Compile Include="ListByProcessorContext.cs" />
     <Compile Include="Strategies\GetTVSeriesDetailsCallStrategy.cs" />
     <Compile Include="Strategies\GetMovieDetailsCallStrategy.cs" />
-    <Compile Include="Strategies\ListByStrategy\ListByGenreStrategy.cs" />
+    <Compile Include="Strategies\ListByStrategy\ListMoviesByGenreCallStrategy.cs" />
     <Compile Include="Strategies\ListByStrategy\ListByYearStrategy.cs" />
     <Compile Include="Strategies\SearchStrategy\SearchTVSeriesCallStrategy.cs" />
     <Compile Include="Strategies\StrategyContainer.cs" />

@@ -18,7 +18,7 @@ namespace LMDB.ObjectModels.ResponseObjects
         public string Title { get; set; }
 
         [JsonProperty("genres")]
-        public ICollection<GenreResponseObject> Genres{get;set;}
+        public ICollection<GenreResponseObject> Genres { get; set; }
 
         [JsonProperty("release_date")]
         public DateTime ReleaseDate { get; set; }
@@ -31,6 +31,8 @@ namespace LMDB.ObjectModels.ResponseObjects
 
         [JsonProperty("budget")]
         public decimal Budget { get; set; }
-               
+
+        [JsonProperty("runtime")]
+        public int Runtime { get; set; }
     }
 }

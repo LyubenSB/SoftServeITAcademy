@@ -76,10 +76,17 @@ namespace LMDB.DIServices.IoCNinject
             this.Bind<IObjectConverter<DetailedTVseriesResponseObject, IMotionPictureData>>().To<DetailTVSeriesObjectConverter>().WhenInjectedInto<GetTVSeriesDetailsCallStrategy>();
             this.Bind<IObjectHandler<string, DetailedTVseriesResponseObject>>().To<DetailedTvSeriesObjectJSONHandler>().WhenInjectedInto<GetTVSeriesDetailsCallStrategy>();
 
+            //list movies by genre by strategy bindings
+            this.Bind<ICallProcessorStrategy<string>>().To<ListMoviesByGenreCallStrategy>().Named("ListMoviesByGenreStrategy");
+            this.Bind<IQueryBuilder<string>>().To<ListMoviesByGenreQueryBuilder>().WhenInjectedInto<ListMoviesByGenreCallStrategy>();
+            this.Bind<IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPictureData>>>().To<MovieObjectConverter>().WhenInjectedInto<ListMoviesByGenreCallStrategy>();
+            this.Bind<IObjectHandler<string, IResponseObject>>().To<MovieObjectJSONHandler>().WhenInjectedInto<ListMoviesByGenreCallStrategy>();
+
+
             //dataservice bindings
             this.Bind<IDataService<IMotionPictureData>>().To<ObjectDataService>().InSingletonScope();
             this.Bind<GenreQueryBuilder>().ToSelf();
-            this.Bind<InitialDataGetter>().ToSelf();
+            this.Bind<InitialDataGetter>().ToSelf().InSingletonScope();
             this.Bind<GenreCollectionHandler>().ToSelf().InSingletonScope();
 
             //apiservice bindings

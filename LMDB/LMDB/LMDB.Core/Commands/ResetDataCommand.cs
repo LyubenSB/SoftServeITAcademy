@@ -51,8 +51,7 @@ namespace LMDB.Core.Commands
                     break;
             }
             
-            return @"Enter Command:...
-(For help type '/help')";
+            return @"Data Reset Done.....";
 
         }
     }

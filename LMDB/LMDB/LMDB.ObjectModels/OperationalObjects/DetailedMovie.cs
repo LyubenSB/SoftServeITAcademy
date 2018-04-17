@@ -12,7 +12,7 @@ namespace LMDB.ObjectModels.Models
     /// </summary>
     public class DetailedMovie : IComparable<DetailedMovie>, IMotionPictureData
     {
-        public DetailedMovie()  
+        public DetailedMovie()
         {
             this.Genres = new List<Genre>();
         }
@@ -31,6 +31,8 @@ namespace LMDB.ObjectModels.Models
 
         public decimal Budget { get; set; }
 
+        public int Runtime { get; set; }
+
         public override string ToString()
         {
             return string.Format(@"
@@ -39,8 +41,9 @@ namespace LMDB.ObjectModels.Models
 || Genres: {2}
 || Release Date: {3}
 || Rating: {4}
-|| Budget: {5}$
-|| Overview: {6}", this.Id, this.Title, string.Join(", ",this.Genres), this.ReleaseDate.Date.ToShortDateString(), this.Rating, this.Budget, this.Overview);
+|| Runtime: {5} minutes
+|| Budget: {6}$
+|| Overview: {7}", this.Id, this.Title, string.Join(", ", this.Genres), this.ReleaseDate.Date.ToShortDateString(), this.Rating, this.Runtime, this.Budget, this.Overview);
         }
 
         /// <summary>

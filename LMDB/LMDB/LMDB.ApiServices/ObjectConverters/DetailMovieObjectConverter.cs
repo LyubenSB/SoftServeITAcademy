@@ -48,7 +48,8 @@ namespace LMDB.ApiServices.ObjectConverters
                 ReleaseDate = objctToConvert.ReleaseDate,
                 Overview = objctToConvert.Overview,
                 Rating = objctToConvert.Rating,
-                Budget = objctToConvert.Budget
+                Budget = objctToConvert.Budget,
+                Runtime = objctToConvert.Runtime
             };
 
             ConvertGenres(objctToConvert.Genres, newMovie.Genres);

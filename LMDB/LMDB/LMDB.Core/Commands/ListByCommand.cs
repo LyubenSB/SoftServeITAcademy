@@ -15,13 +15,15 @@ namespace LMDB.Core.Commands.ListByCommand
     public class ListByCommand : ICommand
     {
         private IDataService<IMotionPictureData> dataService;
+        private readonly ProcessorContext processorCtx;
         private readonly IWriter writer;
         private readonly IReader reader;
         private readonly List<string> collectedData;
 
-        public ListByCommand(IDataService<IMotionPictureData> dataService, ListByProcessorContext processorCtx, IReader reader, IWriter writer)
+        public ListByCommand(IDataService<IMotionPictureData> dataService, ProcessorContext processorCtx, IReader reader, IWriter writer)
         {
             this.dataService = dataService;
+            this.processorCtx = processorCtx;
             this.reader = reader;
             this.writer = writer;
             this.collectedData = new List<string>();
@@ -41,8 +43,12 @@ namespace LMDB.Core.Commands.ListByCommand
         public string Execute()
         {
             CollectData();
-            string listedObjectsBy = collectedData[0];
+            string strategyCtx = collectedData[0];
+            //genre person or year parameter
             string listingParameter = collectedData[1];
+
+            this.processorCtx.AddParameter(listingParameter);
+            this.processorCtx.ContextExecute(strategyCtx);
 
             string moviesListed = @"
 ======================================================================================================================================
@@ -54,7 +60,7 @@ Movie(s) Listed!
 Movie(s) with that parameter are Not Found!
 ======================================================================================================================================";
 
-            return this.dataService.MovieList.Count == 0 ? movieNotFound : moviesListed;
+            return this.dataService.MovieList.Count == 0 ? movieNotFound : string.Join("\n", this.dataService.MovieList) + moviesListed;
         }
     }
 }
