@@ -33,7 +33,7 @@ namespace LMDB.Core.Commands.ListByCommand
         {
             writer.WriteLine("======================================================================================================================================");
             writer.WriteLine("List TVSeries by:");
-            writer.WriteLine("genre | person | year ");
+            writer.WriteLine("genre | year ");
             writer.WriteLine("======================================================================================================================================");
             collectedData.Add(reader.ReadLine());
             writer.WriteLine("Enter Parameter :");
