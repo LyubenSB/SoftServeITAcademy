@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace LMDB.ApiServices
 {
-    public class ListByPersonQueryBuilder : TMDBQueryBuilder
+    public class ListTVSeriesByPersonQueryBuilder : TMDBQueryBuilder
     {
         public override string BuildQuery(string queryParams)
         {
-            string queryComposite = $"{Url}/discover/movie?api_key={ApiKey}&sort_by=popularity.desc&with_cast={queryParams}";
+            string queryComposite = $"{Url}/discover/tv?api_key={ApiKey}&sort_by=popularity.desc&with_people={queryParams}";
 
             return queryComposite;
         }

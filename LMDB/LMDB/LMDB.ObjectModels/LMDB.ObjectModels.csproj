@@ -61,6 +61,7 @@
     <Compile Include="OperationalObjects\Networks.cs" />
     <Compile Include="OperationalObjects\TVSeries.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResponseObjects\PersonResponseObject.cs" />
     <Compile Include="ResponseObjects\GenreResponseObject.cs" />
     <Compile Include="ResponseObjects\DetailedMovieResponseObject.cs" />
     <Compile Include="ResponseObjects\MovieResponseObject.cs" />

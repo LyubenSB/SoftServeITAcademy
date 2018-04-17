@@ -52,6 +52,10 @@ namespace LMDB.DIServices.IoCNinject
 
             //search strategy bindings
             this.Bind<StrategyContainer>().ToSelf().InSingletonScope();
+            
+            //person
+            this.Bind<IQueryBuilder<string>>().To<SearchPersonQueryBuilder>().WhenInjectedInto<SearchPersonCallStrategy>();
+            this.Bind<IObjectHandler<string, PersonResponseObject>>().To<PersonObjectJSONHandler>();
 
             this.Bind<ICallProcessorStrategy<string>>().To<SearchMovieCallStrategy>().Named("SearchMovieStrategy");
             this.Bind<ICallProcessorStrategy<string>>().To<SearchTVSeriesCallStrategy>().Named("SearchTVSeriesStrategy");
@@ -82,6 +86,24 @@ namespace LMDB.DIServices.IoCNinject
             this.Bind<IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPictureData>>>().To<MovieObjectConverter>().WhenInjectedInto<ListMoviesByGenreCallStrategy>();
             this.Bind<IObjectHandler<string, IResponseObject>>().To<MovieObjectJSONHandler>().WhenInjectedInto<ListMoviesByGenreCallStrategy>();
 
+            //list TVSeries by genre by strategy bindings
+            this.Bind<ICallProcessorStrategy<string>>().To<ListTVSeriesByGenreCallStrategy>().Named("ListTVSeriesByGenreStrategy");
+            this.Bind<IQueryBuilder<string>>().To<ListTVSeriesByGenreQueryBuilder>().WhenInjectedInto<ListTVSeriesByGenreCallStrategy>();
+            this.Bind<IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPictureData>>>().To<TVSeriesObjectConverter>().WhenInjectedInto<ListTVSeriesByGenreCallStrategy>();
+            this.Bind<IObjectHandler<string, IResponseObject>>().To<TVObjectJSONHandler>().WhenInjectedInto<ListTVSeriesByGenreCallStrategy>();
+
+            //list movies by person by strategy bindings
+            this.Bind<ICallProcessorStrategy<string>>().To<ListMoviesByPersonCallStrategy>().Named("ListMoviesByPersonStrategy");
+            this.Bind<IQueryBuilder<string>>().To<ListMoviesByPersonQueryBuilder>().WhenInjectedInto<ListMoviesByPersonCallStrategy>();
+            this.Bind<IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPictureData>>>().To<MovieObjectConverter>().WhenInjectedInto<ListMoviesByPersonCallStrategy>();
+            this.Bind<IObjectHandler<string, IResponseObject>>().To<MovieObjectJSONHandler>().WhenInjectedInto<ListMoviesByPersonCallStrategy>();
+
+            //list tvSeries by person by strategy bindings
+            this.Bind<ICallProcessorStrategy<string>>().To<ListTVSeriesByPersonCallStrategy>().Named("ListTvSeriesByPersonStrategy");
+            this.Bind<IQueryBuilder<string>>().To<ListTVSeriesByPersonQueryBuilder>().WhenInjectedInto<ListTVSeriesByPersonCallStrategy>();
+            this.Bind<IObjectConverter<ICollection<IResponseObject>, ICollection<IMotionPictureData>>>().To<TVSeriesObjectConverter>().WhenInjectedInto<ListTVSeriesByPersonCallStrategy>();
+            this.Bind<IObjectHandler<string, IResponseObject>>().To<TVObjectJSONHandler>().WhenInjectedInto<ListTVSeriesByPersonCallStrategy>();
+
 
             //dataservice bindings
             this.Bind<IDataService<IMotionPictureData>>().To<ObjectDataService>().InSingletonScope();
@@ -105,7 +127,8 @@ namespace LMDB.DIServices.IoCNinject
 
             //command bindings
             this.Bind<ICommandFactory>().To<CommandFactory>().InSingletonScope();
-            this.Bind<ICommand>().To<ListByCommand>().Named("list movies by");
+            this.Bind<ICommand>().To<ListMoviesByCommand>().Named("list movies by");
+            this.Bind<ICommand>().To<ListTVSeriesByCommand>().Named("list tvseries by");
             this.Bind<ICommand>().To<GetDetailsCommand>().Named("get details on");
             //this.Bind<ICommand>().To<RegisterMovieCommand>().Named("register movie");
             //this.Bind<ICommand>().To<RemoveMovieCommand>().Named("remove movie");

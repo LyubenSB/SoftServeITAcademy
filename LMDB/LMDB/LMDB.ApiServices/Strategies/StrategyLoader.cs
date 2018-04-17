@@ -26,13 +26,19 @@ namespace LMDB.ApiServices.Strategies
             ICallProcessorStrategy<string> getTvSeriesDetailsStrategy = kernel.Get<ICallProcessorStrategy<string>>("GetTVSeriesDetailsStrategy");
 
             ICallProcessorStrategy<string> listMoviesByGenreStrategy = kernel.Get<ICallProcessorStrategy<string>>("ListMoviesByGenreStrategy");
-
+            ICallProcessorStrategy<string> listTVSeriesByGenreStrategy = kernel.Get<ICallProcessorStrategy<string>>("ListTVSeriesByGenreStrategy");
+            ICallProcessorStrategy<string> listMoviesByPersonStrategy = kernel.Get<ICallProcessorStrategy<string>>("ListMoviesByPersonStrategy");
+            ICallProcessorStrategy<string> listTVSeriesByPersonCallStrategy = kernel.Get<ICallProcessorStrategy<string>>("ListTvSeriesByPersonStrategy");
 
             strategyContainer.AddStrategy("movie", movieStrategy);
             strategyContainer.AddStrategy("tvseries", tvStrategy);
             strategyContainer.AddStrategy("/movie", getMovieDetailsStrategy);
             strategyContainer.AddStrategy("/tvseries", getTvSeriesDetailsStrategy);
-            strategyContainer.AddStrategy("genre", listMoviesByGenreStrategy);
+            strategyContainer.AddStrategy("moviegenre", listMoviesByGenreStrategy);
+            strategyContainer.AddStrategy("tvseriesgenre", listTVSeriesByGenreStrategy);
+            strategyContainer.AddStrategy("movieperson", listMoviesByPersonStrategy);
+            strategyContainer.AddStrategy("tvseriesperson", listTVSeriesByPersonCallStrategy);
+
 
         }
     }

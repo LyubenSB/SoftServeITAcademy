@@ -60,7 +60,8 @@
     <Compile Include="Commands\Contracts\ICommand.cs" />
     <Compile Include="Commands\Contracts\IDataCollector.cs" />
     <Compile Include="Commands\GetDetailsCommand.cs" />
-    <Compile Include="Commands\ListByCommand.cs" />
+    <Compile Include="Commands\ListTVSeriesByCommand.cs" />
+    <Compile Include="Commands\ListMoviesByCommand.cs" />
     <Compile Include="Commands\ResetDataCommand.cs" />
     <Compile Include="Commands\SearchCommand.cs" />
     <Compile Include="Core\Factories\CommandFactory.cs" />

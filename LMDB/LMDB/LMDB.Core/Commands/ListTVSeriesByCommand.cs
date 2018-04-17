@@ -12,7 +12,7 @@ namespace LMDB.Core.Commands.ListByCommand
     /// <summary>
     /// Class representing the implementation of listing data by a given parameter.
     /// </summary>
-    public class ListByCommand : ICommand
+    public class ListTVSeriesByCommand : ICommand
     {
         private IDataService<IMotionPictureData> dataService;
         private readonly ProcessorContext processorCtx;
@@ -20,7 +20,7 @@ namespace LMDB.Core.Commands.ListByCommand
         private readonly IReader reader;
         private readonly List<string> collectedData;
 
-        public ListByCommand(IDataService<IMotionPictureData> dataService, ProcessorContext processorCtx, IReader reader, IWriter writer)
+        public ListTVSeriesByCommand(IDataService<IMotionPictureData> dataService, ProcessorContext processorCtx, IReader reader, IWriter writer)
         {
             this.dataService = dataService;
             this.processorCtx = processorCtx;
@@ -32,7 +32,7 @@ namespace LMDB.Core.Commands.ListByCommand
         public void CollectData()
         {
             writer.WriteLine("======================================================================================================================================");
-            writer.WriteLine("List Movies by:");
+            writer.WriteLine("List TVSeries by:");
             writer.WriteLine("genre | person | year ");
             writer.WriteLine("======================================================================================================================================");
             collectedData.Add(reader.ReadLine());
@@ -43,24 +43,24 @@ namespace LMDB.Core.Commands.ListByCommand
         public string Execute()
         {
             CollectData();
-            string strategyCtx = collectedData[0];
+            string strategyCtx = "tvseries" + collectedData[0];
             //genre person or year parameter
             string listingParameter = collectedData[1];
 
             this.processorCtx.AddParameter(listingParameter);
             this.processorCtx.ContextExecute(strategyCtx);
 
-            string moviesListed = @"
+            string TVSeriesListed = @"
 ======================================================================================================================================
-Movie(s) Listed!
+TVSeries(s) Listed!
 ======================================================================================================================================";
 
-            string movieNotFound = @"
+            string TVSeriesNotFound = @"
 ======================================================================================================================================
-Movie(s) with that parameter are Not Found!
+TVSeries(s) with that parameter are Not Found!
 ======================================================================================================================================";
 
-            return this.dataService.MovieList.Count == 0 ? movieNotFound : string.Join("\n", this.dataService.MovieList) + moviesListed;
+            return this.dataService.MovieList.Count == 0 ? TVSeriesNotFound : string.Join("\n", this.dataService.MovieList) + TVSeriesListed;
         }
     }
 }
