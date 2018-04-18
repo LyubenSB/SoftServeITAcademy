@@ -14,7 +14,6 @@ namespace LMDB.ApiServices.Strategies.SortingStrategy
     {
         private readonly IDataService<IMotionPictureData> dataService;
         private readonly PrintingContext processorContext;
-        private readonly ICallProcessorStrategy<string> printOrderStr;
 
         public SortByTitleStrategy(IDataService<IMotionPictureData> dataService, PrintingContext processorContext)
         {
