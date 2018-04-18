@@ -61,6 +61,7 @@ namespace LMDB.DIServices.IoCNinject
 
             //sort
             this.Bind<ICallProcessorStrategy<string>>().To<SortByYearStrategy>().Named("SortByYearStrategy");
+            this.Bind<ICallProcessorStrategy<string>>().To<SortByTitleStrategy>().Named("SortByTitleStrategy");
             this.Bind<ILocalProcessorStrategy<string, ICollection<IMotionPictureData>>>().To<PrintAscendingStrategy>().Named("PrintAscendingStrategy");
             this.Bind<ILocalProcessorStrategy<string, ICollection<IMotionPictureData>>>().To<PrintDescendingStrategy>().Named("PrintDescendingStrategy");
 
@@ -147,7 +148,7 @@ namespace LMDB.DIServices.IoCNinject
             //this.Bind<ICommand>().To<RemoveMovieCommand>().Named("remove movie");
             this.Bind<ICommand>().To<SearchCommand>().Named("search for");
             this.Bind<ICommand>().To<SortObjectsCommand>().Named("sort by");
-            //this.Bind<ICommand>().To<HelpCommand>().Named("/help");
+            this.Bind<ICommand>().To<HelpCommand>().Named("/help");
             this.Bind<ICommand>().To<ResetDataCommand>().Named("reset");
 
 

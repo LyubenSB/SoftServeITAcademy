@@ -95,6 +95,7 @@
     <Compile Include="Strategies\SearchStrategy\SearchTVSeriesCallStrategy.cs" />
     <Compile Include="Strategies\SortingStrategy\PrintDescendingStrategy .cs" />
     <Compile Include="Strategies\SortingStrategy\PrintAscendingStrategy.cs" />
+    <Compile Include="Strategies\SortingStrategy\SortByTitleStrategy.cs" />
     <Compile Include="Strategies\SortingStrategy\SortByYearStrategy.cs" />
     <Compile Include="Strategies\LocalApiStrategyContainer.cs" />
     <Compile Include="Strategies\WebApiStrategyContainer.cs" />

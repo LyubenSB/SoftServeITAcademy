@@ -18,13 +18,13 @@ namespace LMDB.Core.Commands
 
         public string Execute()
         {
+            commands.AppendLine("'search for' - Searches movies or tv series by title");
+            commands.AppendLine("'get details on' - gets the details on a specific movie or tv series");
             commands.AppendLine("'list movies by' - lists movies by given parameter");
-            commands.AppendLine("'search movie' - Searches movies by title");
-            commands.AppendLine("'sort movies' - Sorts movies by a parameter");
-            commands.AppendLine("'register movie' - creates a movie");
-            commands.AppendLine("'remove movie' - removes a specific movie from the list");
+            commands.AppendLine("'list tvseries by' - lists tv series by given parameter");
+            commands.AppendLine("'sort by' - Sorts movies or tv series by a parameter");
             commands.AppendLine("'reset' - resets the program");
-            commands.AppendLine("'exit' - exit the program");
+            commands.AppendLine("'exit' - exits the program");
 
             return commands.ToString();
         }

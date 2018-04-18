@@ -35,6 +35,7 @@ namespace LMDB.ApiServices.Strategies
             ICallProcessorStrategy<string> listTVSeriesByYearCallStrategy = kernel.Get<ICallProcessorStrategy<string>>("ListTVSeriesByYearCallStrategy");
 
             ICallProcessorStrategy<string> sortByYearStrategy = kernel.Get<ICallProcessorStrategy<string>>("SortByYearStrategy");
+            ICallProcessorStrategy<string> sortByTitleStrategy = kernel.Get<ICallProcessorStrategy<string>>("SortByTitleStrategy");
 
             ILocalProcessorStrategy<string, ICollection<IMotionPictureData>> printAscendingStrategy = kernel.Get<ILocalProcessorStrategy<string, ICollection<IMotionPictureData>>>("PrintAscendingStrategy");
             ILocalProcessorStrategy<string, ICollection<IMotionPictureData>> printDescendingStrategy = kernel.Get<ILocalProcessorStrategy<string, ICollection<IMotionPictureData>>>("PrintDescendingStrategy");
@@ -52,6 +53,7 @@ namespace LMDB.ApiServices.Strategies
             webApiStrategyContainer.AddStrategy("tvseriesyear", listTVSeriesByYearCallStrategy);
 
             webApiStrategyContainer.AddStrategy("sortbyyear", sortByYearStrategy);
+            webApiStrategyContainer.AddStrategy("sortbytitle", sortByTitleStrategy);
 
 
             localApiStrategyContainer.AddStrategy("ascending", printAscendingStrategy);
