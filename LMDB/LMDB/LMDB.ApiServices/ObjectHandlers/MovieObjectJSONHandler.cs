@@ -24,15 +24,22 @@ namespace LMDB.ApiServices.ObjectHandlers
 
         public void HandleObject(string objectToHandle)
         {
+            this.HandledResponseObjects.Clear();
             JObject parseResults = JObject.Parse(objectToHandle);
 
             IList<JToken> objectResults = parseResults["results"].Children().ToList();
 
-            foreach (var obj in objectResults)
+            try
             {
-                IResponseObject objectToAdd = obj.ToObject<MovieResponseObject>();
-                HandledResponseObjects.Add(objectToAdd);
+                foreach (var obj in objectResults)
+                {
+                    IResponseObject objectToAdd = obj.ToObject<MovieResponseObject>();
+                    HandledResponseObjects.Add(objectToAdd);
+                }
             }
+            catch (Exception)
+            {}
+           
         }
 
 

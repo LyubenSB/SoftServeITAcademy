@@ -26,6 +26,7 @@ namespace LMDB.ApiServices.ObjectConverters
 
         public void Convert(ICollection<IResponseObject> objctsToConvert)
         {
+            this.ConvertedObjects.Clear();
             foreach (var respObj in objctsToConvert)
             {
                 Movie newMovie = new Movie()

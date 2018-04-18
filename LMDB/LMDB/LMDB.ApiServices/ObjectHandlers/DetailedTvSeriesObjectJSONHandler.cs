@@ -26,10 +26,17 @@ namespace LMDB.ApiServices.ObjectHandlers
 
         public void HandleObject(string objectToHandle)
         {
+            this.HandledResponseObjects.Clear();
             JObject parseResults = JObject.Parse(objectToHandle);
 
-            var parsedObject = parseResults.ToObject<DetailedTVseriesResponseObject>();
-            this.HandledResponseObjects.Add(parsedObject);
+            try
+            {
+                var parsedObject = parseResults.ToObject<DetailedTVseriesResponseObject>();
+                this.HandledResponseObjects.Add(parsedObject);
+            }
+            catch (Exception)
+            {}
+            
 
         }
 

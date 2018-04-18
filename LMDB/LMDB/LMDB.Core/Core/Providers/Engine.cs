@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LMDB.Core.DataService.InMemoryDataService;
 
 namespace LMDB.Core.Core.Providers
 {
@@ -20,12 +21,14 @@ namespace LMDB.Core.Core.Providers
         private readonly IWriter writer;
         private readonly IReader reader;
         private readonly IParser parser;
+        private readonly ObjectDataService dataService;
 
-        public Engine(IWriter writer, IReader reader, IParser parser)
+        public Engine(IWriter writer, IReader reader, IParser parser, ObjectDataService dataService)
         {
             this.writer = writer;
             this.reader = reader;
             this.parser = parser;
+            this.dataService = dataService;
         }
 
         /// <summary>
@@ -54,6 +57,8 @@ namespace LMDB.Core.Core.Providers
         {
             while (true)
             {
+                this.dataService.ResetData();
+
                 string command = this.reader.ReadLine();
 
                 if (command.ToLower() == TerminationCommand.ToLower())

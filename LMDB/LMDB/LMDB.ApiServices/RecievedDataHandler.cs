@@ -21,6 +21,8 @@ namespace LMDB.ApiServices
 
         public void Composite(ICollection<IMotionPictureData> collectionToCompose)
         {
+            this.dataService.ResetData();
+
             foreach (var obj in collectionToCompose)
             {
                 this.dataService.Add(obj);
@@ -29,6 +31,7 @@ namespace LMDB.ApiServices
 
         public void AddDetailedObject(IMotionPictureData objectToAdd)
         {
+            this.dataService.ResetData();
             this.dataService.AddDetailedObject(objectToAdd);
         }
     }
