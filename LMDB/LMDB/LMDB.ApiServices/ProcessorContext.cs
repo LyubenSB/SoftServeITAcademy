@@ -10,9 +10,9 @@ namespace LMDB.ApiServices
 {
     public class ProcessorContext : ICallProcessorContext
     {
-        private StrategyContainer strContainer;
+        private WebApiStrategyContainer strContainer;
 
-        public ProcessorContext(StrategyContainer strContainer)
+        public ProcessorContext(WebApiStrategyContainer strContainer)
         {
             this.strContainer = strContainer;
             this.Parameters = new List<string>();
@@ -29,7 +29,7 @@ namespace LMDB.ApiServices
         public void ContextExecute(string context)
         {
             string executeParameter = Parameters[0];
-            strContainer.Strategies[context].ExectuteStrategy(executeParameter);
+            strContainer.WebApiStrategies[context].ExectuteStrategy(executeParameter);
         }
 
     }

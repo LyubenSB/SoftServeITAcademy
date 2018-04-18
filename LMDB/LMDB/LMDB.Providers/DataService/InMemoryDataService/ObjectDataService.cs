@@ -12,7 +12,6 @@ namespace LMDB.Core.DataService.InMemoryDataService
     {
         public ObjectDataService()
         {
-            this.InitialMovieList = new List<IMotionPictureData>();
             this.MovieList = new List<IMotionPictureData>();
             this.DetailedMovieList = new List<IMotionPictureData>();
         }
@@ -20,7 +19,6 @@ namespace LMDB.Core.DataService.InMemoryDataService
         /// <summary>
         /// Initial collection of data after loading upon start of the application from external data file.
         /// </summary>
-        public ICollection<IMotionPictureData> InitialMovieList { get; private set; }
 
         public List<IMotionPictureData> GenreList { get; private set; }
 
@@ -59,7 +57,6 @@ namespace LMDB.Core.DataService.InMemoryDataService
         /// <param name="movieToRemove"></param>
         public void Remove(IMotionPictureData movieToRemove)
         {
-            this.InitialMovieList.Remove(movieToRemove);
             this.MovieList.Remove(movieToRemove);
         }
 

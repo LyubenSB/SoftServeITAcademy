@@ -1,4 +1,5 @@
 ﻿using LMDB.ApiServices.Contratcts;
+using LMDB.ObjectModels.Contracts;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -18,9 +19,11 @@ namespace LMDB.ApiServices.Strategies
 
         public void LoadStrategies()
         {
-            var strategyContainer = kernel.Get<StrategyContainer>();
-            ICallProcessorStrategy<string> movieStrategy = kernel.Get<ICallProcessorStrategy<string>>("SearchMovieStrategy");
-            ICallProcessorStrategy<string> tvStrategy = kernel.Get<ICallProcessorStrategy<string>>("SearchTVSeriesStrategy");
+            var webApiStrategyContainer = kernel.Get<WebApiStrategyContainer>();
+            var localApiStrategyContainer = kernel.Get<LocalApiStrategyContainer>();
+
+            ICallProcessorStrategy<string> searchMovieStrategy = kernel.Get<ICallProcessorStrategy<string>>("SearchMovieStrategy");
+            ICallProcessorStrategy<string> searchTvStrategy = kernel.Get<ICallProcessorStrategy<string>>("SearchTVSeriesStrategy");
 
             ICallProcessorStrategy<string> getMovieDetailsStrategy = kernel.Get<ICallProcessorStrategy<string>>("GetMovieDetailsStrategy");
             ICallProcessorStrategy<string> getTvSeriesDetailsStrategy = kernel.Get<ICallProcessorStrategy<string>>("GetTVSeriesDetailsStrategy");
@@ -31,15 +34,28 @@ namespace LMDB.ApiServices.Strategies
             ICallProcessorStrategy<string> listMoviesByYearCallStrategy = kernel.Get<ICallProcessorStrategy<string>>("ListMoviesByYearCallStrategy");
             ICallProcessorStrategy<string> listTVSeriesByYearCallStrategy = kernel.Get<ICallProcessorStrategy<string>>("ListTVSeriesByYearCallStrategy");
 
-            strategyContainer.AddStrategy("movie", movieStrategy);
-            strategyContainer.AddStrategy("tvseries", tvStrategy);
-            strategyContainer.AddStrategy("/movie", getMovieDetailsStrategy);
-            strategyContainer.AddStrategy("/tvseries", getTvSeriesDetailsStrategy);
-            strategyContainer.AddStrategy("moviegenre", listMoviesByGenreStrategy);
-            strategyContainer.AddStrategy("tvseriesgenre", listTVSeriesByGenreStrategy);
-            strategyContainer.AddStrategy("movieperson", listMoviesByPersonStrategy);
-            strategyContainer.AddStrategy("movieyear", listMoviesByYearCallStrategy);
-            strategyContainer.AddStrategy("tvseriesyear", listTVSeriesByYearCallStrategy);
+            ICallProcessorStrategy<string> sortByYearStrategy = kernel.Get<ICallProcessorStrategy<string>>("SortByYearStrategy");
+
+            ILocalProcessorStrategy<string, ICollection<IMotionPictureData>> printAscendingStrategy = kernel.Get<ILocalProcessorStrategy<string, ICollection<IMotionPictureData>>>("PrintAscendingStrategy");
+            ILocalProcessorStrategy<string, ICollection<IMotionPictureData>> printDescendingStrategy = kernel.Get<ILocalProcessorStrategy<string, ICollection<IMotionPictureData>>>("PrintDescendingStrategy");
+
+            webApiStrategyContainer.AddStrategy("movie", searchMovieStrategy);
+            webApiStrategyContainer.AddStrategy("tvseries", searchTvStrategy);
+
+            webApiStrategyContainer.AddStrategy("/movie", getMovieDetailsStrategy);
+            webApiStrategyContainer.AddStrategy("/tvseries", getTvSeriesDetailsStrategy);
+
+            webApiStrategyContainer.AddStrategy("moviegenre", listMoviesByGenreStrategy);
+            webApiStrategyContainer.AddStrategy("tvseriesgenre", listTVSeriesByGenreStrategy);
+            webApiStrategyContainer.AddStrategy("movieperson", listMoviesByPersonStrategy);
+            webApiStrategyContainer.AddStrategy("movieyear", listMoviesByYearCallStrategy);
+            webApiStrategyContainer.AddStrategy("tvseriesyear", listTVSeriesByYearCallStrategy);
+
+            webApiStrategyContainer.AddStrategy("sortbyyear", sortByYearStrategy);
+
+
+            localApiStrategyContainer.AddStrategy("ascending", printAscendingStrategy);
+            localApiStrategyContainer.AddStrategy("descending", printDescendingStrategy);
 
 
         }

@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contratcts\ILocalApiStrategyContainer.cs" />
+    <Compile Include="Contratcts\ILocalProcessorStrategy.cs" />
     <Compile Include="GetTVSeriesDetailsQueryBuilder.cs" />
     <Compile Include="ListTVSeriesByYearQueryBuilder.cs" />
     <Compile Include="ListTVSeriesByGenreQueryBuilder.cs" />
@@ -54,6 +56,7 @@
     <Compile Include="ObjectConverters\DetailTVSeriesObjectConverter.cs" />
     <Compile Include="ObjectHandlers\DetailedTvSeriesObjectJSONHandler.cs" />
     <Compile Include="ObjectHandlers\PersonObjectJSONHandler.cs" />
+    <Compile Include="PrintingContext.cs" />
     <Compile Include="RecievedDataHandler.cs" />
     <Compile Include="Contratcts\ICallProcessorContext.cs" />
     <Compile Include="Contratcts\ICallProcessorStrategy.cs" />
@@ -61,12 +64,11 @@
     <Compile Include="Contratcts\IDataHandler.cs" />
     <Compile Include="Contratcts\IObjectHandler.cs" />
     <Compile Include="Contratcts\IQueryBuilder.cs" />
-    <Compile Include="Contratcts\IStrategyContainer.cs" />
+    <Compile Include="Contratcts\IWebApiStrategyContainer.cs" />
     <Compile Include="GenreCollectionHandler.cs" />
     <Compile Include="GetMovieDetailsQueryBuilder.cs" />
     <Compile Include="InitData\GenreQueryBuilder.cs" />
     <Compile Include="HttpClientCaller.cs" />
-    <Compile Include="Contratcts\ICallProcessor.cs" />
     <Compile Include="Contratcts\IObjectConverter.cs" />
     <Compile Include="InitData\InitialDataGetter.cs" />
     <Compile Include="ObjectConverters\DetailMovieObjectConverter.cs" />
@@ -91,7 +93,11 @@
     <Compile Include="Strategies\ListByStrategy\ListMoviesByGenreCallStrategy.cs" />
     <Compile Include="Strategies\SearchStrategy\SearchPersonCallStrategy.cs" />
     <Compile Include="Strategies\SearchStrategy\SearchTVSeriesCallStrategy.cs" />
-    <Compile Include="Strategies\StrategyContainer.cs" />
+    <Compile Include="Strategies\SortingStrategy\PrintDescendingStrategy .cs" />
+    <Compile Include="Strategies\SortingStrategy\PrintAscendingStrategy.cs" />
+    <Compile Include="Strategies\SortingStrategy\SortByYearStrategy.cs" />
+    <Compile Include="Strategies\LocalApiStrategyContainer.cs" />
+    <Compile Include="Strategies\WebApiStrategyContainer.cs" />
     <Compile Include="Strategies\SearchStrategy\SearchMovieCallStrategy.cs" />
     <Compile Include="Strategies\StrategyLoader.cs" />
     <Compile Include="Strategies\StrategyServices.cs" />
@@ -101,6 +107,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LMDB.ConsoleServices\LMDB.ConsoleServices.csproj">
+      <Project>{9A9A190E-2A11-4689-9D8F-B38278C34E4C}</Project>
+      <Name>LMDB.ConsoleServices</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LMDB.ObjectModels\LMDB.ObjectModels.csproj">
       <Project>{FD21913B-F8ED-408A-9BCF-EC0CD7E9C861}</Project>
       <Name>LMDB.ObjectModels</Name>

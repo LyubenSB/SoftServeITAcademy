@@ -9,5 +9,7 @@ namespace LMDB.ObjectModels.Contracts
     public interface IMotionPictureData
     {
         int Id { get; set; }
+        string Title { get; set; }
+        DateTime ReleaseDate { get; set; }
     }
 }
